@@ -1,0 +1,99 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.rebrotesolution.smzr_android.viewModels.login.LoginViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_background"
+        tools:context=".activities.MainActivity">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_launcher_foreground"
+                    android:layout_gravity="center_horizontal"/>
+
+                <EditText
+                    android:id="@+id/username_text"
+                    android:drawableStart="@drawable/ic_user"
+                    android:hint="Usuario"
+                    android:drawablePadding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:background="@drawable/login_edit_background"
+                    android:padding="15dp"
+                    app:addTextChangedListener = "@{loginViewModel.usernameTextWatcher}"/>
+
+                <EditText
+                    android:id="@+id/password_text"
+                    android:layout_marginTop="30dp"
+                    android:drawableStart="@drawable/ic_password"
+                    android:hint="Contraseña"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:drawablePadding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_edit_background"
+                    android:padding="15dp"
+                    android:inputType="textPassword"
+                    app:addTextChangedListener = "@{loginViewModel.passwordTextWatcher}"/>
+
+                <TextView
+                    android:id="@+id/forgot_password_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:text="¿Has olvidado tu contraseña?"
+                    android:padding="15dp"
+                    android:layout_gravity="right"/>
+
+                <Button
+                    android:id="@+id/login_button"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:text="Iniciar Sesión"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:padding="15dp"
+                    android:textColor="@color/colorWhite"
+                    android:onClick="@{loginViewModel::onLoginClicked}"/>
+
+                <Button
+                    android:id="@+id/register_button"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:text="Registrate"
+                    android:textColor="@color/colorWhite"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:padding="15dp"
+
+                    android:onClick="@{loginViewModel::onLoginClicked}"/>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</layout>

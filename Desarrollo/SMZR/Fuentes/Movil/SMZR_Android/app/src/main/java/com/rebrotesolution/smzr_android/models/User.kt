@@ -1,4 +1,4 @@
-package com.rebrotesolution.smzr.models
+package com.rebrotesolution.smzr_android.models
 
 import android.text.TextUtils
 import android.util.Patterns

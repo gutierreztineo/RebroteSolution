@@ -1,4 +1,4 @@
-package com.rebrotesolution.smzr
+package com.rebrotesolution.smzr_android
 
 import org.junit.Test
 
