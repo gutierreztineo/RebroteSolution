@@ -1,11 +1,11 @@
-package com.rebrotesolution.smzr.viewModels.factories
+package com.rebrotesolution.smzr_android.viewModels.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.rebrotesolution.smzr.interfaces.LoginResultCallBacks
-import com.rebrotesolution.smzr.viewModels.login.LoginViewModel
+import com.rebrotesolution.smzr_android.interfaces.LoginResultCallBacks
+import com.rebrotesolution.smzr_android.viewModels.login.LoginViewModel
 
-class LoginViewModelFactory (
+class LoginViewModelFactory(
     private val listener: LoginResultCallBacks
 ) : ViewModelProvider.NewInstanceFactory() {
 
