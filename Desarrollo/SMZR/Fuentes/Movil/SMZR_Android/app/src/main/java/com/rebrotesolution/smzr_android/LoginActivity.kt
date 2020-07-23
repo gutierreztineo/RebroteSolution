@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() , LoginResultCallBacks {
     }
 
     override fun onRegister() {
-        Toasty.success(this,"Se debe abrir el registrarse", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this,RegistroActivity::class.java)
+        startActivity(intent)
     }
 }
