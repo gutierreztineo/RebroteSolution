@@ -4,14 +4,17 @@ import android.text.TextUtils
 import android.util.Patterns
 import androidx.databinding.BaseObservable
 
-public class User(
+class Usuario(
     private var username:String,
-    private var password:String
+    private var password:String,
+    private var id_usuario: Int,
+    private var token: String
 
 ) : BaseObservable() {
 
     val isDataValid: Boolean
     get() = (!TextUtils.isEmpty(getUsername()) ) && getUsername().length > 5 && getPassword().length > 5
+
 
     fun getPassword() : String {
         return password
@@ -28,4 +31,9 @@ public class User(
     fun setUsername(username : String ){
         this.username = username
     }
+
+    fun getIdUsuario(): Int{
+        return id_usuario
+    }
+
 }

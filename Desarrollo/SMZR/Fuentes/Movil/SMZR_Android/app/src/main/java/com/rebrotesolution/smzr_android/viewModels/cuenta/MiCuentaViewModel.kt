@@ -1,12 +1,13 @@
-package com.rebrotesolution.smzr_android.ui.prevencion
+package com.rebrotesolution.smzr_android.viewModels.cuenta
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class PrevencionCovidViewModel : ViewModel() {
+class MiCuentaViewModel : ViewModel() {
+
     private val _text = MutableLiveData<String>().apply {
-        value = "This is prevencion Covid Fragment"
+        value = "Mi cuenta Fragment"
     }
     val text: LiveData<String> = _text
 }

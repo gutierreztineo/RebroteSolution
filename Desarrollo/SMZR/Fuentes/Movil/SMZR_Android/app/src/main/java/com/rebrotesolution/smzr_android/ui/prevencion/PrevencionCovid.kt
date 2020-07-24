@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 
 import com.rebrotesolution.smzr_android.R
+import com.rebrotesolution.smzr_android.viewModels.prevencion.PrevencionCovidViewModel
 
 class PrevencionCovid : Fragment() {
 

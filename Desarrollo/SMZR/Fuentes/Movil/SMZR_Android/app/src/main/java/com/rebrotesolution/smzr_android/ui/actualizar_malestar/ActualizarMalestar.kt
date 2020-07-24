@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 
 import com.rebrotesolution.smzr_android.R
+import com.rebrotesolution.smzr_android.viewModels.actualizar_malestar.ActualizarMalestarViewModel
 
 class ActualizarMalestar : Fragment() {
 
