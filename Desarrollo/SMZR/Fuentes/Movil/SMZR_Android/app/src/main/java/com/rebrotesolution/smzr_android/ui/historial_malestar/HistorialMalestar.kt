@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 
 import com.rebrotesolution.smzr_android.R
+import com.rebrotesolution.smzr_android.viewModels.historial_malestar.HistorialMalestarViewModel
 
 class HistorialMalestar : Fragment() {
 

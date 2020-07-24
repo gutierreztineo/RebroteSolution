@@ -1,12 +1,12 @@
-package com.rebrotesolution.smzr_android.ui.historial_malestar
+package com.rebrotesolution.smzr_android.viewModels.mapa_riesgo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HistorialMalestarViewModel : ViewModel() {
+class MapaRiesgoViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "Historial Malestar Fragment"
+        value = "This is mapa riesgo Fragment"
     }
     val text: LiveData<String> = _text
 }

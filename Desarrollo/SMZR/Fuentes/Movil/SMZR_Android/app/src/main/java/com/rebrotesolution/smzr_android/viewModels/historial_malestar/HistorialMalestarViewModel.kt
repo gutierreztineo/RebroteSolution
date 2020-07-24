@@ -1,12 +1,12 @@
-package com.rebrotesolution.smzr_android.ui.actualizar_malestar
+package com.rebrotesolution.smzr_android.viewModels.historial_malestar
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ActualizarMalestarViewModel : ViewModel() {
+class HistorialMalestarViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "Actualizar Malestar Fragment"
+        value = "Historial Malestar Fragment"
     }
     val text: LiveData<String> = _text
 }

@@ -5,23 +5,23 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.rebrotesolution.smzr_android.interfaces.LoginResultCallBacks
-import com.rebrotesolution.smzr_android.models.User
+import com.rebrotesolution.smzr_android.models.Usuario
 
 class LoginViewModel(
     private val listener: LoginResultCallBacks
 
 ) : ViewModel() {
 
-    private val user: User
+    private val usuario: Usuario
 
     init {
-        user = User(username = "", password = "")
+        usuario = Usuario(username = "", password = "",id_usuario = 0,token = "")
     }
 
     val usernameTextWatcher: TextWatcher
     get() = object:TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-              user.setUsername(p0.toString())
+              usuario.setUsername(p0.toString())
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -33,7 +33,7 @@ class LoginViewModel(
     val passwordTextWatcher: TextWatcher
     get() = object:TextWatcher {
         override fun afterTextChanged(p0: Editable?) {
-            user.setPassword(p0.toString())
+            usuario.setPassword(p0.toString())
         }
 
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -43,7 +43,7 @@ class LoginViewModel(
     }
 
     fun onLoginClicked(v: View){
-        if(user.isDataValid){
+        if(usuario.isDataValid){
             listener.onSuccess("Login success")
         }else{
             listener.onError("Login error")
