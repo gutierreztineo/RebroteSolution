@@ -1,0 +1,191 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loginViewModel"
+            type="com.rebrotesolution.smzr_android.viewModels.login.LoginViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_background"
+        tools:context=".activities.MainActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="30dp"
+                    android:drawableStart="@drawable/baseline_person_add_alt_1_24"
+                    android:drawablePadding="15dp"
+                    android:text="Registrarse"
+                    android:textSize="30sp" />
+
+                <EditText
+                    android:id="@+id/name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:hint="Nombres"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{loginViewModel.usernameTextWatcher}" />
+
+                <EditText
+                    android:id="@+id/lastname_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:hint="Apellidos"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{loginViewModel.usernameTextWatcher}" />
+
+                <EditText
+                    android:id="@+id/dni_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:hint="N° Documento Identidad"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{loginViewModel.usernameTextWatcher}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/edad_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/login_edit_background"
+                        android:drawableStart="@drawable/ic_user"
+                        android:drawablePadding="10dp"
+                        android:hint="Edad"
+                        android:padding="15dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/colorPlaceholder"
+                        app:addTextChangedListener="@{loginViewModel.usernameTextWatcher}" />
+                    <EditText
+                        android:id="@+id/genero_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/login_edit_background"
+                        android:drawableStart="@drawable/ic_user"
+                        android:drawablePadding="10dp"
+                        android:hint="Genero"
+                        android:padding="15dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/colorPlaceholder"
+                        app:addTextChangedListener="@{loginViewModel.usernameTextWatcher}" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/email_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:hint="Correo Electrónico"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{loginViewModel.usernameTextWatcher}" />
+
+                <EditText
+                    android:id="@+id/user_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:hint="Nombre de Usuario"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{loginViewModel.usernameTextWatcher}" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/pass_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/login_edit_background"
+                        android:drawableStart="@drawable/ic_user"
+                        android:drawablePadding="10dp"
+                        android:hint="Contraseña"
+                        android:padding="15dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/colorPlaceholder"
+                        app:addTextChangedListener="@{loginViewModel.usernameTextWatcher}" />
+                    <EditText
+                        android:id="@+id/confirmpass_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/login_edit_background"
+                        android:drawableStart="@drawable/ic_user"
+                        android:drawablePadding="10dp"
+                        android:hint="Repite Contraseña"
+                        android:padding="15dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/colorPlaceholder"
+                        app:addTextChangedListener="@{loginViewModel.usernameTextWatcher}" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/register_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/button_background"
+                    android:onClick="@{loginViewModel::onLoginClicked}"
+                    android:padding="15dp"
+                    android:text="Crear Cuenta"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</layout>

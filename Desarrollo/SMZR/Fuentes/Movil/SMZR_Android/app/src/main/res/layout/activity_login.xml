@@ -92,7 +92,7 @@
                     android:textSize="20sp"
                     android:padding="15dp"
 
-                    android:onClick="@{loginViewModel::onLoginClicked}"/>
+                    android:onClick="@{loginViewModel::onRegisterClicked}"/>
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>
