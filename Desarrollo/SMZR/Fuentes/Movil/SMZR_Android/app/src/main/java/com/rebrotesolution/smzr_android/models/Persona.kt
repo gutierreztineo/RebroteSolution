@@ -1,9 +1,10 @@
 package com.rebrotesolution.smzr_android.models
 
 import android.text.TextUtils
+import android.util.Patterns
 import org.w3c.dom.Text
 
-class Persona (
+class Persona(
     private var id_persona: Int,
     private var nombres: String,
     private var apellidos: String,
@@ -13,16 +14,25 @@ class Persona (
     private var email: String
 ) {
 
+    val isDatoCorreoValid: Boolean
+        get() = !TextUtils.isEmpty(getEmail()) && Patterns.EMAIL_ADDRESS.matcher(getEmail())
+            .matches()
+
     val isDatoPersonal1Valid: Boolean
-    get() = ( !TextUtils.isEmpty(getNombres()) && !TextUtils.isEmpty(getApellidos()) && !TextUtils.isEmpty(getDni())) && getDni().length == 8
+        get() = !TextUtils.isEmpty(getNombres()) && !TextUtils.isEmpty(getApellidos()) && !TextUtils.isEmpty(
+            getDni()
+        )
+
+    val isDniValid: Boolean
+        get() = getDni().length == 8
 
     val isMayorEdad: Boolean
-    get() = getEdad() >= 18
+        get() = getEdad() >= 18
 
     val isGeneroSelected: Boolean
-    get() = !TextUtils.isEmpty(getGenero())
+        get() = !TextUtils.isEmpty(getGenero())
 
-    fun getIdPersona(): Int{
+    fun getIdPersona(): Int {
         return id_persona
     }
 
@@ -30,30 +40,31 @@ class Persona (
         return nombres
     }
 
-    fun setNombres(name:String) {
+    fun setNombres(name: String) {
         this.nombres = name
     }
 
-    fun getApellidos():String{
+    fun getApellidos(): String {
         return apellidos
     }
 
-    fun setApellidos(lastname: String){
+    fun setApellidos(lastname: String) {
         this.apellidos = lastname
     }
-    fun getDni():String {
+
+    fun getDni(): String {
         return dni;
     }
 
-    fun setDni(dni: String){
+    fun setDni(dni: String) {
         this.dni = dni
     }
 
-    fun getEdad():Int {
+    fun getEdad(): Int {
         return edad
     }
 
-    fun setEdad(edad:Int){
+    fun setEdad(edad: Int) {
         this.edad = edad
     }
 
@@ -61,7 +72,7 @@ class Persona (
         return email
     }
 
-    fun setEmail(email: String){
+    fun setEmail(email: String) {
         this.email = email
     }
 
@@ -69,7 +80,7 @@ class Persona (
         return genero
     }
 
-    fun setGenero(genero: String){
+    fun setGenero(genero: String) {
         this.genero = genero
     }
 }

@@ -1,42 +1,64 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#00ffffff"
-    tools:context=".ui.register.DatosPersonales2Fragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <data>
+
+        <variable
+            name="datosPersonales2ViewModel"
+            type="com.rebrotesolution.smzr_android.viewModels.register.DatosPersonales2ViewModel" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
+        android:layout_height="match_parent"
+        android:background="#00ffffff"
+        tools:context=".ui.register.DatosPersonales2Fragment">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:hint="Fecha de Nacimiento"
+                android:paddingBottom="5dp"
+                android:textSize="30sp" />
+
             <DatePicker
                 android:id="@+id/fecha_nacimiento_date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                android:day="@={datosPersonales2ViewModel.day}"
+                android:month="@={datosPersonales2ViewModel.month}"
+                android:onDateChanged="@{(v, year, month, day) -> datosPersonales2ViewModel.onDateChanged(year, month, day)}"
+                android:year="@={datosPersonales2ViewModel.year}" />
 
             <Button
                 android:id="@+id/button_action_datosp3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/button_background"
-                android:padding="15dp"
+                android:onClick="@{datosPersonales2ViewModel.onNextClicked}"
+                android:padding="10dp"
                 android:text="Siguiente"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp" />
         </LinearLayout>
 
-    </ScrollView>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</layout>
 
