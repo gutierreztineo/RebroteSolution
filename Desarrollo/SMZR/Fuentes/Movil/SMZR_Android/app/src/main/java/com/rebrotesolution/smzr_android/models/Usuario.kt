@@ -13,8 +13,10 @@ class Usuario(
 ) : BaseObservable() {
 
     val isDataValid: Boolean
-    get() = (!TextUtils.isEmpty(getUsername()) ) && getUsername().length > 5 && getPassword().length > 5
+    get() =  getPassword().length >= 5
 
+    val isDataComplete: Boolean
+    get() = (!TextUtils.isEmpty(getUsername()) && !TextUtils.isEmpty(getPassword()) )
 
     fun getPassword() : String {
         return password
