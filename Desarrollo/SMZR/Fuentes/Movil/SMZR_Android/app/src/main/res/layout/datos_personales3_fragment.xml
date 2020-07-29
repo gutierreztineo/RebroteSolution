@@ -1,75 +1,87 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
-    android:background="#00ffffff"
-    android:gravity="center_vertical"
-    android:orientation="vertical"
-    tools:context=".ui.register.DatosPersonales3Fragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+        <variable
+            name="datosPersonales3ViewModel"
+            type="com.rebrotesolution.smzr_android.viewModels.register.DatosPersonales3ViewModel" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:hint="Selecciona tu género"
-        android:paddingBottom="20dp"
-        android:textSize="30sp" />
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="#00ffffff"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        tools:context=".ui.register.DatosPersonales3Fragment">
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_marginBottom="25dp">
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/rb_masculino"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rb_background_select"
-            android:button="@android:color/transparent"
-            android:gravity="center"
-            android:text="Masculino"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
+            android:gravity="center_horizontal"
+            android:hint="Selecciona tu género"
+            android:paddingBottom="20dp"
+            android:textSize="30sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="25dp">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb_masculino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rb_background_select"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:text="Masculino"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb_femenino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rb_background_deselect"
+                android:button="@android:color/transparent"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:gravity="center"
+                android:text="Femenino"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_background"
+            android:padding="15dp"
+            android:text="Completar Registro"
+            android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
-            />
+            android:onClick="@{datosPersonales3ViewModel.onRegisterCompleteClicked}"/>
 
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/rb_femenino"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rb_background_deselect"
-            android:button="@android:color/transparent"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:gravity="center"
-            android:text="Femenino"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+    </LinearLayout>
 
-
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_background"
-        android:padding="15dp"
-        android:text="Completar Registro"
-        android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:textSize="20sp" />
-
-</LinearLayout>
+</layout>
 

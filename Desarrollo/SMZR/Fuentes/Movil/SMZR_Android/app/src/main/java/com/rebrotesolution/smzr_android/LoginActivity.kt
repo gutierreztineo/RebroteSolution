@@ -25,7 +25,6 @@ class LoginActivity : AppCompatActivity() , LoginResultCallBacks {
     }
 
     override fun onSuccess(message: String) {
-        Toasty.success(this,message, Toast.LENGTH_SHORT).show()
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
     }
