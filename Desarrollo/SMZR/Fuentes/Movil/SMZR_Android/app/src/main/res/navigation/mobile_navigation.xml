@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_mapa_riesgo">
+
+    <fragment
+        android:id="@+id/nav_mi_cuenta"
+        android:name="com.rebrotesolution.smzr_android.ui.cuenta.MiCuenta"
+        android:label="Mi Cuenta"
+        tools:layout="@layout/mi_cuenta_fragment" />
+    <fragment
+        android:id="@+id/nav_historial_malestar"
+        android:name="com.rebrotesolution.smzr_android.ui.historial_malestar.HistorialMalestar"
+        android:label="Historial de Malestares"
+        tools:layout="@layout/historial_fragment" />
+    <fragment
+        android:id="@+id/nav_prevencion_covid"
+        android:name="com.rebrotesolution.smzr_android.ui.prevencion.PrevencionCovid"
+        android:label="Prevencion COVID-19"
+        tools:layout="@layout/prevencion_covid_fragment" />
+    <fragment
+        android:id="@+id/nav_mapa_riesgo"
+        android:name="com.rebrotesolution.smzr_android.ui.mapa_riesgo.MapaRiesgo"
+        android:label="Mapa de Riesgo"
+        tools:layout="@layout/mapa_riesgo_fragment" />
+    <fragment
+        android:id="@+id/nav_actualizar_malestar"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.ActualizarMalestar"
+        android:label="Actualizar Malestares"
+        tools:layout="@layout/actualizar_malestar_fragment" />
+
+</navigation>

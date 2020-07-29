@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_navigation"
+    app:startDestination="@id/datosCuentaFragment">
+
+    <fragment
+        android:id="@+id/datosCuentaFragment"
+        android:name="com.rebrotesolution.smzr_android.ui.register.DatosCuentaFragment"
+        android:label="datos_cuenta_fragment"
+        tools:layout="@layout/datos_cuenta_fragment" >
+        <action
+            android:id="@+id/go_datos_correo"
+            app:destination="@id/datosCorreoFragment2"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/datosPersonales1Fragment"
+        android:name="com.rebrotesolution.smzr_android.ui.register.DatosPersonales1Fragment"
+        android:label="datos_personales1_fragment"
+        tools:layout="@layout/datos_personales1_fragment" >
+        <action
+            android:id="@+id/go_datos_personales_2"
+            app:destination="@id/datosPersonales2Fragment"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/datosPersonales2Fragment"
+        android:name="com.rebrotesolution.smzr_android.ui.register.DatosPersonales2Fragment"
+        android:label="datos_personales2_fragment"
+        tools:layout="@layout/datos_personales2_fragment" >
+        <action
+            android:id="@+id/go_datos_personales_3"
+            app:destination="@id/datosPersonales3Fragment"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/datosPersonales3Fragment"
+        android:name="com.rebrotesolution.smzr_android.ui.register.DatosPersonales3Fragment"
+        android:label="datos_personales3_fragment"
+        tools:layout="@layout/datos_personales3_fragment" />
+    <fragment
+        android:id="@+id/datosCorreoFragment2"
+        android:name="com.rebrotesolution.smzr_android.ui.register.DatosCorreoFragment"
+        android:label="datos_correo_fragment"
+        tools:layout="@layout/datos_correo_fragment" >
+        <action
+            android:id="@+id/go_datos_personales_1"
+            app:destination="@id/datosPersonales1Fragment"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+</navigation>

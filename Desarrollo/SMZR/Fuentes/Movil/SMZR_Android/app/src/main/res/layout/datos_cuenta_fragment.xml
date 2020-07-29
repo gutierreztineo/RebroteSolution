@@ -1,0 +1,100 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="datosCuentaViewModel"
+            type="com.rebrotesolution.smzr_android.viewModels.register.DatosCuentaViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00ffffff"
+        android:gravity="center_vertical"
+        tools:context=".ui.register.DatosCuentaFragment">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/user_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:drawablePadding="10dp"
+                    android:hint="Nombre de Usuario"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{datosCuentaViewModel.usernameTextWatcher}" />
+
+
+                <EditText
+                    android:id="@+id/pass_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:drawablePadding="10dp"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{datosCuentaViewModel.passwordTextWatcher}" />
+
+                <EditText
+                    android:id="@+id/confirmpass_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:drawablePadding="10dp"
+                    android:hint="Repite Contraseña"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{datosCuentaViewModel.passConfirmTextWatcher}" />
+
+
+                <Button
+                    android:id="@+id/button_action_correo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/button_background"
+                    android:padding="15dp"
+                    android:text="Siguiente"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp"
+                    android:onClick="@{datosCuentaViewModel.onNextClicked}"/>
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>
+
+
