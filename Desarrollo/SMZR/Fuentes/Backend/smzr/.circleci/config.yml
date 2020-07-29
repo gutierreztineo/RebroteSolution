@@ -20,10 +20,11 @@ jobs:
     build_dir:  ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
     steps:
       - checkout
-
+      - attach_workspace:
+          at: ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
       - run: mix local.hex --force  # install Hex locally (without prompt)
       - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
-
+      
       - restore_cache:  # restores saved mix cache
       # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
           keys:  # list of cache keys, in decreasing specificity
