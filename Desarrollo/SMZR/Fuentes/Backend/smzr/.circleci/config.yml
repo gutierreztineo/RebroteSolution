@@ -17,6 +17,7 @@ jobs:
           POSTGRES_DB: smzr_test
 
     working_directory: ~/app
+    build_dir:  ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
     steps:
       - checkout
 
