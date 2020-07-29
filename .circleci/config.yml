@@ -16,10 +16,11 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: smzr_test
 
-    working_directory: ~/app
-    build_dir:  ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
+    working_directory: ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
+    #build_dir:  ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
     steps:
       - checkout
+        path: ~/app
       - run : cd ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
       - run: mix local.hex --force  # install Hex locally (without prompt)
       - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
@@ -34,6 +35,7 @@ jobs:
           keys:
             - v1-build-cache-{{ .Branch }}
             - v1-build-cache
+      - run : cd ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
       - run: mix do deps.get, compile  # get updated dependencies & compile them
       - save_cache:  # generate and store mix cache
           key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
