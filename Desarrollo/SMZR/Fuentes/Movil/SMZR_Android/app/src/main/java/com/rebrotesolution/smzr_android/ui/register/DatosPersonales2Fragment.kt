@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -39,6 +40,13 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
         savedInstanceState: Bundle?
     ): View? {
 
+        email = arguments?.getString("email").toString()
+        username = arguments?.getString("username").toString()
+        pass = arguments?.getString("password").toString()
+        nombres = arguments?.get("nombres").toString()
+        apellidos = arguments?.get("apellidos").toString()
+        dni = arguments?.get("dni").toString()
+
         val activityRegisterBinding = DataBindingUtil.inflate<DatosPersonales2FragmentBinding>(inflater,R.layout.datos_personales2_fragment,container,false)
 
         viewModel = ViewModelProviders.of(this, DatosPersonales2ViewModelFactory(this)).get(DatosPersonales2ViewModel::class.java)
@@ -58,7 +66,16 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
     }
 
     override fun valid(data: Map<String, String>) {
-        navController.navigate(R.id.go_datos_personales_3);
+        var bundle = bundleOf(
+            "email" to email,
+            "username" to username,
+            "password" to pass,
+            "nombres" to data[nombres],
+            "apellidos" to data[apellidos],
+            "dni" to data[dni],
+            "edad" to data["edad"]
+        )
+        navController.navigate(R.id.go_datos_personales_3,bundle);
     }
 
     override fun invalid(message: String) {
