@@ -20,8 +20,7 @@ jobs:
     build_dir:  ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
+      - run : cd ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr
       - run: mix local.hex --force  # install Hex locally (without prompt)
       - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
 
