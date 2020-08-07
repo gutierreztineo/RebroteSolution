@@ -2,16 +2,18 @@ package com.rebrotesolution.smzr_android.models
 
 import android.text.TextUtils
 import android.util.Patterns
+import com.google.gson.annotations.SerializedName
 import org.w3c.dom.Text
 
 class Persona(
-    private var id_persona: Int,
+    private var id_persona: Int?,
     private var nombres: String,
     private var apellidos: String,
     private var genero: String,
     private var dni: String,
     private var edad: Int,
-    private var email: String
+    private var email: String,
+    private var usuario: Usuario?
 ) {
 
     val isDatoCorreoValid: Boolean
@@ -33,7 +35,7 @@ class Persona(
         get() = !TextUtils.isEmpty(getGenero())
 
     fun getIdPersona(): Int {
-        return id_persona
+        return id_persona!!
     }
 
     fun getNombres(): String {
@@ -82,5 +84,13 @@ class Persona(
 
     fun setGenero(genero: String) {
         this.genero = genero
+    }
+
+    fun getUsuario(): Usuario {
+        return usuario!!
+    }
+
+    fun setUsuario(usuario: Usuario){
+        this.usuario = usuario
     }
 }

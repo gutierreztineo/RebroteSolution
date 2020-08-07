@@ -8,14 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 import com.rebrotesolution.smzr_android.R
 import com.rebrotesolution.smzr_android.viewModels.mapa_riesgo.MapaRiesgoViewModel
 
-class MapaRiesgo : Fragment() {
+class MapaRiesgo : Fragment(), OnMapReadyCallback {
 
 
     private lateinit var mapaRiesgoViewModel: MapaRiesgoViewModel
+    private lateinit var mMap: GoogleMap
+
+    companion object {
+        var mapFragment : SupportMapFragment?=null
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,11 +31,20 @@ class MapaRiesgo : Fragment() {
     ): View? {
         mapaRiesgoViewModel = ViewModelProviders.of(this).get(MapaRiesgoViewModel::class.java)
         val root = inflater.inflate(R.layout.mapa_riesgo_fragment, container, false)
-        val textView : TextView = root.findViewById(R.id.text_home)
-        mapaRiesgoViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
+        mapFragment = fragmentManager?.findFragmentById(R.id.mapa_principal) as SupportMapFragment?
+        mapFragment?.getMapAsync(this)
+
         return root
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        // Add a marker in Sydney and move the camera
+        val sydney = LatLng(-34.0, 151.0)
+        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 
 

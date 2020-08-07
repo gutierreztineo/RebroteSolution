@@ -1,14 +1,15 @@
 package com.rebrotesolution.smzr_android.models
 
 import android.text.TextUtils
-import android.util.Patterns
 import androidx.databinding.BaseObservable
+import com.google.gson.annotations.SerializedName
 
 class Usuario(
+
     private var username:String,
     private var password:String,
-    private var id_usuario: Int,
-    private var token: String
+    private var id_usuario: Int?,
+    private var token: String?
 
 ) : BaseObservable() {
 
@@ -35,7 +36,7 @@ class Usuario(
     }
 
     fun getIdUsuario(): Int{
-        return id_usuario
+        return id_usuario!!
     }
 
 }

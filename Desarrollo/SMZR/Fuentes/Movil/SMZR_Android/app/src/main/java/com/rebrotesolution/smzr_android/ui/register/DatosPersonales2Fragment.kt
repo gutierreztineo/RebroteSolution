@@ -43,9 +43,9 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
         email = arguments?.getString("email").toString()
         username = arguments?.getString("username").toString()
         pass = arguments?.getString("password").toString()
-        nombres = arguments?.get("nombres").toString()
-        apellidos = arguments?.get("apellidos").toString()
-        dni = arguments?.get("dni").toString()
+        nombres = arguments?.getString("nombres").toString()
+        apellidos = arguments?.getString("apellidos").toString()
+        dni = arguments?.getString("dni").toString()
 
         val activityRegisterBinding = DataBindingUtil.inflate<DatosPersonales2FragmentBinding>(inflater,R.layout.datos_personales2_fragment,container,false)
 
@@ -70,9 +70,9 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
             "email" to email,
             "username" to username,
             "password" to pass,
-            "nombres" to data[nombres],
-            "apellidos" to data[apellidos],
-            "dni" to data[dni],
+            "nombres" to nombres,
+            "apellidos" to apellidos,
+            "dni" to dni,
             "edad" to data["edad"]
         )
         navController.navigate(R.id.go_datos_personales_3,bundle);

@@ -15,7 +15,7 @@ class DatosCorreoViewModel(
     init {
         persona = Persona(
             id_persona = 0, nombres = "", apellidos = "", genero = "",
-            dni = "", edad = 0, email = ""
+            dni = "", edad = 0, email = "", usuario = null
         )
     }
 
