@@ -15,7 +15,7 @@ class LoginViewModel(
     private val usuario: Usuario
 
     init {
-        usuario = Usuario(username = "", password = "",id_usuario = 0,token = "")
+        usuario = Usuario(username = "", password = "", id_usuario = 0, token = "")
     }
 
     val usernameTextWatcher: TextWatcher

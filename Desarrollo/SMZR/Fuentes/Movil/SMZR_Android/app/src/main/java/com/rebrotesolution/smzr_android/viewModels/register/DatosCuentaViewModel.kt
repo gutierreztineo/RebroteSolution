@@ -13,7 +13,7 @@ class DatosCuentaViewModel(
 
     private val usuario: Usuario
     init {
-        usuario = Usuario(username="",password="",token = "",id_usuario = 0)
+        usuario = Usuario(username ="", password ="", token = "", id_usuario = 0)
     }
 
     private var confirmpass: String = ""
