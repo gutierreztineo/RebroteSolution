@@ -3,13 +3,20 @@ package com.rebrotesolution.smzr_android.viewModels.login
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.rebrotesolution.smzr_android.interfaces.LoginResultCallBacks
 import com.rebrotesolution.smzr_android.models.Usuario
+import com.rebrotesolution.smzr_android.network.repository.UsuarioRepository
+import com.rebrotesolution.smzr_android.utils.ApiException
+import com.rebrotesolution.smzr_android.utils.Coroutines
+import com.rebrotesolution.smzr_android.utils.NoInternetException
+import es.dmoral.toasty.Toasty
+import kotlin.math.log
 
 class LoginViewModel(
-    private val listener: LoginResultCallBacks
-
+    private val listener: LoginResultCallBacks,
+    private val repository: UsuarioRepository
 ) : ViewModel() {
 
     private val usuario: Usuario
@@ -21,7 +28,7 @@ class LoginViewModel(
     val usernameTextWatcher: TextWatcher
     get() = object:TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-              usuario.setUsername(p0.toString())
+              usuario.username = p0.toString()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -33,7 +40,7 @@ class LoginViewModel(
     val passwordTextWatcher: TextWatcher
     get() = object:TextWatcher {
         override fun afterTextChanged(p0: Editable?) {
-            usuario.setPassword(p0.toString())
+            usuario.password = p0.toString()
         }
 
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -43,14 +50,31 @@ class LoginViewModel(
     }
 
     fun onLoginClicked(v: View){
-        if(usuario.isDataValid){
-            listener.onSuccess("Login success")
+        listener.onStarted()
+        if(usuario.isDataComplete){
+           Coroutines.main {
+               try {
+                   val authResponse = repository.userLogin(usuario.username, usuario.password)
+                   authResponse.usuario?.let {
+                       listener?.onSuccess(it)
+                       repository.saveSesion(it)
+                       return@main
+                   }
+                   listener?.onError(authResponse.message!!)
+               }catch (e:ApiException){
+                   listener?.onError(e.message!!)
+               }catch (e: NoInternetException){
+                   listener?.onError(e.message!!)
+               }
+           }
         }else{
-            listener.onError("Login error")
+            listener?.onError("Complete los datos para continuar" )
         }
     }
 
     fun onRegisterClicked(v:View){
         listener.onRegister()
     }
+
+    fun getLoggedInUser() = repository.getUsuario()
 }

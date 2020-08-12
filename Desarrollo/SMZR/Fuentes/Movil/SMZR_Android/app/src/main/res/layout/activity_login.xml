@@ -24,10 +24,19 @@
                 android:layout_marginEnd="20dp"
                 android:orientation="vertical">
                 <ImageView
-                    android:layout_width="150dp"
+                    android:id="@+id/login_logo"
+                    android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:src="@drawable/ic_launcher_foreground"
+                    android:src="@drawable/logo"
                     android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sistema de Monitoreo y Zonas de Riesgo"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="30dp"
+                    android:textSize="16sp"/>
 
                 <EditText
                     android:id="@+id/username_text"
@@ -64,7 +73,7 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textColorHint="@color/colorPrimaryDark"
                     android:text="¿Has olvidado tu contraseña?"
-                    android:padding="15dp"
+                    android:padding="10dp"
                     android:layout_gravity="right"/>
 
                 <Button
@@ -76,7 +85,7 @@
                     android:text="Iniciar Sesión"
                     android:textAllCaps="false"
                     android:textSize="20sp"
-                    android:padding="15dp"
+                    android:padding="10dp"
                     android:textColor="@color/colorWhite"
                     android:onClick="@{loginViewModel::onLoginClicked}"/>
 
@@ -90,7 +99,7 @@
                     android:textColor="@color/colorWhite"
                     android:textAllCaps="false"
                     android:textSize="20sp"
-                    android:padding="15dp"
+                    android:padding="10dp"
 
                     android:onClick="@{loginViewModel::onRegisterClicked}"/>
             </LinearLayout>
