@@ -22,7 +22,7 @@ class DatosCuentaViewModel(
     val usernameTextWatcher: TextWatcher
     get() = object : TextWatcher {
         override fun afterTextChanged(p0: Editable?) {
-           usuario.setUsername(p0.toString())
+           usuario.username =  p0.toString()
         }
 
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -33,7 +33,7 @@ class DatosCuentaViewModel(
     val passwordTextWatcher: TextWatcher
     get() = object : TextWatcher {
         override fun afterTextChanged(p0: Editable?) {
-            usuario.setPassword(p0.toString())
+            usuario.password = p0.toString()
         }
 
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -45,7 +45,7 @@ class DatosCuentaViewModel(
     get() = object : TextWatcher {
         override fun afterTextChanged(p0: Editable?) {
             confirmpass = p0.toString()
-            passvalid = confirmpass == usuario.getPassword()
+            passvalid = confirmpass == usuario.password
         }
 
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -57,7 +57,7 @@ class DatosCuentaViewModel(
         if(usuario.isDataComplete){
             if(usuario.isDataValid){
                 if(passvalid){
-                    var data : Map<String,String> = mapOf("username" to usuario.getUsername(), "password" to usuario.getPassword())
+                    var data : Map<String,String> = mapOf("username" to usuario.username, "password" to usuario.password)
                     listener.valid(data)
                 }else{
                     listener.invalid("Las contraseñas no coinciden")

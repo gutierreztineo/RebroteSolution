@@ -5,7 +5,7 @@ import android.util.Patterns
 import com.google.gson.annotations.SerializedName
 import org.w3c.dom.Text
 
-class Persona(
+data class Persona(
     private var id_persona: Int?,
     private var nombres: String,
     private var apellidos: String,

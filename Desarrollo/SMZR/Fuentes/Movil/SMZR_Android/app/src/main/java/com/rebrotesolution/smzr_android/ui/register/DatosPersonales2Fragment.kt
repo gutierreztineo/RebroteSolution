@@ -82,4 +82,15 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
         Toasty.error( requireContext(),message, Toast.LENGTH_SHORT).show();
     }
 
+    override fun onSuccess(obj: Any) {
+    }
+
+    override fun onError(message: String) {
+    }
+
+    override fun onStarted() {
+
+    }
+
+
 }
