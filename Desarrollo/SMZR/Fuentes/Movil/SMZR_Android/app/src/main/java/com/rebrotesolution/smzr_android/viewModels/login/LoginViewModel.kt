@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.rebrotesolution.smzr_android.interfaces.LoginResultCallBacks
 import com.rebrotesolution.smzr_android.models.Usuario
+import com.rebrotesolution.smzr_android.network.repository.PersonaRepository
 import com.rebrotesolution.smzr_android.network.repository.UsuarioRepository
 import com.rebrotesolution.smzr_android.utils.ApiException
 import com.rebrotesolution.smzr_android.utils.Coroutines
@@ -16,7 +17,8 @@ import kotlin.math.log
 
 class LoginViewModel(
     private val listener: LoginResultCallBacks,
-    private val repository: UsuarioRepository
+    private val userRepo: UsuarioRepository,
+    private val personaRepo: PersonaRepository
 ) : ViewModel() {
 
     private val usuario: Usuario
@@ -54,10 +56,11 @@ class LoginViewModel(
         if(usuario.isDataComplete){
            Coroutines.main {
                try {
-                   val authResponse = repository.userLogin(usuario.username, usuario.password)
-                   authResponse.usuario?.let {
-                       listener?.onSuccess(it)
-                       repository.saveSesion(it)
+                   val authResponse =  userRepo.userLogin(usuario.username, usuario.password)
+                   authResponse.persona?.let {
+                       listener?.onSuccess(it.usuario!!)
+                       userRepo.saveSesion(it.usuario!!)
+                       personaRepo.savePersonaInLocal(it)
                        return@main
                    }
                    listener?.onError(authResponse.message!!)
@@ -76,5 +79,5 @@ class LoginViewModel(
         listener.onRegister()
     }
 
-    fun getLoggedInUser() = repository.getUsuario()
+    fun getLoggedInUser() = userRepo.getUsuario()
 }

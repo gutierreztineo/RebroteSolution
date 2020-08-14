@@ -18,8 +18,9 @@ import com.rebrotesolution.smzr_android.models.Persona
 import com.rebrotesolution.smzr_android.models.Usuario
 import com.rebrotesolution.smzr_android.network.NetworkConnectionInterceptor
 import com.rebrotesolution.smzr_android.ui.extras.LoadingDialog
-import com.rebrotesolution.smzr_android.network.api.RegisterClient
+import com.rebrotesolution.smzr_android.network.api.PersonaClient
 import com.rebrotesolution.smzr_android.network.repository.PersonaRepository
+import com.rebrotesolution.smzr_android.room.db.RoomDB
 import com.rebrotesolution.smzr_android.viewModels.factory.DatosPersonales3ViewModelFactory
 import com.rebrotesolution.smzr_android.viewModels.register.DatosPersonales3ViewModel
 import es.dmoral.toasty.Toasty
@@ -50,8 +51,9 @@ class DatosPersonales3Fragment : Fragment(), RegisterResultCallBacks {
         edad = arguments?.getString("edad")!!.toInt()
 
         val networkConnectionInterceptor = NetworkConnectionInterceptor(requireContext())
-        val api = RegisterClient(networkConnectionInterceptor)
-        val repository = PersonaRepository(api)
+        val api = PersonaClient(networkConnectionInterceptor)
+        val db = RoomDB(requireContext())
+        val repository = PersonaRepository(api,db)
         var usu = Usuario(id_usuario = null,username = username,password = pass,token = null)
         var persona = Persona(id_persona = null,usuario = usu,apellidos = apellidos,nombres = nombres,email = email,dni = dni, edad = edad,genero = "")
 

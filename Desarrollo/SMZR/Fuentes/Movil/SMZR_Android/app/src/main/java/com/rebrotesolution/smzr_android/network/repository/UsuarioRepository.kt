@@ -2,6 +2,7 @@ package com.rebrotesolution.smzr_android.network.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.rebrotesolution.smzr_android.models.Persona
 import com.rebrotesolution.smzr_android.models.Usuario
 import com.rebrotesolution.smzr_android.network.api.LoginClient
 import com.rebrotesolution.smzr_android.network.responses.AuthResponse
@@ -26,6 +27,6 @@ class UsuarioRepository (
 
     fun getUsuario() = db.getUserDao().getUser()
 
-    fun deleteSesion() = deleteSesionAsync(db.getUserDao()).execute()
+    fun deleteSesion() = deleteSesionAsync(db.getUserDao(),db.getPersonaDao()).execute()
 }
 

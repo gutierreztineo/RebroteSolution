@@ -82,11 +82,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
-                    android:text="Iniciar Sesión"
+                    android:textColor="@color/colorWhite"
                     android:textAllCaps="false"
+                    android:text="Iniciar Sesión"
                     android:textSize="20sp"
                     android:padding="10dp"
-                    android:textColor="@color/colorWhite"
                     android:onClick="@{loginViewModel::onLoginClicked}"/>
 
                 <Button

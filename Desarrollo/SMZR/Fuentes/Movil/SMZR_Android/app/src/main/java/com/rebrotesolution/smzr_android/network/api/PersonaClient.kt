@@ -1,19 +1,19 @@
 package com.rebrotesolution.smzr_android.network.api
 
 import com.rebrotesolution.smzr_android.models.Persona
-import com.rebrotesolution.smzr_android.models.saveObjectApi
 import com.rebrotesolution.smzr_android.network.NetworkConnectionInterceptor
 import com.rebrotesolution.smzr_android.network.responses.ApiRestResponse
 import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
-interface RegisterClient {
+interface PersonaClient {
 
     @POST("test/registrar")
     suspend fun registrarPersona(@Body persona:Persona): Response<ApiRestResponse>
@@ -21,7 +21,7 @@ interface RegisterClient {
     companion object{
         operator  fun invoke(
             networkConnectionInterceptor: NetworkConnectionInterceptor
-        ): RegisterClient {
+        ): PersonaClient {
             val okHttpClient = OkHttpClient.Builder()
                 .connectTimeout(2, TimeUnit.MINUTES)
                 .writeTimeout(2, TimeUnit.MINUTES)
@@ -31,10 +31,10 @@ interface RegisterClient {
 
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("https://rentame-back.herokuapp.com/")
+                .baseUrl("https://a3c73d3cffcf.ngrok.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(RegisterClient::class.java)
+                .create(PersonaClient::class.java)
         }
     }
 }

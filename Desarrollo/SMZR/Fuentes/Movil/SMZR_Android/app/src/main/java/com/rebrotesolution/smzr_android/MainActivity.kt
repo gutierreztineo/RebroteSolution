@@ -1,20 +1,22 @@
 package com.rebrotesolution.smzr_android
 
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.util.AttributeSet
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.core.view.forEach
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -22,15 +24,19 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.work.OneTimeWorkRequest
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.google.android.material.navigation.NavigationView
 import com.rebrotesolution.smzr_android.network.NetworkConnectionInterceptor
 import com.rebrotesolution.smzr_android.network.api.LoginClient
 import com.rebrotesolution.smzr_android.network.repository.UsuarioRepository
 import com.rebrotesolution.smzr_android.room.db.RoomDB
-import com.rebrotesolution.smzr_android.viewModels.factory.LoginViewModelFactory
+import com.rebrotesolution.smzr_android.service_worker.NotifyRiesgoWorker
 import com.rebrotesolution.smzr_android.viewModels.factory.MainViewModelFactory
-import com.rebrotesolution.smzr_android.viewModels.login.LoginViewModel
 import com.rebrotesolution.smzr_android.viewModels.main.MainViewModel
+import java.util.concurrent.TimeUnit
+
 
 class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelectedListener{
 
@@ -69,7 +75,9 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         navView.setupWithNavController(navController)
         navView.menu.getItem(0).isEnabled = false
         navView.setNavigationItemSelectedListener(this)
+        setPeriodicRequest()
     }
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         this.habilitarItem()
@@ -136,4 +144,13 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
     private fun habilitarItem(){
         navView.menu.forEach { item -> item.isEnabled = true }
     }
+
+    fun setPeriodicRequest(){
+         val periodicWorkRequest = PeriodicWorkRequest.Builder(NotifyRiesgoWorker::class.java,5,
+             TimeUnit.MINUTES)
+             .build()
+        WorkManager.getInstance(applicationContext).enqueue(periodicWorkRequest)
+    }
+
+
 }

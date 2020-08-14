@@ -17,7 +17,7 @@ class DatosPersonales3ViewModel(
 
     fun onRegisterCompleteClicked(v: View){
         listener.onStarted()
-        persona.setGenero("masculino")
+        persona.genero = "masculino"
         Coroutines.main {
             try {
                 val apiResponse = repository.registrarPersona(persona)
