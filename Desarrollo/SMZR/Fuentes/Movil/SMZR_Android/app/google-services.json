@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "666334989320",
+    "firebase_url": "https://smzrandroid.firebaseio.com",
+    "project_id": "smzrandroid",
+    "storage_bucket": "smzrandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666334989320:android:7018c79a52625357b0d5bd",
+        "android_client_info": {
+          "package_name": "com.rebrotesolution.smzr_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666334989320-n2fbkv9lg430k98ha0tj8mb1fhg7kele.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rebrotesolution.smzr_android",
+            "certificate_hash": "17d8293b54551b3eb5b9291996df5e52c320f373"
+          }
+        },
+        {
+          "client_id": "666334989320-c850u6hm4lbj7ag12tebarvn7ib51j8p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiUXs5UUprl0L5B095NAMEUPQi6Tlioio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666334989320-c850u6hm4lbj7ag12tebarvn7ib51j8p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

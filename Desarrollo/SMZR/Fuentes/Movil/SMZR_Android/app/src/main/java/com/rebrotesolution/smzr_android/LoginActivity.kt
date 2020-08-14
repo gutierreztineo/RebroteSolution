@@ -18,6 +18,8 @@ import com.rebrotesolution.smzr_android.interfaces.LoginResultCallBacks
 import com.rebrotesolution.smzr_android.models.Usuario
 import com.rebrotesolution.smzr_android.network.NetworkConnectionInterceptor
 import com.rebrotesolution.smzr_android.network.api.LoginClient
+import com.rebrotesolution.smzr_android.network.api.PersonaClient
+import com.rebrotesolution.smzr_android.network.repository.PersonaRepository
 import com.rebrotesolution.smzr_android.network.repository.UsuarioRepository
 import com.rebrotesolution.smzr_android.room.db.RoomDB
 import com.rebrotesolution.smzr_android.ui.extras.LoadingDialog
@@ -30,15 +32,18 @@ class LoginActivity : AppCompatActivity() , LoginResultCallBacks {
 
     private lateinit var loadingDialog: LoadingDialog
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
-        val api = LoginClient(networkConnectionInterceptor)
+        val apiuser = LoginClient(networkConnectionInterceptor)
+        val apipersona = PersonaClient(networkConnectionInterceptor)
         val db = RoomDB(this)
-        val repository = UsuarioRepository(api, db)
+        val userRepo = UsuarioRepository(apiuser, db)
+        val personaRepo = PersonaRepository(apipersona,db)
 
-        val viewModel = ViewModelProviders.of(this,LoginViewModelFactory(this, repository)).get(LoginViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this,LoginViewModelFactory(this, userRepo,personaRepo)).get(LoginViewModel::class.java)
         val activityMainBinding = DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login)
         activityMainBinding.loginViewModel = viewModel
         loadingDialog = LoadingDialog(this)
@@ -54,6 +59,7 @@ class LoginActivity : AppCompatActivity() , LoginResultCallBacks {
 
     override fun onStarted() {
         loadingDialog.start()
+
     }
 
     override fun onSuccess(usuario: Usuario) {

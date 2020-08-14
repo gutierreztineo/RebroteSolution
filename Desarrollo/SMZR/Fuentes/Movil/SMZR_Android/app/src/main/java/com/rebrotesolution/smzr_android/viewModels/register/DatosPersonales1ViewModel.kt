@@ -22,7 +22,7 @@ class DatosPersonales1ViewModel(
     val nombreTextWatcher: TextWatcher
         get() = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                persona.setNombres(p0.toString())
+                persona.nombres = p0.toString()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -33,7 +33,7 @@ class DatosPersonales1ViewModel(
     val apellidoTextWatcher: TextWatcher
         get() = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                persona.setApellidos(p0.toString())
+                persona.apellidos = p0.toString()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -44,7 +44,7 @@ class DatosPersonales1ViewModel(
     val dniTextWatcher: TextWatcher
         get() = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                persona.setDni(p0.toString())
+                persona.dni = p0.toString()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -56,9 +56,9 @@ class DatosPersonales1ViewModel(
         if (persona.isDatoPersonal1Valid) {
             if (persona.isDniValid) {
                 var data: Map<String, String> = mapOf(
-                    "nombres" to persona.getNombres(),
-                    "apellidos" to persona.getApellidos(),
-                    "dni" to persona.getDni()
+                    "nombres" to persona.nombres,
+                    "apellidos" to persona.apellidos,
+                    "dni" to persona.dni
                 )
                 listener.valid(data)
             } else {

@@ -4,16 +4,21 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.rebrotesolution.smzr_android.models.Persona
 import com.rebrotesolution.smzr_android.models.Usuario
+import com.rebrotesolution.smzr_android.room.dao.PersonaDao
 import com.rebrotesolution.smzr_android.room.dao.UsuarioDao
 
 @Database(
-    entities = [Usuario::class],
-    version = 1
+    entities = [Usuario::class, Persona::class],
+    version = 2
 )
 abstract class RoomDB : RoomDatabase() {
 
     abstract fun getUserDao(): UsuarioDao
+    abstract fun getPersonaDao(): PersonaDao
 
     companion object{
 
@@ -34,6 +39,13 @@ abstract class RoomDB : RoomDatabase() {
             context.applicationContext,
             RoomDB::class.java,
             "MyDataBase.db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
+    }
+
+    val MIGRATION_1_2 = object : Migration(1, 2) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("CREATE TABLE `Persona` (`id` INTEGER, `name` TEXT, " +
+                    "PRIMARY KEY(`id`))")
+        }
     }
 }
