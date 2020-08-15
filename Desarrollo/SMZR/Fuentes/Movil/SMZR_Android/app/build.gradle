@@ -29,7 +29,7 @@ android {
 // bytecode that is being built with JVM target 1.6. (e.g. navArgs)
     lintOptions {
         abortOnError false
-        //disable "InvalidPeriodicWorkRequestInterval"
+        disable "InvalidPeriodicWorkRequestInterval"
     }
 
     compileOptions {
