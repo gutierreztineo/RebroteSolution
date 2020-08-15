@@ -9,6 +9,7 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.work.CoroutineWorker
 import androidx.work.Operation
 import androidx.work.Worker
 import androidx.work.WorkerParameters
@@ -17,10 +18,15 @@ import androidx.work.WorkerParameters
 class NotifyRiesgoWorker(
     var context: Context,
     var params: WorkerParameters
-): Worker(context,params){
+): CoroutineWorker(context,params){
 
-    override fun doWork(): Result {
+    override suspend fun doWork(): Result {
         Log.i("TAG","LLAMADO AL WORK")
+        generatePushNotification()
+        return  Result.success()
+    }
+
+    private fun generatePushNotification(){
         val mBuilder: NotificationCompat.Builder = NotificationCompat.Builder(context, 1.toString())
             .setSmallIcon(R.drawable.ic_dialog_alert)
             .setColor(Color.RED)
@@ -45,6 +51,5 @@ class NotifyRiesgoWorker(
         }
         val notificationManager = NotificationManagerCompat.from(context)
         notificationManager.notify(100, mBuilder.build())
-        return  Result.success()
     }
 }
