@@ -88,6 +88,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
                     drawerLayout.closeDrawer(GravityCompat.START)
                 }
                 finish()
+                WorkManager.getInstance(applicationContext).cancelAllWork()
                 val intent = Intent(this,LoginActivity::class.java)
                 startActivity(intent)
             }
@@ -146,7 +147,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
     }
 
     fun setPeriodicRequest(){
-         val periodicWorkRequest = PeriodicWorkRequest.Builder(NotifyRiesgoWorker::class.java,5,
+         val periodicWorkRequest = PeriodicWorkRequest.Builder(NotifyRiesgoWorker::class.java,15,
              TimeUnit.MINUTES)
              .build()
         WorkManager.getInstance(applicationContext).enqueue(periodicWorkRequest)
