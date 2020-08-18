@@ -34,6 +34,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@string/subtitle_logo"
+                    android:textStyle="bold"
                     android:gravity="center_horizontal"
                     android:paddingBottom="30dp"
                     android:text="Sistema de Monitoreo de Zonas de Riesgo"
@@ -42,6 +44,9 @@
 
                 <EditText
                     android:id="@+id/username_text"
+                    android:drawableStart="@drawable/ic_user"
+                    android:hint="@string/placeholder_btn_user"
+                    android:drawablePadding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/login_edit_background"

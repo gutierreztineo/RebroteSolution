@@ -13,10 +13,10 @@ config :smzr,
 # Configures the endpoint
 config :smzr, SmzrWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "IPCAzNZ6qb3PadGCZd/5PQa235hwBLKaTkmEBe3fKHnP+MQDlQdCvLazycb3EALm",
+  secret_key_base: "1uceDbOah8qCZ1R/QbYgFpwjtPpTkV+slevUjTYkYDbbxFVKsmBf9tWnZLPFvMBf",
   render_errors: [view: SmzrWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Smzr.PubSub,
-  live_view: [signing_salt: "4Q6IChAm"]
+  live_view: [signing_salt: "GJ4Zor0A"]
 
 # Configures Elixir's Logger
 config :logger, :console,
