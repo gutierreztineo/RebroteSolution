@@ -26,9 +26,11 @@ defmodule SmzrWeb.PageLive do
   end
 
   defp search(query) do
-    if not SmzrWeb.Endpoint.config(:code_reloader) do
-      raise "action disabled when not in development"
-    end
+    #if not SmzrWeb.Endpoint.config(:code_reloader) do
+    #  raise "action disabled when not in development"
+    #end
+
+    #IO.inspect(Application.started_applications())
 
     for {app, desc, vsn} <- Application.started_applications(),
         app = to_string(app),
