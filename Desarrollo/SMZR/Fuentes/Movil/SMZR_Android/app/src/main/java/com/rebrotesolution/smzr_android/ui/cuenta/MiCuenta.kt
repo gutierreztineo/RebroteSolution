@@ -1,14 +1,17 @@
 package com.rebrotesolution.smzr_android.ui.cuenta
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.rebrotesolution.smzr_android.CambiarContrasena
 
 import com.rebrotesolution.smzr_android.R
 import com.rebrotesolution.smzr_android.interfaces.ApiResultCallBacks
@@ -30,6 +33,7 @@ class MiCuenta : Fragment() , ApiResultCallBacks{
     private lateinit var textEdadPerson: TextView
     private lateinit var textemail: TextView
     private lateinit var textgenero: TextView
+    private lateinit var buttonChangePassword : Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +53,7 @@ class MiCuenta : Fragment() , ApiResultCallBacks{
         textEdadPerson = root.findViewById(R.id.text_edad_person)
         textemail = root.findViewById(R.id.text_email_person)
         textgenero = root.findViewById(R.id.text_genero_person)
+        buttonChangePassword = root.findViewById(R.id.btn_cambiar_password)
         miCuentaViewModel.getDatosUusario().observe(viewLifecycleOwner, Observer { user ->
             if(user!=null){
                 miCuentaViewModel.getDatosPersona().observe(viewLifecycleOwner, Observer { persona ->
@@ -62,8 +67,15 @@ class MiCuenta : Fragment() , ApiResultCallBacks{
                 })
             }
         })
+        buttonChangePassword.setOnClickListener {view->
+            val intent = Intent(activity,CambiarContrasena::class.java)
+            startActivity(intent)
+
+        }
+
         return root
     }
+
 
     override fun onHttpOk(message: String) {
         Toasty.success(requireContext(), message, Toast.LENGTH_LONG).show()

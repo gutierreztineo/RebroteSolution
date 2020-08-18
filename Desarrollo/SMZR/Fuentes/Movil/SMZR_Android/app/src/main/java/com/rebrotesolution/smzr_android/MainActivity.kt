@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         navView.setupWithNavController(navController)
         navView.menu.getItem(0).isEnabled = false
         navView.setNavigationItemSelectedListener(this)
+        navView.itemIconTintList = null
         setPeriodicRequest()
     }
 
