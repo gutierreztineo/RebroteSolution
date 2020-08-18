@@ -38,9 +38,7 @@
                     android:textStyle="bold"
                     android:gravity="center_horizontal"
                     android:paddingBottom="30dp"
-                    android:text="Sistema de Monitoreo de Zonas de Riesgo"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"/>
 
                 <EditText
                     android:id="@+id/username_text"
@@ -50,9 +48,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/login_edit_background"
-                    android:drawableStart="@drawable/ic_user"
-                    android:drawablePadding="10dp"
-                    android:hint="Usuario"
                     android:padding="15dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textColorHint="@color/colorPlaceholder"
