@@ -53,7 +53,7 @@ jobs:
           name: Set cap_net_bind_service
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
-            "sudo setcap 'cap_net_bind_service=+ep' _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/erts-11.0.2/bin/beam.smp"
+            "sudo setcap 'cap_net_bind_service=+eip' _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/erts-11.0.2/bin/beam.smp; getcap _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/erts-11.0.2/bin/beam.smp"
       
       - run:
           name: Stop running instance
