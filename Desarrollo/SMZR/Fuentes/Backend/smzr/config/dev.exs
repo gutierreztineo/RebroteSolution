@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :smzr, Smzr.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "smzr_dev",
-  hostname: "localhost",
+  username: "smzr",
+  password: "bl4ckp1nk",
+  database: "smzr",
+  hostname: "smzr.cvkav1eh9vf8.sa-east-1.rds.amazonaws.com",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -20,7 +20,15 @@ config :smzr, SmzrWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: []
+  watchers: [
+    node: [
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #

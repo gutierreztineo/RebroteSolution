@@ -7,7 +7,7 @@ defmodule SmzrWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_smzr_key",
-    signing_salt: "r8gMHD8L"
+    signing_salt: "zqVVPgdk"
   ]
 
   socket "/socket", SmzrWeb.UserSocket,
