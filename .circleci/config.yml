@@ -121,7 +121,7 @@ workflows:
             #tags:
               #ignore: /.*/
             branches:
-              only: master
+              only: gutierreztineo
   deploy_production:
     jobs:
       - deploy:
