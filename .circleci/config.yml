@@ -55,6 +55,11 @@ jobs:
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
             "_build/prod/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} stop; echo \"Ignore if this command fails\""
       - run:
+          name: Set cap_net_bind_service
+          command: |
+            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
+            "sudo setcap 'cap_net_bind_service=+ep' _build/prod/rel/smzr/erts-11.0.2/bin/beam.smp"
+      - run:
           name: Start a new instance
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
