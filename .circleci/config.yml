@@ -67,11 +67,6 @@ jobs:
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
             "bash --login -c \" PORT=${PORT} HOSTNAME=${HOSTNAME} DATABASE_URL=${DATABASE_URL} SECRET_KEY_BASE=${SECRET_KEY_BASE} _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} daemon\""
       - run:
-          name: echo bash start command
-          command: |
-            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
-            "echo \"PORT=${PORT} HOSTNAME=${HOSTNAME} DATABASE_URL=${DATABASE_URL} SECRET_KEY_BASE=${SECRET_KEY_BASE} _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} daemon\""
-      - run:
           name: Check the new instance is running
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
