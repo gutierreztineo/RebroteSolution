@@ -23,9 +23,12 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
+#config :smzr, SmzrWeb.Endpoint,
 config :smzr, SmzrWeb.Endpoint,
+  server: true,
+  check_origin: true,
   http: [
-    port: String.to_integer(System.get_env("PORT") || "4000"),
+    port: String.to_integer(System.get_env("PORT") || "80"),
     transport_options: [socket_opts: [:inet6]]
   ],
   secret_key_base: secret_key_base
