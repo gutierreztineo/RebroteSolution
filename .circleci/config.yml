@@ -53,12 +53,12 @@ jobs:
           name: Stop running instance
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
-            "sudo _build/prod/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} stop; echo \"Ignore if this command fails\""
+            "_build/prod/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} stop; echo \"Ignore if this command fails\""
       - run:
           name: Start a new instance
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
-            "sudo bash --login -c \" PORT=${PORT} HOSTNAME=${HOSTNAME} DATABASE_URL=${DATABASE_URL} SECRET_KEY_BASE=${SECRET_KEY_BASE} _build/prod/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} daemon\""
+            "bash --login -c \" PORT=${PORT} HOSTNAME=${HOSTNAME} DATABASE_URL=${DATABASE_URL} SECRET_KEY_BASE=${SECRET_KEY_BASE} _build/prod/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} daemon\""
       - run:
           name: Check the new instance is running
           command: |
