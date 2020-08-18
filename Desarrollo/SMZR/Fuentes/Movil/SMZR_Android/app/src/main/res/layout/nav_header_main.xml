@@ -17,8 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_gravity="center"
+        android:layout_marginTop="24dp"
         android:contentDescription="@string/nav_header_desc"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logof" />
 
     <TextView
         android:layout_width="match_parent"
@@ -27,6 +28,7 @@
         android:text="Sistema de Monitoreo de Zonas de riesgo"
         android:textAlignment="center"
         android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
 </LinearLayout>
