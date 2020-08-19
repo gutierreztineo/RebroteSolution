@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :smzr, Smzr.Repo,
-  username: "smzr",
-  password: "bl4ckp1nk",
-  database: "smzr",
-  hostname: "smzr.cvkav1eh9vf8.sa-east-1.rds.amazonaws.com",
+  username: "postgres",
+  password: "postgres",
+  database: "smzr_dev",
+  hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
