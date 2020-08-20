@@ -61,6 +61,5 @@ class HistorialMalestar : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         adapter = SintomaHistorialAdapter(listaPersonaMalestares)
         recyclerView.adapter = adapter
-
     }
 }

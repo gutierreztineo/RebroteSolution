@@ -95,11 +95,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
-                    android:text="Registrate"
                     android:textColor="@color/colorWhite"
                     android:textAllCaps="false"
                     android:textSize="20sp"
                     android:padding="10dp"
+                    android:text="Registrate"
+
 
                     android:onClick="@{loginViewModel::onRegisterClicked}"/>
             </LinearLayout>

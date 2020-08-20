@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         navView = findViewById(R.id.nav_view)
         navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_mi_cuenta, R.id.nav_historial_malestar,
-        R.id.nav_prevencion_covid, R.id.nav_mapa_riesgo, R.id.nav_actualizar_malestar), drawerLayout)
+        R.id.nav_prevencion_covid, R.id.nav_mapa_riesgo, R.id.nav_empezar_formulario), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.menu.getItem(0).isEnabled = false
@@ -92,9 +92,9 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
                 val intent = Intent(this,LoginActivity::class.java)
                 startActivity(intent)
             }
-            R.id.nav_actualizar_malestar -> {
+            R.id.nav_empezar_formulario -> {
                 item.isEnabled = false
-                navController.navigate(R.id.nav_actualizar_malestar);
+                navController.navigate(R.id.nav_empezar_formulario);
             }
             R.id.nav_mapa_riesgo -> {
                 item.isEnabled = false
@@ -153,5 +153,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         WorkManager.getInstance(applicationContext).enqueue(periodicWorkRequest)
     }
 
-
+    private fun evaluarSiRegistroMalestares(){
+        
+    }
 }

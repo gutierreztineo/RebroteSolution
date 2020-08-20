@@ -1,0 +1,171 @@
+[
+  {
+    "id_malestar": 1,
+    "descripcion": "Fiebre",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 1,
+        "descripcion": "Evitar exceso de abrigo."
+      },
+      {
+        "id_recomendacion": 2,
+        "descripcion": "Utilizar ropas ligeras."
+      },
+      {
+        "id_recomendacion": 3,
+        "descripcion": "Mantenerse a una temperatura ambiente  de 22° como máximo."
+      }
+    ]
+  },
+  {
+    "id_malestar": 2,
+    "descripcion": "Tos seca",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 4,
+        "descripcion": "Consumir bastante líquidos como agua o leche."
+      },
+      {
+        "id_recomendacion": 5,
+        "descripcion": "Dormir con la almohada elevada."
+      }
+    ]
+  },
+  {
+    "id_malestar": 3,
+    "descripcion": "Cansancio",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 6,
+        "descripcion": "Consumir vitamina D ya que ayuda a regular la melatonina y los ciclos de sueño."
+      }
+    ]
+  },
+  {
+    "id_malestar": 4,
+    "descripcion": "Dificultad para respirar o sensación de falta de aire",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 7,
+        "descripcion": "Reposar y permanecer en casa."
+      },
+      {
+        "id_recomendacion": 8,
+        "descripcion": "No fumar y evitar exponerse al humo."
+      }
+    ]
+  },
+  {
+    "id_malestar": 5,
+    "descripcion": "Dolor o presión en el pecho",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 9,
+        "descripcion": "Realizar tratamiento con relajantes musculares y antiinflamatorios, como el Ibuprofeno. NOTA: La dosis no debe exceder de 400 mg cada 6 horas."
+      }
+    ]
+  },
+  {
+    "id_malestar": 6,
+    "descripcion": "Incapacidad para hablar o moverse",
+    "reconendaciones": []
+  },
+  {
+    "id_malestar": 7,
+    "descripcion": "Incapacidad de permanecer despierto",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 10,
+        "descripcion": "Evitar el alcohol, la cafeína, la nicotina y otros estimulantes antes de ir a dormir."
+      },
+      {
+        "id_recomendacion": 11,
+        "descripcion": "No ingerir grandes porciones de comida."
+      }
+    ]
+  },
+  {
+    "id_malestar": 8,
+    "descripcion": "Labios o cara color azulado",
+    "reconendaciones": []
+  },
+  {
+    "id_malestar": 9,
+    "descripcion": "Molestias y dolores",
+    "reconendaciones": []
+  },
+  {
+    "id_malestar": 10,
+    "descripcion": "Dolor de garganta",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 12,
+        "descripcion": "Evitar el consumo de cafeína y de alcohol, ya que pueden deshidratarte."
+      },
+      {
+        "id_recomendacion": 13,
+        "descripcion": "Probar alimentos y bebidas reconfortantes."
+      }
+    ]
+  },
+  {
+    "id_malestar": 11,
+    "descripcion": "Diarrea",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 14,
+        "descripcion": "Tomar de 8 a 10 vasos de líquidos claros por día."
+      },
+      {
+        "id_recomendacion": 15,
+        "descripcion": "Consumir comidas pequeñas a lo largo del día, en lugar de 3 comidas grandes."
+      }
+    ]
+  },
+  {
+    "id_malestar": 12,
+    "descripcion": "Conjuntivitis",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 16,
+        "descripcion": "Lavarse frecuentemente las manos con agua tibia y jabón por lo menos durante 20 segundos."
+      },
+      {
+        "id_recomendacion": 17,
+        "descripcion": "Evitar tocarse o frotarse los ojos."
+      },
+      {
+        "id_recomendacion": 18,
+        "descripcion": "Evitar compartir maquillaje, lentes de contacto y sus estuches, y anteojos."
+      }
+    ]
+  },
+  {
+    "id_malestar": 13,
+    "descripcion": "Dolor de cabeza",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 19,
+        "descripcion": "Evitar y controlar el estrés."
+      },
+      {
+        "id_recomendacion": 20,
+        "descripcion": "Alejarse de los ruidos."
+      },
+      {
+        "id_recomendacion": 21,
+        "descripcion": "Dormir una siesta y evitar ver tras pantallas como las del celular o televisor."
+      }
+    ]
+  },
+  {
+    "id_malestar": 14,
+    "descripcion": "Pérdida del sentido del olfato o del gusto",
+    "reconendaciones": [
+      {
+        "id_recomendacion": 22,
+        "descripcion": "Cocine con muchas especias, pero no agregue demasiada sal."
+      }
+    ]
+  }
+]
