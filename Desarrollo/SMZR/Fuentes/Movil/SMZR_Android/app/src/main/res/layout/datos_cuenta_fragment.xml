@@ -89,7 +89,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
                     android:textSize="20sp"
-                    android:onClick="@{datosCuentaViewModel.onNextClicked}"/>
+                    android:onClick="@{datosCuentaViewModel::onNextClicked}"/>
             </LinearLayout>
         </ScrollView>
 
