@@ -43,7 +43,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_qst_13"
-                android:onCheckedChanged="@{form7ViewModel::onCustomCheckChanged}">
+                android:onCheckedChanged="@{form7ViewModel::onCustomCheckChanged13}">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q13"
@@ -105,7 +105,8 @@
                 android:layout_marginEnd="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_qst_14">
+                app:layout_constraintTop_toBottomOf="@+id/txt_qst_14"
+                android:onCheckedChanged="@{form7ViewModel::onCustomCheckChanged14}">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q14"
@@ -120,14 +121,14 @@
                     android:id="@+id/id_rdbtn_q14_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí"
+                    android:text="No"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q14_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No" />
+                    android:text="Sí" />
 
             </RadioGroup>
 

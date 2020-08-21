@@ -42,7 +42,8 @@
                 android:layout_marginEnd="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_qst_7">
+                app:layout_constraintTop_toBottomOf="@+id/txt_qst_7"
+                android:onCheckedChanged="@{form4ViewModel::onCustomCheckChanged7}">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q7"
@@ -57,14 +58,14 @@
                     android:id="@+id/id_rdbtn_q7_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí"
+                    android:text="No"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q7_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No" />
+                    android:text="Sí" />
             </RadioGroup>
 
             <TextView
@@ -89,7 +90,8 @@
                 android:layout_marginEnd="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_qst_8">
+                app:layout_constraintTop_toBottomOf="@+id/txt_qst_8"
+                android:onCheckedChanged="@{form4ViewModel::onCustomCheckChanged8}">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q8"
@@ -104,14 +106,14 @@
                     android:id="@+id/id_rdbtn_q8_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí"
+                    android:text="No"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q8_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No" />
+                    android:text="Sí" />
 
             </RadioGroup>
 

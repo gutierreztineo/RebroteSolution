@@ -10,7 +10,7 @@
             android:title="Mapa de Riesgo" />
         <item
             android:id="@+id/nav_empezar_formulario"
-            android:icon="@drawable/baseline_coronavirus_24"
+            android:icon="@drawable/malestar"
             android:title="Formulario Malestar" />
         <item
             android:id="@+id/nav_historial_malestar"

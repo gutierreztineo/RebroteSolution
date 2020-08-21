@@ -2,7 +2,7 @@
   {
     "id_malestar": 1,
     "descripcion": "Fiebre",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 1,
         "descripcion": "Evitar exceso de abrigo."
@@ -20,7 +20,7 @@
   {
     "id_malestar": 2,
     "descripcion": "Tos seca",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 4,
         "descripcion": "Consumir bastante líquidos como agua o leche."
@@ -34,7 +34,7 @@
   {
     "id_malestar": 3,
     "descripcion": "Cansancio",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 6,
         "descripcion": "Consumir vitamina D ya que ayuda a regular la melatonina y los ciclos de sueño."
@@ -44,7 +44,7 @@
   {
     "id_malestar": 4,
     "descripcion": "Dificultad para respirar o sensación de falta de aire",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 7,
         "descripcion": "Reposar y permanecer en casa."
@@ -58,7 +58,7 @@
   {
     "id_malestar": 5,
     "descripcion": "Dolor o presión en el pecho",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 9,
         "descripcion": "Realizar tratamiento con relajantes musculares y antiinflamatorios, como el Ibuprofeno. NOTA: La dosis no debe exceder de 400 mg cada 6 horas."
@@ -68,12 +68,12 @@
   {
     "id_malestar": 6,
     "descripcion": "Incapacidad para hablar o moverse",
-    "reconendaciones": []
+    "recomendaciones": []
   },
   {
     "id_malestar": 7,
     "descripcion": "Incapacidad de permanecer despierto",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 10,
         "descripcion": "Evitar el alcohol, la cafeína, la nicotina y otros estimulantes antes de ir a dormir."
@@ -87,17 +87,17 @@
   {
     "id_malestar": 8,
     "descripcion": "Labios o cara color azulado",
-    "reconendaciones": []
+    "recomendaciones": []
   },
   {
     "id_malestar": 9,
     "descripcion": "Molestias y dolores",
-    "reconendaciones": []
+    "recomendaciones": []
   },
   {
     "id_malestar": 10,
     "descripcion": "Dolor de garganta",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 12,
         "descripcion": "Evitar el consumo de cafeína y de alcohol, ya que pueden deshidratarte."
@@ -111,7 +111,7 @@
   {
     "id_malestar": 11,
     "descripcion": "Diarrea",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 14,
         "descripcion": "Tomar de 8 a 10 vasos de líquidos claros por día."
@@ -125,7 +125,7 @@
   {
     "id_malestar": 12,
     "descripcion": "Conjuntivitis",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 16,
         "descripcion": "Lavarse frecuentemente las manos con agua tibia y jabón por lo menos durante 20 segundos."
@@ -143,7 +143,7 @@
   {
     "id_malestar": 13,
     "descripcion": "Dolor de cabeza",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 19,
         "descripcion": "Evitar y controlar el estrés."
@@ -161,7 +161,7 @@
   {
     "id_malestar": 14,
     "descripcion": "Pérdida del sentido del olfato o del gusto",
-    "reconendaciones": [
+    "recomendaciones": [
       {
         "id_recomendacion": 22,
         "descripcion": "Cocine con muchas especias, pero no agregue demasiada sal."

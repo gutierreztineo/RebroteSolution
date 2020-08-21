@@ -9,21 +9,23 @@
     tools:context=".ui.actualizar_malestar.MostrarRecomendaciones"
     android:paddingTop="25dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recicler_view_recomendaciones"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
     <Button
         android:id="@+id/btn_cerrar_recomendaciones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="Cerrar"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
-        android:background="@drawable/button_background"/>
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_background"
+        />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recicler_view_recomendaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

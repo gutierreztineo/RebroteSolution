@@ -43,7 +43,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_qst_1"
-                >
+                android:onCheckedChanged="@{form1ViewModel::onCustomCheckChanged1}">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q1"
@@ -58,7 +58,7 @@
                     android:id="@+id/id_rdbtn_q1_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí"
+                    android:text="No"
                     android:layout_marginBottom="10dp"
                     />
 
@@ -66,7 +66,7 @@
                     android:id="@+id/id_rdbtn_q1_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No" />
+                    android:text="Sí" />
             </RadioGroup>
 
             <TextView
@@ -91,7 +91,8 @@
                 android:layout_marginEnd="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_qst_2">
+                app:layout_constraintTop_toBottomOf="@+id/txt_qst_2"
+                android:onCheckedChanged="@{form1ViewModel::onCustomCheckChanged2}">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q2"
@@ -120,7 +121,7 @@
                     android:id="@+id/id_rdbtn_q2_opc3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Todo regularmente"
+                    android:text="Toso regularmente"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton

@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -18,6 +20,7 @@ import com.rebrotesolution.smzr_android.databinding.MalestarForm1FragmentBinding
 import com.rebrotesolution.smzr_android.interfaces.FormularioMalestarResultCallBacks
 import com.rebrotesolution.smzr_android.viewModels.actualizar_malestar.MalestarForm1ViewModel
 import com.rebrotesolution.smzr_android.viewModels.factory.MalestarForm1ViewModelFactory
+import es.dmoral.toasty.Toasty
 
 class MalestarForm1 : Fragment(), FormularioMalestarResultCallBacks {
 
@@ -43,12 +46,16 @@ class MalestarForm1 : Fragment(), FormularioMalestarResultCallBacks {
         navController = Navigation.findNavController(view)
     }
 
-    override fun incomplete() {
-
+    override fun incomplete(message: String) {
+        Toasty.warning(requireContext(),message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun complete() {
-        navController.navigate(R.id.go_malestarForm2);
+    override fun complete(data: Map<String,Int>) {
+        var bundle: Bundle = bundleOf(
+            "q1" to data["q1"],
+            "q2" to data["q2"]
+        )
+        navController.navigate(R.id.go_malestarForm2,bundle);
     }
 
 }

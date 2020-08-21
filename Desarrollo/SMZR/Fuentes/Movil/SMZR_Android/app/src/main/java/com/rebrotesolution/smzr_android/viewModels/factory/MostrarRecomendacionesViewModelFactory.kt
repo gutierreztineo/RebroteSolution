@@ -10,10 +10,10 @@ import com.rebrotesolution.smzr_android.viewModels.actualizar_malestar.MostrarRe
 class MostrarRecomendacionesViewModelFactory (
     private var recyclerView: RecyclerView,
     private var context: Context,
-    var listamalestar: ArrayList<MalestarDTO>
+    var listarespuestas: List<Int>
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return MostrarRecomendacionesViewModel(recyclerView,context,listamalestar) as T
+        return MostrarRecomendacionesViewModel(recyclerView,context,listarespuestas) as T
     }
 }
