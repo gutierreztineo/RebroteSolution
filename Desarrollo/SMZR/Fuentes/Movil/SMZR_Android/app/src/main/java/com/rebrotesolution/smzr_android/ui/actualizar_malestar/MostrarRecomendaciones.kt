@@ -52,14 +52,14 @@ class MostrarRecomendaciones : Fragment() {
             MostrarRecomendacionesViewModelFactory(recyclerView, requireContext(), initList)
         ).get(MostrarRecomendacionesViewModel::class.java)
         mostrarRecomViewModel.mostrarData()
-        val button = requireActivity().findViewById<Button>(R.id.btn_cerrar_recomendaciones)
-        button.setOnClickListener(clickListener)
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
+        val button = view.findViewById<Button>(R.id.btn_cerrar_recomendaciones)
+        button.setOnClickListener(clickListener)
     }
 
     val clickListener = View.OnClickListener {view ->
