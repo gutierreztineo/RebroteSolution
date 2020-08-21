@@ -1,0 +1,14 @@
+<section class="phx-hero">
+  <h1><%= gettext "Bienvenido al API de %{name}!", name: "SMZR" %></h1>
+  <p>Desarrollado por <a target="_blank" href="https://twitter.com/itsudatte">@itsudatte</a>!</p>
+
+  <form phx-change="suggest" phx-submit="search">
+    <input type="text" name="q" value="<%= @query %>" placeholder="Buscar dependencias en Hex.pm" list="results" autocomplete="off"/>
+    <datalist id="results">
+      <%= for {app, _vsn} <- @results do %>
+        <option value="<%= app %>"><%= app %></option>
+      <% end %>
+    </datalist>
+    <button type="submit" phx-disable-with="Buscando...">Ir a Hexdocs</button>
+  </form>
+</section>
