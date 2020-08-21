@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:hint="Selecciona tu género"
+            android:hint="@string/selecciona_tu_genero"
             android:paddingBottom="20dp"
             android:textSize="30sp" />
 

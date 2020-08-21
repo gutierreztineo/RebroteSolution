@@ -47,7 +47,7 @@
                 android:background="@drawable/button_background"
                 android:onClick="@{datosCorreoViewModel.onNextClicked}"
                 android:padding="15dp"
-                android:text="Siguiente"
+                android:text="@string/siguiente"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp" />
