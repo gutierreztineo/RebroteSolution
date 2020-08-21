@@ -58,20 +58,20 @@ class LoginViewModel(
                try {
                    val authResponse =  userRepo.userLogin(usuario.username, usuario.password)
                    authResponse.persona?.let {
-                       listener?.onSuccess(it.usuario!!)
+                       listener.onSuccess(it.usuario!!)
                        userRepo.saveSesion(it.usuario!!)
                        personaRepo.savePersonaInLocal(it)
                        return@main
                    }
-                   listener?.onError(authResponse.message!!)
+                   listener.onError(authResponse.message!!)
                }catch (e:ApiException){
-                   listener?.onError(e.message!!)
+                   listener.onError(e.message!!)
                }catch (e: NoInternetException){
-                   listener?.onError(e.message!!)
+                   listener.onError(e.message!!)
                }
            }
         }else{
-            listener?.onError("Complete los datos para continuar" )
+            listener.onError("Complete los datos para continuar" )
         }
     }
 
