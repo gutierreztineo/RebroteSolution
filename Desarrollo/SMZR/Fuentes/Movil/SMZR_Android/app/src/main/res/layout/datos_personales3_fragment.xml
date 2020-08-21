@@ -79,7 +79,7 @@
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
-            android:onClick="@{datosPersonales3ViewModel.onRegisterCompleteClicked}"/>
+            android:onClick="@{datosPersonales3ViewModel::onRegisterCompleteClicked}"/>
 
     </LinearLayout>
 

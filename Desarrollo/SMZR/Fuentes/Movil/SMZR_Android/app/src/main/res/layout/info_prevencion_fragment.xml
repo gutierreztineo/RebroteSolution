@@ -34,11 +34,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/prevencion_covid_19"
+        android:layout_marginTop="32dp"
+        android:text="Prevención COVID - 19"
         android:textColor="@color/colorButton"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/button_background"
-                android:onClick="@{datosPersonales2ViewModel.onNextClicked}"
+                android:onClick="@{datosPersonales2ViewModel::onNextClicked}"
                 android:padding="10dp"
                 android:text="@string/siguiente"
                 android:textAllCaps="false"
