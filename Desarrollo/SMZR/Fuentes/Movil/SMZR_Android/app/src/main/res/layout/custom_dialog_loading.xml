@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="Cargando. . ."
+        android:text="@string/cargando"
         android:gravity="center_horizontal"
         android:textSize="20dp"/>
 </LinearLayout>

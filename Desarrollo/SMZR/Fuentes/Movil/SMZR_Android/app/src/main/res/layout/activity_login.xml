@@ -61,7 +61,7 @@
                     android:background="@drawable/login_edit_background"
                     android:drawableStart="@drawable/ic_password"
                     android:drawablePadding="10dp"
-                    android:hint="Contraseña"
+                    android:hint="@string/contrasena"
                     android:inputType="textPassword"
                     android:padding="15dp"
                     android:textColor="@color/colorPrimaryDark"
@@ -86,7 +86,7 @@
                     android:background="@drawable/button_background"
                     android:textColor="@color/colorWhite"
                     android:textAllCaps="false"
-                    android:text="Iniciar Sesión"
+                    android:text="@string/iniciar_sesion"
                     android:textSize="20sp"
                     android:padding="10dp"
                     android:onClick="@{loginViewModel::onLoginClicked}"/>
@@ -99,7 +99,7 @@
                     android:background="@color/colorButton"
                     android:onClick="@{loginViewModel::onRegisterClicked}"
                     android:padding="10dp"
-                    android:text="Registrate"
+                    android:text="@string/registrate"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
                     android:textSize="20sp" />
