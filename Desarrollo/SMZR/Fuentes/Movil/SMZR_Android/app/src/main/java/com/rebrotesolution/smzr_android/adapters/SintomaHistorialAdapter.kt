@@ -50,8 +50,8 @@ class SintomaHistorialAdapter (
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imagen.setImageResource(R.drawable.baseline_coronavirus_24)
-        holder.fecha_registro.text = formatearFecha(lspersona_malestar.get(position).getFechaRegistro())
-        holder.malestar_nombre.text = lspersona_malestar.get(position).getMalestar().getDescripcion()
+        holder.fecha_registro.text = formatearFecha(lspersona_malestar.get(position).fecha_registro)
+        holder.malestar_nombre.text = lspersona_malestar.get(position).malestar.descripcion
 
     }
 

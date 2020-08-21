@@ -120,6 +120,19 @@
         android:id="@+id/malestarForm7"
         android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm7"
         android:label="Pagina Final"
-        tools:layout="@layout/malestar_form7_fragment"/>
+        tools:layout="@layout/malestar_form7_fragment">
+        <action
+            android:id="@+id/go_mostrarRecomendaciones"
+            app:destination="@id/mostrarRecomendaciones"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarRecomendaciones"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MostrarRecomendaciones"
+        android:label="Recomendaciones"
+        tools:layout="@layout/mostrar_recomendaciones_fragment" />
 
 </navigation>

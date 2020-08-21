@@ -43,7 +43,7 @@ class MalestarForm7 : Fragment(), FormularioMalestarResultCallBacks {
     }
 
     override fun complete() {
-        navController.navigate(R.id.nav_historial_malestar);
+        navController.navigate(R.id.go_mostrarRecomendaciones);
     }
 
 }

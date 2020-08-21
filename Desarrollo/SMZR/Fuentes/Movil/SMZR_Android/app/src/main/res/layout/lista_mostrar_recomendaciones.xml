@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     app:cardCornerRadius="3dp"
     app:cardElevation="3dp"
@@ -12,35 +12,35 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        >
+        android:padding="10dp">
+
         <ImageView
-            android:id="@+id/imagen_sintoma_categoria"
+            android:id="@+id/imagen_recomendacion"
             android:layout_width="70dp"
-            android:layout_height="70dp"
-            />
-        <TextView
-            android:id="@+id/text_fecha_registro_historial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fecha de registro"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_toRightOf="@id/imagen_sintoma_categoria"
-            android:layout_toEndOf="@id/imagen_sintoma_categoria"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_height="70dp" />
 
         <TextView
-            android:id="@+id/text_malestar_name"
+            android:id="@+id/text_title_malestar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="Malestar"
-            android:layout_below="@id/text_fecha_registro_historial"
-            android:layout_toEndOf="@id/imagen_sintoma_categoria"
+            android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_toEndOf="@id/imagen_recomendacion"
+            android:layout_toRightOf="@id/imagen_recomendacion"
+            android:text="Fecha de registro"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_descripcion_recomendacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_title_malestar"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/imagen_recomendacion"
+            android:text="Malestar"
+            android:textSize="18sp" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
