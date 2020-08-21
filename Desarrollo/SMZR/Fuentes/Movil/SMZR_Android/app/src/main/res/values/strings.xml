@@ -27,15 +27,18 @@
     <string name="siguiente">Siguiente</string>
     <string name="repite_contrasena">Repite Contraseña</string>
     <string name="nombre_de_usuario">Nombre de Usuario</string>
-    <string name="contrasena">Contraseña</string>
-    <string name="siguiente">Siguiente</string>
     <string name="nombres">Nombres</string>
     <string name="apellidos">Apellidos</string>
     <string name="n_documento_identidad">N° Documento Identidad</string>
-    <string name="siguiente">Siguiente</string>
     <string name="selecciona_tu_genero">Selecciona tu género</string>
     <string name="descripcion">Descripción</string>
     <string name="prevencion_covid_19">Prevención COVID - 19</string>
     <string name="fecha_de_registro">Fecha de registro</string>
     <string name="malestar">Malestar</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="correo_electronico">Correo Electrónico</string>
+    <string name="fecha_de_nacimiento">Fecha de Nacimiento</string>
+    <string name="masculino">Masculino</string>
+    <string name="femenino">Femenino</string>
+    <string name="completar_registro">Completar Registro</string>
 </resources>

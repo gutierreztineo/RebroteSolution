@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:hint="Fecha de Nacimiento"
+                android:hint="@string/fecha_de_nacimiento"
                 android:paddingBottom="5dp"
                 android:textSize="30sp" />
 
@@ -51,7 +51,7 @@
                 android:background="@drawable/button_background"
                 android:onClick="@{datosPersonales2ViewModel.onNextClicked}"
                 android:padding="10dp"
-                android:text="Siguiente"
+                android:text="@string/siguiente"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp" />
