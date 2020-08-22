@@ -1,5 +1,6 @@
 package com.rebrotesolution.smzr_android.ui.actualizar_malestar
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -32,7 +33,7 @@ class EmpezarFormularioFragment : Fragment(), ButtonAcceptHandler {
     ): View? {
 
         val empezarFormularioBinding = DataBindingUtil.inflate<EmpezarFormularioFragmentBinding>(inflater,R.layout.empezar_formulario_fragment,container,false)
-        empezarFormularioViewModel = ViewModelProviders.of(this,EmpezarFormularioViewModelFactory(this)).get(EmpezarFormularioViewModel::class.java)
+        empezarFormularioViewModel = ViewModelProviders.of(this,EmpezarFormularioViewModelFactory(this,requireActivity())).get(EmpezarFormularioViewModel::class.java)
         val textView : TextView = empezarFormularioBinding.root.findViewById(R.id.text_home)
         val buttonNext: Button = empezarFormularioBinding.root.findViewById(R.id.button_malestar)
 
@@ -52,6 +53,9 @@ class EmpezarFormularioFragment : Fragment(), ButtonAcceptHandler {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
+        if(requireActivity().getSharedPreferences("SP_INFO", Context.MODE_PRIVATE).getBoolean("OPEN_FORM",false)){
+            navController.navigate(R.id.go_malestarForm1)
+        }
     }
 
     override fun clickOnButton() {

@@ -38,7 +38,6 @@ class MalestarForm1 : Fragment(), FormularioMalestarResultCallBacks {
         form1Binding.lifecycleOwner = this
 
         return form1Binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,5 +56,4 @@ class MalestarForm1 : Fragment(), FormularioMalestarResultCallBacks {
         )
         navController.navigate(R.id.go_malestarForm2,bundle);
     }
-
 }
