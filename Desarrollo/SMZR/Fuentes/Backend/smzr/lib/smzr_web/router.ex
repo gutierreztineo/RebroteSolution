@@ -35,6 +35,13 @@ defmodule SmzrWeb.Router do
     live "/users/:id", UserLive.Show, :show
     live "/users/:id/show/edit", UserLive.Show, :edit
 
+    #Profile
+    live "/profiles", ProfileLive.Index, :index
+    live "/profiles/new", ProfileLive.Index, :new
+    live "/profiles/:id/edit", ProfileLive.Index, :edit
+
+    live "/profiles/:id", ProfileLive.Show, :show
+    live "/profiles/:id/show/edit", ProfileLive.Show, :edit
 
   end
 
@@ -44,6 +51,8 @@ defmodule SmzrWeb.Router do
 
     resources "/locations", LocationController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit]
+    resources "/profiles", ProfileController, except: [:new, :edit]
+
 
   end
 
