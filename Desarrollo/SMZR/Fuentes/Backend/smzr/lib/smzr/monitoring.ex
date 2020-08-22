@@ -197,4 +197,100 @@ defmodule Smzr.Monitoring do
   def change_profile_ailment(%ProfileAilment{} = profile_ailment, attrs \\ %{}) do
     ProfileAilment.changeset(profile_ailment, attrs)
   end
+
+  alias Smzr.Monitoring.AilmentLevel
+
+  @doc """
+  Returns the list of ailment_levels.
+
+  ## Examples
+
+      iex> list_ailment_levels()
+      [%AilmentLevel{}, ...]
+
+  """
+  def list_ailment_levels do
+    Repo.all(AilmentLevel)
+  end
+
+  @doc """
+  Gets a single ailment_level.
+
+  Raises `Ecto.NoResultsError` if the Ailment level does not exist.
+
+  ## Examples
+
+      iex> get_ailment_level!(123)
+      %AilmentLevel{}
+
+      iex> get_ailment_level!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_ailment_level!(id), do: Repo.get!(AilmentLevel, id)
+
+  @doc """
+  Creates a ailment_level.
+
+  ## Examples
+
+      iex> create_ailment_level(%{field: value})
+      {:ok, %AilmentLevel{}}
+
+      iex> create_ailment_level(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_ailment_level(attrs \\ %{}) do
+    %AilmentLevel{}
+    |> AilmentLevel.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a ailment_level.
+
+  ## Examples
+
+      iex> update_ailment_level(ailment_level, %{field: new_value})
+      {:ok, %AilmentLevel{}}
+
+      iex> update_ailment_level(ailment_level, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_ailment_level(%AilmentLevel{} = ailment_level, attrs) do
+    ailment_level
+    |> AilmentLevel.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a ailment_level.
+
+  ## Examples
+
+      iex> delete_ailment_level(ailment_level)
+      {:ok, %AilmentLevel{}}
+
+      iex> delete_ailment_level(ailment_level)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_ailment_level(%AilmentLevel{} = ailment_level) do
+    Repo.delete(ailment_level)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking ailment_level changes.
+
+  ## Examples
+
+      iex> change_ailment_level(ailment_level)
+      %Ecto.Changeset{data: %AilmentLevel{}}
+
+  """
+  def change_ailment_level(%AilmentLevel{} = ailment_level, attrs \\ %{}) do
+    AilmentLevel.changeset(ailment_level, attrs)
+  end
 end
