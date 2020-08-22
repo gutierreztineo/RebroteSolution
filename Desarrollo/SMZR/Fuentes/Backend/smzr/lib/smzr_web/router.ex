@@ -18,12 +18,22 @@ defmodule SmzrWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+
+    live "/locations", LocationLive.Index, :index
+    live "/locations/new", LocationLive.Index, :new
+    live "/locations/:id/edit", LocationLive.Index, :edit
+
+    live "/locations/:id", LocationLive.Show, :show
+    live "/locations/:id/show/edit", LocationLive.Show, :edit
+
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SmzrWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", SmzrWeb do
+    pipe_through :api
+
+    resources "/locations", LocationController, except: [:new, :edit]
+  end
 
   # Enables LiveDashboard only for development
   #
