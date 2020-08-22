@@ -5,8 +5,5 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MapaRiesgoViewModel : ViewModel() {
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is mapa riesgo Fragment"
-    }
-    val text: LiveData<String> = _text
+
 }

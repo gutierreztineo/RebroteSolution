@@ -1,41 +1,38 @@
 package com.rebrotesolution.smzr_android.models
 
 import android.text.TextUtils
-import android.util.Patterns
 import androidx.databinding.BaseObservable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
-class Usuario(
-    private var username:String,
-    private var password:String,
-    private var id_usuario: Int,
-    private var token: String
+@Entity(
+    tableName = "usuario"
+)
+data class Usuario(
+
+    @PrimaryKey
+    @ColumnInfo(name="id_usuario")
+    var id_usuario: Int?,
+    
+    @ColumnInfo(name="username")
+    var username:String,
+
+    @ColumnInfo(name="password")
+    var password:String,
+
+    @ColumnInfo(name="token")
+    var token: String?
 
 ) : BaseObservable() {
 
     val isDataValid: Boolean
-    get() =  getPassword().length >= 5
+    get() =  password.length >= 5
 
     val isDataComplete: Boolean
-    get() = (!TextUtils.isEmpty(getUsername()) && !TextUtils.isEmpty(getPassword()) )
+    get() = (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password) )
 
-    fun getPassword() : String {
-        return password
-    }
 
-    fun getUsername() : String {
-        return username
-    }
-
-    fun setPassword(password : String ){
-        this.password = password
-    }
-
-    fun setUsername(username : String ){
-        this.username = username
-    }
-
-    fun getIdUsuario(): Int{
-        return id_usuario
-    }
 
 }

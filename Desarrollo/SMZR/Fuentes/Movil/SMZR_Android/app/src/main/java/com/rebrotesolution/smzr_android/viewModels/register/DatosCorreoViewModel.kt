@@ -15,14 +15,14 @@ class DatosCorreoViewModel(
     init {
         persona = Persona(
             id_persona = 0, nombres = "", apellidos = "", genero = "",
-            dni = "", edad = 0, email = ""
+            dni = "", edad = 0, email = "", usuario = null
         )
     }
 
     val emailTextWatcher: TextWatcher
         get() = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                persona.setEmail(p0.toString())
+                persona. email = p0.toString()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -32,7 +32,7 @@ class DatosCorreoViewModel(
 
     fun onNextClicked(v: View) {
         if (persona.isDatoCorreoValid) {
-            var data: Map<String, String> = mapOf("email" to persona.getEmail())
+            var data: Map<String, String> = mapOf("email" to persona.email)
             listener.valid(data)
         } else {
             listener.invalid("El correo tiene un formato inválido")

@@ -2,85 +2,48 @@ package com.rebrotesolution.smzr_android.models
 
 import android.text.TextUtils
 import android.util.Patterns
-import org.w3c.dom.Text
+import androidx.room.*
 
-class Persona(
-    private var id_persona: Int,
-    private var nombres: String,
-    private var apellidos: String,
-    private var genero: String,
-    private var dni: String,
-    private var edad: Int,
-    private var email: String
+@Entity(
+    tableName = "persona"
+)
+data class Persona(
+
+    @PrimaryKey
+    @ColumnInfo(name="id")
+    var id_persona: Int?,
+
+    @ColumnInfo(name="nombres")
+    var nombres: String,
+
+    @ColumnInfo(name="apellidos")
+    var apellidos: String,
+
+    @ColumnInfo(name="genero")
+    var genero: String,
+
+    @ColumnInfo(name="dni")
+    var dni: String,
+
+    @ColumnInfo(name="edad")
+    var edad: Int,
+
+    @ColumnInfo(name="email")
+    var email: String,
+
+    @Embedded
+    var usuario: Usuario?
 ) {
 
     val isDatoCorreoValid: Boolean
-        get() = !TextUtils.isEmpty(getEmail()) && Patterns.EMAIL_ADDRESS.matcher(getEmail())
+        get() = !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email)
             .matches()
 
     val isDatoPersonal1Valid: Boolean
-        get() = !TextUtils.isEmpty(getNombres()) && !TextUtils.isEmpty(getApellidos()) && !TextUtils.isEmpty(
-            getDni()
-        )
+        get() = !TextUtils.isEmpty(nombres) && !TextUtils.isEmpty(apellidos) && !TextUtils.isEmpty(dni)
 
     val isDniValid: Boolean
-        get() = getDni().length == 8
+        get() = dni.length == 8
 
-    val isMayorEdad: Boolean
-        get() = getEdad() >= 18
 
-    val isGeneroSelected: Boolean
-        get() = !TextUtils.isEmpty(getGenero())
-
-    fun getIdPersona(): Int {
-        return id_persona
-    }
-
-    fun getNombres(): String {
-        return nombres
-    }
-
-    fun setNombres(name: String) {
-        this.nombres = name
-    }
-
-    fun getApellidos(): String {
-        return apellidos
-    }
-
-    fun setApellidos(lastname: String) {
-        this.apellidos = lastname
-    }
-
-    fun getDni(): String {
-        return dni;
-    }
-
-    fun setDni(dni: String) {
-        this.dni = dni
-    }
-
-    fun getEdad(): Int {
-        return edad
-    }
-
-    fun setEdad(edad: Int) {
-        this.edad = edad
-    }
-
-    fun getEmail(): String {
-        return email
-    }
-
-    fun setEmail(email: String) {
-        this.email = email
-    }
-
-    fun getGenero(): String {
-        return genero
-    }
-
-    fun setGenero(genero: String) {
-        this.genero = genero
-    }
 }

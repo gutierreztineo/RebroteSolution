@@ -48,10 +48,19 @@ class DatosCuentaFragment : Fragment(), RegisterResultCallBacks {
 
     override fun valid(data: Map<String,String>) {
         var bundle = bundleOf("username" to data["username"],"password" to data["password"])
-        navController.navigate(R.id.go_datos_correo);
+        navController.navigate(R.id.go_datos_correo,bundle);
     }
 
     override fun invalid(message:String) {
         Toasty.error( requireContext(),message, Toast.LENGTH_SHORT).show();
+    }
+
+    override fun onSuccess(obj: Any) {
+    }
+
+    override fun onError(message: String) {
+    }
+
+    override fun onStarted() {
     }
 }

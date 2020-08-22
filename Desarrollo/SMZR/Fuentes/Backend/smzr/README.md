@@ -17,3 +17,11 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+
+
+##
+ln -s ~/RebroteSolution/Desarrollo/SMZR/Fuentes/Backend/smzr ~/smzr
+
+sudo setcap 'cap_net_bind_service=+ep'  /usr/lib/erlang/erts-11.0.3/bin/beam.smp 
+sudo setcap 'cap_net_bind_service=+ep' _build/prod/rel/smzr/erts-11.0.2/bin/beam.smp

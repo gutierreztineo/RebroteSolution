@@ -1,0 +1,144 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: binarynoggin/elixir-release-builder:latest
+        environment:
+          MIX_ENV: prod 
+          DEPLOYMENT_NAME: smzr
+          DEPLOYMENT_USER: ubuntu
+          DEPLOYMENT_HOST: ec2-18-231-77-43.sa-east-1.compute.amazonaws.com
+          HOSTNAME: smzr.makinap.com
+          PORT: 80
+
+    #working_directory: ~/app
+    working_directory: ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr #fix route
+
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "61:95:48:4b:a4:f9:d6:1f:da:f4:9c:3b:6d:37:57:5d"
+      - checkout:
+          path: ~/app #fix path
+      - run: cd ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr #fix path
+      - run: echo ${MIX_ENV} >> MIX_ENV
+      - run: echo ${DATABASE_URL} >> DATABASE_URL
+      - run: echo ${SECRET_KEY_BASE} >> SECRET_KEY_BASE
+      - run: echo ${HOSTNAME} >> HOSTNAME
+      - run: echo ${PORT} >> PORT
+      - restore_cache:
+          keys:
+            - v0-mix-dependency-cache-{{ checksum "mix.lock" }}-{{ checksum "MIX_ENV" }}
+      - restore_cache:
+          keys:
+            - v0-npm-dependency-cache-{{ checksum "assets/package.json" }}
+      - run: mix deps.get
+      - run: npm install --prefix assets
+      - run: npm run deploy --prefix assets
+      - run: mix phx.digest
+      - run: PORT=${PORT} HOSTNAME=${HOSTNAME} mix release
+      - run: tar -zcvf ${DEPLOYMENT_NAME}-${MIX_ENV}.tar _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}
+      - run: 
+          name: Upload release
+          command: |
+            scp -o "StrictHostKeyChecking no" \
+            ${DEPLOYMENT_NAME}-${MIX_ENV}.tar \
+            ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST}:/home/${DEPLOYMENT_USER}/${DEPLOYMENT_NAME}-${MIX_ENV}-${CIRCLE_BUILD_NUM}.tar
+      - run:
+          name: Untar release
+          command: |
+            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
+            "tar xf ${DEPLOYMENT_NAME}-${MIX_ENV}-${CIRCLE_BUILD_NUM}.tar"
+      - run:
+          name: Set cap_net_bind_service
+          command: |
+            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
+            "sudo setcap 'cap_net_bind_service=+eip' _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/erts-11.0.2/bin/beam.smp;
+            getcap _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/erts-11.0.2/bin/beam.smp;
+            sudo setcap 'cap_net_bind_service=+eip' _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME};
+            getcap _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME};
+            "
+      
+      - run:
+          name: Stop running instance
+          command: |
+            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
+            "_build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} stop; echo \"Ignore if this command fails\""
+      
+      - run:
+          name: Start a new instance
+          command: |
+            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
+            "bash --login -c \" PORT=${PORT} HOSTNAME=${HOSTNAME} DATABASE_URL=${DATABASE_URL} SECRET_KEY_BASE=${SECRET_KEY_BASE} _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} daemon\""
+      - run:
+          name: Check the new instance is running
+          command: |
+            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
+            "_build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} version"
+      - save_cache:
+          key: v0-mix-dependency-cache-{{ checksum "mix.lock" }}-{{ checksum "MIX_ENV" }}
+          paths:
+            - deps
+            - _build
+      - save_cache:
+          key: v0-npm-dependency-cache-{{ checksum "assets/package.json" }}
+          paths:
+            - assets/node_modules
+  build:
+    docker:
+      - image: binarynoggin/elixir-release-builder:latest
+        environment:
+          MIX_ENV: test 
+          POSTGRES_USER: ubuntu
+          POSTGRES_DB: smzr_test
+
+      - image: circleci/postgres:12.2-postgis 
+        environment:  # environment variables for database
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: smzr_test
+    #working_directory: ~/app
+    working_directory: ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr #fix route
+    steps:
+      - checkout:
+          path: ~/app #fix path
+      - run : cd ~/app/Desarrollo/SMZR/Fuentes/Backend/smzr #fix route
+      - run: echo ${MIX_ENV} >> MIX_ENV
+      - restore_cache:
+          keys:
+            - v0-mix-dependency-cache-{{ checksum "mix.lock" }}-{{ checksum "MIX_ENV" }}
+      - restore_cache:
+          keys:
+            - v0-npm-dependency-cache-{{ checksum "assets/package-lock.json" }}
+      #- run: psql -U ${POSTGRES_USER} ${POSTGRES_DB} -h localhost < priv/repo/structure.sql
+      - run: npm install --prefix assets
+      - run: mix deps.get
+      - run: mix test
+      - save_cache:
+          key: v0-mix-dependency-cache-{{ checksum "mix.lock" }}-{{ checksum "MIX_ENV" }}
+          paths:
+            - deps
+            - _build
+      - save_cache:
+          key: v0-npm-dependency-cache-{{ checksum "assets/package-lock.json" }}
+          paths:
+            - assets/node_modules
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build:
+          filters:
+            #tags:
+              #ignore: /.*/
+            branches:
+              only: gutierreztineo
+  deploy_production:
+    jobs:
+      - deploy:
+          filters:
+            #tags:
+              #only: /^v.*/
+            branches:
+              only: gutierreztineo
+              #ignore: /.*/

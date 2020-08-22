@@ -23,49 +23,60 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:orientation="vertical">
+
                 <ImageView
-                    android:layout_width="150dp"
+                    android:id="@+id/login_logo"
+                    android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:src="@drawable/ic_launcher_foreground"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/logof" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subtitle_logo"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="30dp"
+                    android:textSize="16sp"/>
 
                 <EditText
                     android:id="@+id/username_text"
                     android:drawableStart="@drawable/ic_user"
-                    android:hint="Usuario"
+                    android:hint="@string/placeholder_btn_user"
                     android:drawablePadding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark"
                     android:background="@drawable/login_edit_background"
                     android:padding="15dp"
-                    app:addTextChangedListener = "@{loginViewModel.usernameTextWatcher}"/>
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{loginViewModel.usernameTextWatcher}" />
 
                 <EditText
                     android:id="@+id/password_text"
-                    android:layout_marginTop="30dp"
-                    android:drawableStart="@drawable/ic_password"
-                    android:hint="Contraseña"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark"
-                    android:drawablePadding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
                     android:background="@drawable/login_edit_background"
-                    android:padding="15dp"
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/contrasena"
                     android:inputType="textPassword"
-                    app:addTextChangedListener = "@{loginViewModel.passwordTextWatcher}"/>
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{loginViewModel.passwordTextWatcher}" />
 
                 <TextView
                     android:id="@+id/forgot_password_link"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textColorHint="@color/colorPrimaryDark"
-                    android:text="¿Has olvidado tu contraseña?"
-                    android:padding="15dp"
-                    android:layout_gravity="right"/>
+                    android:layout_gravity="right"
+                    android:padding="10dp"
+                    android:text="@string/forgotPassword"
+                    android:textColor="@color/colorIndicatorSelected"
+                    android:textColorHint="@color/colorPrimaryDark" />
 
                 <Button
                     android:id="@+id/login_button"
@@ -73,26 +84,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
-                    android:text="Iniciar Sesión"
-                    android:textAllCaps="false"
-                    android:textSize="20sp"
-                    android:padding="15dp"
                     android:textColor="@color/colorWhite"
+                    android:textAllCaps="false"
+                    android:text="@string/iniciar_sesion"
+                    android:textSize="20sp"
+                    android:padding="10dp"
                     android:onClick="@{loginViewModel::onLoginClicked}"/>
 
                 <Button
                     android:id="@+id/register_button"
-                    android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_background"
-                    android:text="Registrate"
-                    android:textColor="@color/colorWhite"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorButton"
+                    android:onClick="@{loginViewModel::onRegisterClicked}"
+                    android:padding="10dp"
+                    android:text="@string/registrate"
                     android:textAllCaps="false"
-                    android:textSize="20sp"
-                    android:padding="15dp"
-
-                    android:onClick="@{loginViewModel::onRegisterClicked}"/>
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>

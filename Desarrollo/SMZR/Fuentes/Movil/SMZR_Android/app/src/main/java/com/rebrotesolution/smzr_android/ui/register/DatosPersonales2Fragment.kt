@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -39,6 +40,13 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
         savedInstanceState: Bundle?
     ): View? {
 
+        email = arguments?.getString("email").toString()
+        username = arguments?.getString("username").toString()
+        pass = arguments?.getString("password").toString()
+        nombres = arguments?.getString("nombres").toString()
+        apellidos = arguments?.getString("apellidos").toString()
+        dni = arguments?.getString("dni").toString()
+
         val activityRegisterBinding = DataBindingUtil.inflate<DatosPersonales2FragmentBinding>(inflater,R.layout.datos_personales2_fragment,container,false)
 
         viewModel = ViewModelProviders.of(this, DatosPersonales2ViewModelFactory(this)).get(DatosPersonales2ViewModel::class.java)
@@ -58,11 +66,31 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
     }
 
     override fun valid(data: Map<String, String>) {
-        navController.navigate(R.id.go_datos_personales_3);
+        var bundle = bundleOf(
+            "email" to email,
+            "username" to username,
+            "password" to pass,
+            "nombres" to nombres,
+            "apellidos" to apellidos,
+            "dni" to dni,
+            "edad" to data["edad"]
+        )
+        navController.navigate(R.id.go_datos_personales_3,bundle);
     }
 
     override fun invalid(message: String) {
         Toasty.error( requireContext(),message, Toast.LENGTH_SHORT).show();
     }
+
+    override fun onSuccess(obj: Any) {
+    }
+
+    override fun onError(message: String) {
+    }
+
+    override fun onStarted() {
+
+    }
+
 
 }
