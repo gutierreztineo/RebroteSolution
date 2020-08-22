@@ -1,0 +1,37 @@
+<h1>Listing Ailment levels</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, SmzrWeb.AilmentLevelLive.FormComponent,
+    id: @ailment_level.id || :new,
+    title: @page_title,
+    action: @live_action,
+    ailment_level: @ailment_level,
+    return_to: Routes.ailment_level_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Level</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="ailment_levels">
+    <%= for ailment_level <- @ailment_levels do %>
+      <tr id="ailment_level-<%= ailment_level.id %>">
+        <td><%= ailment_level.description %></td>
+        <td><%= ailment_level.level %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.ailment_level_show_path(@socket, :show, ailment_level) %></span>
+          <span><%= live_patch "Edit", to: Routes.ailment_level_index_path(@socket, :edit, ailment_level) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: ailment_level.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Ailment level", to: Routes.ailment_level_index_path(@socket, :new) %></span>

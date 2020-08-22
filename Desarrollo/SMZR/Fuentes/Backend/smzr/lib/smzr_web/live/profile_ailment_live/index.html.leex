@@ -1,0 +1,33 @@
+<h1>Listing Profile ailments</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, SmzrWeb.ProfileAilmentLive.FormComponent,
+    id: @profile_ailment.id || :new,
+    title: @page_title,
+    action: @live_action,
+    profile_ailment: @profile_ailment,
+    return_to: Routes.profile_ailment_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="profile_ailments">
+    <%= for profile_ailment <- @profile_ailments do %>
+      <tr id="profile_ailment-<%= profile_ailment.id %>">
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.profile_ailment_show_path(@socket, :show, profile_ailment) %></span>
+          <span><%= live_patch "Edit", to: Routes.profile_ailment_index_path(@socket, :edit, profile_ailment) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: profile_ailment.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Profile ailment", to: Routes.profile_ailment_index_path(@socket, :new) %></span>
