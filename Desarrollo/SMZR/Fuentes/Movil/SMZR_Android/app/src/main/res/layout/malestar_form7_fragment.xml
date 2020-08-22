@@ -27,7 +27,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
-                android:text="13. ¿Durante la última semana, ha sentido dolores de cabeza?"
+                android:text="@string/question13_form_malestar"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
+                    android:text="@string/label_respuesta"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -58,28 +58,28 @@
                     android:id="@+id/id_rdbtn_q13_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No he tenido dolores de cabeza."
+                    android:text="@string/text_resp_q13_opc1"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q13_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Dolor de cabeza momentáneo."
+                    android:text="@string/text_resp_q13_opc2"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q13_opc3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Dolor de cabeza regularmente prolongado."
+                    android:text="@string/text_resp_q13_opc3"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q13_opc4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Dolor de cabeza constante y fuerte."/>
+                    android:text="@string/text_resp_q13_opc4"/>
 
             </RadioGroup>
 
@@ -90,7 +90,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
-                android:text="14. ¿Durante la última semana, ha sentido pérdida de olfato o gusto? "
+                android:text="@string/question14_form_malestar"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
+                    android:text="@string/label_respuesta"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -121,14 +121,14 @@
                     android:id="@+id/id_rdbtn_q14_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No"
+                    android:text="@string/text_resp_no"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q14_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí" />
+                    android:text="@string/text_resp_si" />
 
             </RadioGroup>
 
@@ -140,7 +140,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
-                android:text="Completar Formulario"
+                android:text="@string/btn_text_completar_form"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

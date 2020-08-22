@@ -27,7 +27,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
-                android:text="1. ¿Durante la última semana ha presentado fiebre? (Temperatura mayor a 36C°) "
+                android:text="@string/question1_form_malestar"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
+                    android:text="@string/label_respuesta"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -58,7 +58,7 @@
                     android:id="@+id/id_rdbtn_q1_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No"
+                    android:text="@string/text_resp_no"
                     android:layout_marginBottom="10dp"
                     />
 
@@ -66,7 +66,7 @@
                     android:id="@+id/id_rdbtn_q1_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí" />
+                    android:text="@string/text_resp_si" />
             </RadioGroup>
 
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
-                android:text="2. ¿Durante la última semana ha presentado tos seca?"
+                android:text="@string/question2_form_malestar"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
+                    android:text="@string/label_respuesta"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -107,28 +107,28 @@
                     android:id="@+id/id_rdbtn_q2_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No presento tos"
+                    android:text="@string/text_resp_q2_opc1"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q2_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Toso muy poco"
+                    android:text="@string/text_resp_q2_opc2"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q2_opc3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Toso regularmente"
+                    android:text="@string/text_resp_q2_opc3"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q2_opc4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Toso con mucha frecuencia" />
+                    android:text="@string/text_resp_q2_opc4" />
 
             </RadioGroup>
 
@@ -140,7 +140,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
-                android:text="Siguiente"
+                android:text="@string/siguiente"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
