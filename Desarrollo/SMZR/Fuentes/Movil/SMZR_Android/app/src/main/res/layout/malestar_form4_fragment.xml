@@ -27,7 +27,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
-                android:text="7. ¿Durante la última semana ha presentado alguna complicación para mantenerse despierto?"
+                android:text="@string/question7_form_malestar"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
+                    android:text="@string/label_respuesta"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -58,14 +58,14 @@
                     android:id="@+id/id_rdbtn_q7_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No"
+                    android:text="@string/text_resp_no"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q7_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí" />
+                    android:text="@string/text_resp_si" />
             </RadioGroup>
 
             <TextView
@@ -75,7 +75,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
-                android:text="8. ¿Durante la última semana ha notado que sus labios o rostro han tomado una tonalidad azulada?"
+                android:text="@string/question8_form_malestar"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
+                    android:text="@string/label_respuesta"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -106,14 +106,14 @@
                     android:id="@+id/id_rdbtn_q8_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No"
+                    android:text="@string/text_resp_no"
                     android:layout_marginBottom="10dp"/>
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q8_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí" />
+                    android:text="@string/text_resp_si" />
 
             </RadioGroup>
 
@@ -125,7 +125,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
-                android:text="Siguiente"
+                android:text="@string/label_respuesta"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

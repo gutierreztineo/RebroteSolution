@@ -35,7 +35,7 @@ class DatosPersonales3Fragment : Fragment(), RegisterResultCallBacks {
     private lateinit var nombres: String
     private lateinit var apellidos: String
     private lateinit var dni: String
-    private  var edad: Int = 0
+    private var edad: Int = 0
     private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
@@ -53,12 +53,34 @@ class DatosPersonales3Fragment : Fragment(), RegisterResultCallBacks {
         val networkConnectionInterceptor = NetworkConnectionInterceptor(requireContext())
         val api = PersonaClient(networkConnectionInterceptor)
         val db = RoomDB(requireContext())
-        val repository = PersonaRepository(api,db)
-        var usu = Usuario(id_usuario = null,username = username,password = pass,token = null)
-        var persona = Persona(id_persona = null,usuario = usu,apellidos = apellidos,nombres = nombres,email = email,dni = dni, edad = edad,genero = "")
+        val repository = PersonaRepository(api, db)
+        var usu = Usuario(id_usuario = null, username = username, password = pass, token = null)
+        var persona = Persona(
+            id_persona = null,
+            usuario = usu,
+            apellidos = apellidos,
+            nombres = nombres,
+            email = email,
+            dni = dni,
+            edad = edad,
+            genero = ""
+        )
 
-        val activityRegisterBinding = DataBindingUtil.inflate<DatosPersonales3FragmentBinding>(inflater,R.layout.datos_personales3_fragment,container,false)
-        viewModel = ViewModelProviders.of(this, DatosPersonales3ViewModelFactory(this,repository = repository,persona = persona)).get(DatosPersonales3ViewModel::class.java)
+        val activityRegisterBinding = DataBindingUtil.inflate<DatosPersonales3FragmentBinding>(
+            inflater,
+            R.layout.datos_personales3_fragment,
+            container,
+            false
+        )
+        viewModel = ViewModelProviders.of(
+            this,
+            DatosPersonales3ViewModelFactory(
+                this,
+                repository = repository,
+                persona = persona,
+                context = requireContext()
+            )
+        ).get(DatosPersonales3ViewModel::class.java)
 
         activityRegisterBinding.datosPersonales3ViewModel = viewModel
         activityRegisterBinding.lifecycleOwner = this
@@ -81,7 +103,7 @@ class DatosPersonales3Fragment : Fragment(), RegisterResultCallBacks {
 
     override fun onError(message: String) {
         loadingDialog.dismiss()
-        Toasty.warning(requireContext(),message,Toast.LENGTH_SHORT).show()
+        Toasty.warning(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onStarted() {

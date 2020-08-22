@@ -31,7 +31,7 @@ interface PersonaClient {
 
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("https://a3c73d3cffcf.ngrok.io/")
+                .baseUrl("https://rentame-back.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(PersonaClient::class.java)
