@@ -35,6 +35,14 @@ defmodule SmzrWeb.Router do
     live "/users/:id", UserLive.Show, :show
     live "/users/:id/show/edit", UserLive.Show, :edit
 
+    #UserLocation
+    live "/user_locations", UserLocationLive.Index, :index
+    live "/user_locations/new", UserLocationLive.Index, :new
+    live "/user_locations/:id/edit", UserLocationLive.Index, :edit
+
+    live "/user_locations/:id", UserLocationLive.Show, :show
+    live "/user_locations/:id/show/edit", UserLocationLive.Show, :edit
+    
     #Profile
     live "/profiles", ProfileLive.Index, :index
     live "/profiles/new", ProfileLive.Index, :new
@@ -98,6 +106,7 @@ defmodule SmzrWeb.Router do
 
     live "/ailment_advices/:id", AilmentAdviceLive.Show, :show
     live "/ailment_advices/:id/show/edit", AilmentAdviceLive.Show, :edit
+
   end
 
   # Other scopes may use custom stacks.
@@ -106,6 +115,7 @@ defmodule SmzrWeb.Router do
 
     resources "/locations", LocationController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit]
+    resources "/user_locations", UserLocationController, except: [:new, :edit]
     resources "/profiles", ProfileController, except: [:new, :edit]
     resources "/ailments", AilmentController, except: [:new, :edit]
     resources "/ailment_levels", AilmentLevelController, except: [:new, :edit]

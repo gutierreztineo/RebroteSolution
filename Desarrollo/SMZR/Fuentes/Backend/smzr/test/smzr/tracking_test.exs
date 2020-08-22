@@ -63,4 +63,61 @@ defmodule Smzr.TrackingTest do
       assert %Ecto.Changeset{} = Tracking.change_location(location)
     end
   end
+
+  describe "user_locations" do
+    alias Smzr.Tracking.UserLocation
+
+    @valid_attrs %{}
+    @update_attrs %{}
+    @invalid_attrs %{}
+
+    def user_location_fixture(attrs \\ %{}) do
+      {:ok, user_location} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Tracking.create_user_location()
+
+      user_location
+    end
+
+    test "list_user_locations/0 returns all user_locations" do
+      user_location = user_location_fixture()
+      assert Tracking.list_user_locations() == [user_location]
+    end
+
+    test "get_user_location!/1 returns the user_location with given id" do
+      user_location = user_location_fixture()
+      assert Tracking.get_user_location!(user_location.id) == user_location
+    end
+
+    test "create_user_location/1 with valid data creates a user_location" do
+      assert {:ok, %UserLocation{} = user_location} = Tracking.create_user_location(@valid_attrs)
+    end
+
+    test "create_user_location/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Tracking.create_user_location(@invalid_attrs)
+    end
+
+    test "update_user_location/2 with valid data updates the user_location" do
+      user_location = user_location_fixture()
+      assert {:ok, %UserLocation{} = user_location} = Tracking.update_user_location(user_location, @update_attrs)
+    end
+
+    test "update_user_location/2 with invalid data returns error changeset" do
+      user_location = user_location_fixture()
+      assert {:error, %Ecto.Changeset{}} = Tracking.update_user_location(user_location, @invalid_attrs)
+      assert user_location == Tracking.get_user_location!(user_location.id)
+    end
+
+    test "delete_user_location/1 deletes the user_location" do
+      user_location = user_location_fixture()
+      assert {:ok, %UserLocation{}} = Tracking.delete_user_location(user_location)
+      assert_raise Ecto.NoResultsError, fn -> Tracking.get_user_location!(user_location.id) end
+    end
+
+    test "change_user_location/1 returns a user_location changeset" do
+      user_location = user_location_fixture()
+      assert %Ecto.Changeset{} = Tracking.change_user_location(user_location)
+    end
+  end
 end
