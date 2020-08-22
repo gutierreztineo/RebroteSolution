@@ -43,6 +43,15 @@ defmodule SmzrWeb.Router do
     live "/profiles/:id", ProfileLive.Show, :show
     live "/profiles/:id/show/edit", ProfileLive.Show, :edit
 
+    #Ailments
+    live "/ailments", AilmentLive.Index, :index
+    live "/ailments/new", AilmentLive.Index, :new
+    live "/ailments/:id/edit", AilmentLive.Index, :edit
+
+    live "/ailments/:id", AilmentLive.Show, :show
+    live "/ailments/:id/show/edit", AilmentLive.Show, :edit
+
+
   end
 
   # Other scopes may use custom stacks.
@@ -52,6 +61,8 @@ defmodule SmzrWeb.Router do
     resources "/locations", LocationController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit]
     resources "/profiles", ProfileController, except: [:new, :edit]
+    resources "/ailments", AilmentController, except: [:new, :edit]
+
 
 
   end
