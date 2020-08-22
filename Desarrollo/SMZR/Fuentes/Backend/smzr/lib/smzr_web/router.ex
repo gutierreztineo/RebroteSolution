@@ -59,13 +59,30 @@ defmodule SmzrWeb.Router do
     live "/profile_ailments/:id", ProfileAilmentLive.Show, :show
     live "/profile_ailments/:id/show/edit", ProfileAilmentLive.Show, :edit
 
-    #AilmentLevelLive
+    #AilmentLevel
     live "/ailment_levels", AilmentLevelLive.Index, :index
     live "/ailment_levels/new", AilmentLevelLive.Index, :new
     live "/ailment_levels/:id/edit", AilmentLevelLive.Index, :edit
 
     live "/ailment_levels/:id", AilmentLevelLive.Show, :show
     live "/ailment_levels/:id/show/edit", AilmentLevelLive.Show, :edit
+
+    #Risk
+    live "/risks", RiskLive.Index, :index
+    live "/risks/new", RiskLive.Index, :new
+    live "/risks/:id/edit", RiskLive.Index, :edit
+
+    live "/risks/:id", RiskLive.Show, :show
+    live "/risks/:id/show/edit", RiskLive.Show, :edit
+
+    #ProfileRisk
+    live "/profile_risks", ProfileRiskLive.Index, :index
+    live "/profile_risks/new", ProfileRiskLive.Index, :new
+    live "/profile_risks/:id/edit", ProfileRiskLive.Index, :edit
+
+    live "/profile_risks/:id", ProfileRiskLive.Show, :show
+    live "/profile_risks/:id/show/edit", ProfileRiskLive.Show, :edit
+
 
 
   end
@@ -80,6 +97,9 @@ defmodule SmzrWeb.Router do
     resources "/ailments", AilmentController, except: [:new, :edit]
     resources "/ailment_levels", AilmentLevelController, except: [:new, :edit]
     resources "/profile_ailments", ProfileAilmentController, except: [:new, :edit]
+    resources "/risks", RiskController, except: [:new, :edit]
+    resources "/profile_risks", ProfileRiskController, except: [:new, :edit]
+
 
   end
 

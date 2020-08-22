@@ -293,4 +293,196 @@ defmodule Smzr.Monitoring do
   def change_ailment_level(%AilmentLevel{} = ailment_level, attrs \\ %{}) do
     AilmentLevel.changeset(ailment_level, attrs)
   end
+
+  alias Smzr.Monitoring.Risk
+
+  @doc """
+  Returns the list of risks.
+
+  ## Examples
+
+      iex> list_risks()
+      [%Risk{}, ...]
+
+  """
+  def list_risks do
+    Repo.all(Risk)
+  end
+
+  @doc """
+  Gets a single risk.
+
+  Raises `Ecto.NoResultsError` if the Risk does not exist.
+
+  ## Examples
+
+      iex> get_risk!(123)
+      %Risk{}
+
+      iex> get_risk!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_risk!(id), do: Repo.get!(Risk, id)
+
+  @doc """
+  Creates a risk.
+
+  ## Examples
+
+      iex> create_risk(%{field: value})
+      {:ok, %Risk{}}
+
+      iex> create_risk(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_risk(attrs \\ %{}) do
+    %Risk{}
+    |> Risk.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a risk.
+
+  ## Examples
+
+      iex> update_risk(risk, %{field: new_value})
+      {:ok, %Risk{}}
+
+      iex> update_risk(risk, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_risk(%Risk{} = risk, attrs) do
+    risk
+    |> Risk.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a risk.
+
+  ## Examples
+
+      iex> delete_risk(risk)
+      {:ok, %Risk{}}
+
+      iex> delete_risk(risk)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_risk(%Risk{} = risk) do
+    Repo.delete(risk)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking risk changes.
+
+  ## Examples
+
+      iex> change_risk(risk)
+      %Ecto.Changeset{data: %Risk{}}
+
+  """
+  def change_risk(%Risk{} = risk, attrs \\ %{}) do
+    Risk.changeset(risk, attrs)
+  end
+
+  alias Smzr.Monitoring.ProfileRisk
+
+  @doc """
+  Returns the list of profile_risks.
+
+  ## Examples
+
+      iex> list_profile_risks()
+      [%ProfileRisk{}, ...]
+
+  """
+  def list_profile_risks do
+    Repo.all(ProfileRisk)
+  end
+
+  @doc """
+  Gets a single profile_risk.
+
+  Raises `Ecto.NoResultsError` if the Profile risk does not exist.
+
+  ## Examples
+
+      iex> get_profile_risk!(123)
+      %ProfileRisk{}
+
+      iex> get_profile_risk!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_profile_risk!(id), do: Repo.get!(ProfileRisk, id)
+
+  @doc """
+  Creates a profile_risk.
+
+  ## Examples
+
+      iex> create_profile_risk(%{field: value})
+      {:ok, %ProfileRisk{}}
+
+      iex> create_profile_risk(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_profile_risk(attrs \\ %{}) do
+    %ProfileRisk{}
+    |> ProfileRisk.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a profile_risk.
+
+  ## Examples
+
+      iex> update_profile_risk(profile_risk, %{field: new_value})
+      {:ok, %ProfileRisk{}}
+
+      iex> update_profile_risk(profile_risk, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_profile_risk(%ProfileRisk{} = profile_risk, attrs) do
+    profile_risk
+    |> ProfileRisk.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a profile_risk.
+
+  ## Examples
+
+      iex> delete_profile_risk(profile_risk)
+      {:ok, %ProfileRisk{}}
+
+      iex> delete_profile_risk(profile_risk)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_profile_risk(%ProfileRisk{} = profile_risk) do
+    Repo.delete(profile_risk)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking profile_risk changes.
+
+  ## Examples
+
+      iex> change_profile_risk(profile_risk)
+      %Ecto.Changeset{data: %ProfileRisk{}}
+
+  """
+  def change_profile_risk(%ProfileRisk{} = profile_risk, attrs \\ %{}) do
+    ProfileRisk.changeset(profile_risk, attrs)
+  end
 end

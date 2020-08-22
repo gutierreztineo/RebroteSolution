@@ -179,4 +179,122 @@ defmodule Smzr.MonitoringTest do
       assert %Ecto.Changeset{} = Monitoring.change_ailment_level(ailment_level)
     end
   end
+
+  describe "risks" do
+    alias Smzr.Monitoring.Risk
+
+    @valid_attrs %{descripcion: "some descripcion", name: "some name"}
+    @update_attrs %{descripcion: "some updated descripcion", name: "some updated name"}
+    @invalid_attrs %{descripcion: nil, name: nil}
+
+    def risk_fixture(attrs \\ %{}) do
+      {:ok, risk} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Monitoring.create_risk()
+
+      risk
+    end
+
+    test "list_risks/0 returns all risks" do
+      risk = risk_fixture()
+      assert Monitoring.list_risks() == [risk]
+    end
+
+    test "get_risk!/1 returns the risk with given id" do
+      risk = risk_fixture()
+      assert Monitoring.get_risk!(risk.id) == risk
+    end
+
+    test "create_risk/1 with valid data creates a risk" do
+      assert {:ok, %Risk{} = risk} = Monitoring.create_risk(@valid_attrs)
+      assert risk.descripcion == "some descripcion"
+      assert risk.name == "some name"
+    end
+
+    test "create_risk/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Monitoring.create_risk(@invalid_attrs)
+    end
+
+    test "update_risk/2 with valid data updates the risk" do
+      risk = risk_fixture()
+      assert {:ok, %Risk{} = risk} = Monitoring.update_risk(risk, @update_attrs)
+      assert risk.descripcion == "some updated descripcion"
+      assert risk.name == "some updated name"
+    end
+
+    test "update_risk/2 with invalid data returns error changeset" do
+      risk = risk_fixture()
+      assert {:error, %Ecto.Changeset{}} = Monitoring.update_risk(risk, @invalid_attrs)
+      assert risk == Monitoring.get_risk!(risk.id)
+    end
+
+    test "delete_risk/1 deletes the risk" do
+      risk = risk_fixture()
+      assert {:ok, %Risk{}} = Monitoring.delete_risk(risk)
+      assert_raise Ecto.NoResultsError, fn -> Monitoring.get_risk!(risk.id) end
+    end
+
+    test "change_risk/1 returns a risk changeset" do
+      risk = risk_fixture()
+      assert %Ecto.Changeset{} = Monitoring.change_risk(risk)
+    end
+  end
+
+  describe "profile_risks" do
+    alias Smzr.Monitoring.ProfileRisk
+
+    @valid_attrs %{}
+    @update_attrs %{}
+    @invalid_attrs %{}
+
+    def profile_risk_fixture(attrs \\ %{}) do
+      {:ok, profile_risk} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Monitoring.create_profile_risk()
+
+      profile_risk
+    end
+
+    test "list_profile_risks/0 returns all profile_risks" do
+      profile_risk = profile_risk_fixture()
+      assert Monitoring.list_profile_risks() == [profile_risk]
+    end
+
+    test "get_profile_risk!/1 returns the profile_risk with given id" do
+      profile_risk = profile_risk_fixture()
+      assert Monitoring.get_profile_risk!(profile_risk.id) == profile_risk
+    end
+
+    test "create_profile_risk/1 with valid data creates a profile_risk" do
+      assert {:ok, %ProfileRisk{} = profile_risk} = Monitoring.create_profile_risk(@valid_attrs)
+    end
+
+    test "create_profile_risk/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Monitoring.create_profile_risk(@invalid_attrs)
+    end
+
+    test "update_profile_risk/2 with valid data updates the profile_risk" do
+      profile_risk = profile_risk_fixture()
+      assert {:ok, %ProfileRisk{} = profile_risk} = Monitoring.update_profile_risk(profile_risk, @update_attrs)
+    end
+
+    test "update_profile_risk/2 with invalid data returns error changeset" do
+      profile_risk = profile_risk_fixture()
+      assert {:error, %Ecto.Changeset{}} = Monitoring.update_profile_risk(profile_risk, @invalid_attrs)
+      assert profile_risk == Monitoring.get_profile_risk!(profile_risk.id)
+    end
+
+    test "delete_profile_risk/1 deletes the profile_risk" do
+      profile_risk = profile_risk_fixture()
+      assert {:ok, %ProfileRisk{}} = Monitoring.delete_profile_risk(profile_risk)
+      assert_raise Ecto.NoResultsError, fn -> Monitoring.get_profile_risk!(profile_risk.id) end
+    end
+
+    test "change_profile_risk/1 returns a profile_risk changeset" do
+      profile_risk = profile_risk_fixture()
+      assert %Ecto.Changeset{} = Monitoring.change_profile_risk(profile_risk)
+    end
+  end
 end
