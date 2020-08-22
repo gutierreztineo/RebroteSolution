@@ -61,4 +61,61 @@ defmodule Smzr.MonitoringTest do
       assert %Ecto.Changeset{} = Monitoring.change_ailment(ailment)
     end
   end
+
+  describe "profile_ailments" do
+    alias Smzr.Monitoring.ProfileAilment
+
+    @valid_attrs %{}
+    @update_attrs %{}
+    @invalid_attrs %{}
+
+    def profile_ailment_fixture(attrs \\ %{}) do
+      {:ok, profile_ailment} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Monitoring.create_profile_ailment()
+
+      profile_ailment
+    end
+
+    test "list_profile_ailments/0 returns all profile_ailments" do
+      profile_ailment = profile_ailment_fixture()
+      assert Monitoring.list_profile_ailments() == [profile_ailment]
+    end
+
+    test "get_profile_ailment!/1 returns the profile_ailment with given id" do
+      profile_ailment = profile_ailment_fixture()
+      assert Monitoring.get_profile_ailment!(profile_ailment.id) == profile_ailment
+    end
+
+    test "create_profile_ailment/1 with valid data creates a profile_ailment" do
+      assert {:ok, %ProfileAilment{} = profile_ailment} = Monitoring.create_profile_ailment(@valid_attrs)
+    end
+
+    test "create_profile_ailment/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Monitoring.create_profile_ailment(@invalid_attrs)
+    end
+
+    test "update_profile_ailment/2 with valid data updates the profile_ailment" do
+      profile_ailment = profile_ailment_fixture()
+      assert {:ok, %ProfileAilment{} = profile_ailment} = Monitoring.update_profile_ailment(profile_ailment, @update_attrs)
+    end
+
+    test "update_profile_ailment/2 with invalid data returns error changeset" do
+      profile_ailment = profile_ailment_fixture()
+      assert {:error, %Ecto.Changeset{}} = Monitoring.update_profile_ailment(profile_ailment, @invalid_attrs)
+      assert profile_ailment == Monitoring.get_profile_ailment!(profile_ailment.id)
+    end
+
+    test "delete_profile_ailment/1 deletes the profile_ailment" do
+      profile_ailment = profile_ailment_fixture()
+      assert {:ok, %ProfileAilment{}} = Monitoring.delete_profile_ailment(profile_ailment)
+      assert_raise Ecto.NoResultsError, fn -> Monitoring.get_profile_ailment!(profile_ailment.id) end
+    end
+
+    test "change_profile_ailment/1 returns a profile_ailment changeset" do
+      profile_ailment = profile_ailment_fixture()
+      assert %Ecto.Changeset{} = Monitoring.change_profile_ailment(profile_ailment)
+    end
+  end
 end
