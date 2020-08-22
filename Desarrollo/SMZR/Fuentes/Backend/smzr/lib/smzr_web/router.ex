@@ -115,6 +115,7 @@ defmodule SmzrWeb.Router do
 
     resources "/locations", LocationController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit]
+    post "/users/sign_in", UserController, :sign_in
     resources "/user_locations", UserLocationController, except: [:new, :edit]
     resources "/profiles", ProfileController, except: [:new, :edit]
     resources "/ailments", AilmentController, except: [:new, :edit]

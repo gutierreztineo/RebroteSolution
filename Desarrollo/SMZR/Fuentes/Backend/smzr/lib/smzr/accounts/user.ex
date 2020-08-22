@@ -7,13 +7,24 @@ defmodule Smzr.Accounts.User do
     field :password_hash, :string
     field :username, :string
 
-    timestamps()
+    field :password, :string, virtual: true
+
+    timestamps(type: :utc_datetime_usec)
   end
 
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :password_hash, :is_active])
+    |> cast(attrs, [:username, :password, :is_active])
     |> validate_required([:username, :password_hash, :is_active])
+    |> put_password_hash()
+  end
+
+  defp put_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
+      change(changeset, Bcrypt.add_hash(password))
+  end
+
+  defp put_password_hash(changeset) do
+      changeset
   end
 end

@@ -13,7 +13,17 @@ defmodule SmzrWeb.UserView do
   def render("user.json", %{user: user}) do
     %{id: user.id,
       username: user.username,
-      password_hash: user.password_hash,
       is_active: user.is_active}
+  end
+
+  def render("sign_in.json", %{user: user}) do
+    %{
+      data: %{
+        user: %{
+          id: user.id,
+          username: user.username
+        }
+      }
+    }
   end
 end
