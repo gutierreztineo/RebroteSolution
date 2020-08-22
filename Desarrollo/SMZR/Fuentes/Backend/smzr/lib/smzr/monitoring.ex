@@ -581,4 +581,100 @@ defmodule Smzr.Monitoring do
   def change_advice(%Advice{} = advice, attrs \\ %{}) do
     Advice.changeset(advice, attrs)
   end
+
+  alias Smzr.Monitoring.AilmentAdvice
+
+  @doc """
+  Returns the list of ailment_advices.
+
+  ## Examples
+
+      iex> list_ailment_advices()
+      [%AilmentAdvice{}, ...]
+
+  """
+  def list_ailment_advices do
+    Repo.all(AilmentAdvice)
+  end
+
+  @doc """
+  Gets a single ailment_advice.
+
+  Raises `Ecto.NoResultsError` if the Ailment advice does not exist.
+
+  ## Examples
+
+      iex> get_ailment_advice!(123)
+      %AilmentAdvice{}
+
+      iex> get_ailment_advice!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_ailment_advice!(id), do: Repo.get!(AilmentAdvice, id)
+
+  @doc """
+  Creates a ailment_advice.
+
+  ## Examples
+
+      iex> create_ailment_advice(%{field: value})
+      {:ok, %AilmentAdvice{}}
+
+      iex> create_ailment_advice(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_ailment_advice(attrs \\ %{}) do
+    %AilmentAdvice{}
+    |> AilmentAdvice.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a ailment_advice.
+
+  ## Examples
+
+      iex> update_ailment_advice(ailment_advice, %{field: new_value})
+      {:ok, %AilmentAdvice{}}
+
+      iex> update_ailment_advice(ailment_advice, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_ailment_advice(%AilmentAdvice{} = ailment_advice, attrs) do
+    ailment_advice
+    |> AilmentAdvice.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a ailment_advice.
+
+  ## Examples
+
+      iex> delete_ailment_advice(ailment_advice)
+      {:ok, %AilmentAdvice{}}
+
+      iex> delete_ailment_advice(ailment_advice)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_ailment_advice(%AilmentAdvice{} = ailment_advice) do
+    Repo.delete(ailment_advice)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking ailment_advice changes.
+
+  ## Examples
+
+      iex> change_ailment_advice(ailment_advice)
+      %Ecto.Changeset{data: %AilmentAdvice{}}
+
+  """
+  def change_ailment_advice(%AilmentAdvice{} = ailment_advice, attrs \\ %{}) do
+    AilmentAdvice.changeset(ailment_advice, attrs)
+  end
 end

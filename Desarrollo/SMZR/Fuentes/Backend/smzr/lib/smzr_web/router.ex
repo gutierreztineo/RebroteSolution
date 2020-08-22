@@ -91,7 +91,13 @@ defmodule SmzrWeb.Router do
     live "/advices/:id", AdviceLive.Show, :show
     live "/advices/:id/show/edit", AdviceLive.Show, :edit
 
+    #AilmentAdvice
+    live "/ailment_advices", AilmentAdviceLive.Index, :index
+    live "/ailment_advices/new", AilmentAdviceLive.Index, :new
+    live "/ailment_advices/:id/edit", AilmentAdviceLive.Index, :edit
 
+    live "/ailment_advices/:id", AilmentAdviceLive.Show, :show
+    live "/ailment_advices/:id/show/edit", AilmentAdviceLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
@@ -107,7 +113,7 @@ defmodule SmzrWeb.Router do
     resources "/risks", RiskController, except: [:new, :edit]
     resources "/profile_risks", ProfileRiskController, except: [:new, :edit]
     resources "/advices", AdviceController, except: [:new, :edit]
-
+    resources "/ailment_advices", AilmentAdviceController, except: [:new, :edit]
 
   end
 

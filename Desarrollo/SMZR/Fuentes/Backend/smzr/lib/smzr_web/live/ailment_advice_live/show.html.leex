@@ -1,0 +1,17 @@
+<h1>Show Ailment advice</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, SmzrWeb.AilmentAdviceLive.FormComponent,
+    id: @ailment_advice.id,
+    title: @page_title,
+    action: @live_action,
+    ailment_advice: @ailment_advice,
+    return_to: Routes.ailment_advice_show_path(@socket, :show, @ailment_advice) %>
+<% end %>
+
+<ul>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.ailment_advice_show_path(@socket, :edit, @ailment_advice), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.ailment_advice_index_path(@socket, :index) %></span>

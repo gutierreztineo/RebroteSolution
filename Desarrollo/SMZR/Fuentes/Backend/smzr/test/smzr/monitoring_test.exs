@@ -356,4 +356,61 @@ defmodule Smzr.MonitoringTest do
       assert %Ecto.Changeset{} = Monitoring.change_advice(advice)
     end
   end
+
+  describe "ailment_advices" do
+    alias Smzr.Monitoring.AilmentAdvice
+
+    @valid_attrs %{}
+    @update_attrs %{}
+    @invalid_attrs %{}
+
+    def ailment_advice_fixture(attrs \\ %{}) do
+      {:ok, ailment_advice} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Monitoring.create_ailment_advice()
+
+      ailment_advice
+    end
+
+    test "list_ailment_advices/0 returns all ailment_advices" do
+      ailment_advice = ailment_advice_fixture()
+      assert Monitoring.list_ailment_advices() == [ailment_advice]
+    end
+
+    test "get_ailment_advice!/1 returns the ailment_advice with given id" do
+      ailment_advice = ailment_advice_fixture()
+      assert Monitoring.get_ailment_advice!(ailment_advice.id) == ailment_advice
+    end
+
+    test "create_ailment_advice/1 with valid data creates a ailment_advice" do
+      assert {:ok, %AilmentAdvice{} = ailment_advice} = Monitoring.create_ailment_advice(@valid_attrs)
+    end
+
+    test "create_ailment_advice/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Monitoring.create_ailment_advice(@invalid_attrs)
+    end
+
+    test "update_ailment_advice/2 with valid data updates the ailment_advice" do
+      ailment_advice = ailment_advice_fixture()
+      assert {:ok, %AilmentAdvice{} = ailment_advice} = Monitoring.update_ailment_advice(ailment_advice, @update_attrs)
+    end
+
+    test "update_ailment_advice/2 with invalid data returns error changeset" do
+      ailment_advice = ailment_advice_fixture()
+      assert {:error, %Ecto.Changeset{}} = Monitoring.update_ailment_advice(ailment_advice, @invalid_attrs)
+      assert ailment_advice == Monitoring.get_ailment_advice!(ailment_advice.id)
+    end
+
+    test "delete_ailment_advice/1 deletes the ailment_advice" do
+      ailment_advice = ailment_advice_fixture()
+      assert {:ok, %AilmentAdvice{}} = Monitoring.delete_ailment_advice(ailment_advice)
+      assert_raise Ecto.NoResultsError, fn -> Monitoring.get_ailment_advice!(ailment_advice.id) end
+    end
+
+    test "change_ailment_advice/1 returns a ailment_advice changeset" do
+      ailment_advice = ailment_advice_fixture()
+      assert %Ecto.Changeset{} = Monitoring.change_ailment_advice(ailment_advice)
+    end
+  end
 end
