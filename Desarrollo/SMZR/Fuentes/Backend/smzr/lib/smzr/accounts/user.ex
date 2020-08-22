@@ -16,7 +16,7 @@ defmodule Smzr.Accounts.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:username, :password, :is_active])
-    |> validate_required([:username, :password_hash, :is_active])
+    |> validate_required([:username, :password, :is_active])
     |> put_password_hash()
   end
 

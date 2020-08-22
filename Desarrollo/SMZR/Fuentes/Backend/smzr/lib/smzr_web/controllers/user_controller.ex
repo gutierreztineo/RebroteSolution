@@ -42,7 +42,7 @@ defmodule SmzrWeb.UserController do
   end
 
   def sign_in(conn, %{"username" => username, "password" => password}) do
-    case Smzr.Account.authenticate_user(username, password) do
+    case Smzr.Accounts.authenticate_user(username, password) do
       {:ok, user} ->
         conn
         |> put_session(:current_user_id, user.id)
