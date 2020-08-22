@@ -17,6 +17,7 @@ defmodule Smzr.Accounts.User do
     user
     |> cast(attrs, [:username, :password, :is_active])
     |> validate_required([:username, :password, :is_active])
+    |> unique_constraint(:username)
     |> put_password_hash()
   end
 
