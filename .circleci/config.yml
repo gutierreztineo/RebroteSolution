@@ -36,8 +36,8 @@ jobs:
       - run: npm install --prefix assets
       - run: npm run deploy --prefix assets
       - run: mix phx.digest
-      - run: MIX_ENV=${MIX_ENV} mix ecto.create
-      - run: MIX_ENV=${MIX_ENV} mix ecto.migrate
+      #- run: MIX_ENV=${MIX_ENV} mix ecto.create
+      - run: MIX_ENV=${MIX_ENV} mix setup
       - run: PORT=${PORT} HOSTNAME=${HOSTNAME} mix release
       - run: tar -zcvf ${DEPLOYMENT_NAME}-${MIX_ENV}.tar _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}
       - run: 
