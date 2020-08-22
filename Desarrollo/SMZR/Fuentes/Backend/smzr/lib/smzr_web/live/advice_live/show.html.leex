@@ -1,0 +1,22 @@
+<h1>Show Advice</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, SmzrWeb.AdviceLive.FormComponent,
+    id: @advice.id,
+    title: @page_title,
+    action: @live_action,
+    advice: @advice,
+    return_to: Routes.advice_show_path(@socket, :show, @advice) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @advice.description %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.advice_show_path(@socket, :edit, @advice), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.advice_index_path(@socket, :index) %></span>

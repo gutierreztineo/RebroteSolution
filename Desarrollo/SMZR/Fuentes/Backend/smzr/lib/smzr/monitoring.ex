@@ -485,4 +485,100 @@ defmodule Smzr.Monitoring do
   def change_profile_risk(%ProfileRisk{} = profile_risk, attrs \\ %{}) do
     ProfileRisk.changeset(profile_risk, attrs)
   end
+
+  alias Smzr.Monitoring.Advice
+
+  @doc """
+  Returns the list of advices.
+
+  ## Examples
+
+      iex> list_advices()
+      [%Advice{}, ...]
+
+  """
+  def list_advices do
+    Repo.all(Advice)
+  end
+
+  @doc """
+  Gets a single advice.
+
+  Raises `Ecto.NoResultsError` if the Advice does not exist.
+
+  ## Examples
+
+      iex> get_advice!(123)
+      %Advice{}
+
+      iex> get_advice!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_advice!(id), do: Repo.get!(Advice, id)
+
+  @doc """
+  Creates a advice.
+
+  ## Examples
+
+      iex> create_advice(%{field: value})
+      {:ok, %Advice{}}
+
+      iex> create_advice(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_advice(attrs \\ %{}) do
+    %Advice{}
+    |> Advice.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a advice.
+
+  ## Examples
+
+      iex> update_advice(advice, %{field: new_value})
+      {:ok, %Advice{}}
+
+      iex> update_advice(advice, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_advice(%Advice{} = advice, attrs) do
+    advice
+    |> Advice.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a advice.
+
+  ## Examples
+
+      iex> delete_advice(advice)
+      {:ok, %Advice{}}
+
+      iex> delete_advice(advice)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_advice(%Advice{} = advice) do
+    Repo.delete(advice)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking advice changes.
+
+  ## Examples
+
+      iex> change_advice(advice)
+      %Ecto.Changeset{data: %Advice{}}
+
+  """
+  def change_advice(%Advice{} = advice, attrs \\ %{}) do
+    Advice.changeset(advice, attrs)
+  end
 end

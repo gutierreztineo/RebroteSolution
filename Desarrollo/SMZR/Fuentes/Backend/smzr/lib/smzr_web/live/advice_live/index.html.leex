@@ -1,0 +1,35 @@
+<h1>Listing Advices</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, SmzrWeb.AdviceLive.FormComponent,
+    id: @advice.id || :new,
+    title: @page_title,
+    action: @live_action,
+    advice: @advice,
+    return_to: Routes.advice_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="advices">
+    <%= for advice <- @advices do %>
+      <tr id="advice-<%= advice.id %>">
+        <td><%= advice.description %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.advice_show_path(@socket, :show, advice) %></span>
+          <span><%= live_patch "Edit", to: Routes.advice_index_path(@socket, :edit, advice) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: advice.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Advice", to: Routes.advice_index_path(@socket, :new) %></span>

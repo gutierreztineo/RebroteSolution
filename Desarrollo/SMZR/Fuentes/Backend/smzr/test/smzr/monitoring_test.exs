@@ -297,4 +297,63 @@ defmodule Smzr.MonitoringTest do
       assert %Ecto.Changeset{} = Monitoring.change_profile_risk(profile_risk)
     end
   end
+
+  describe "advices" do
+    alias Smzr.Monitoring.Advice
+
+    @valid_attrs %{description: "some description"}
+    @update_attrs %{description: "some updated description"}
+    @invalid_attrs %{description: nil}
+
+    def advice_fixture(attrs \\ %{}) do
+      {:ok, advice} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Monitoring.create_advice()
+
+      advice
+    end
+
+    test "list_advices/0 returns all advices" do
+      advice = advice_fixture()
+      assert Monitoring.list_advices() == [advice]
+    end
+
+    test "get_advice!/1 returns the advice with given id" do
+      advice = advice_fixture()
+      assert Monitoring.get_advice!(advice.id) == advice
+    end
+
+    test "create_advice/1 with valid data creates a advice" do
+      assert {:ok, %Advice{} = advice} = Monitoring.create_advice(@valid_attrs)
+      assert advice.description == "some description"
+    end
+
+    test "create_advice/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Monitoring.create_advice(@invalid_attrs)
+    end
+
+    test "update_advice/2 with valid data updates the advice" do
+      advice = advice_fixture()
+      assert {:ok, %Advice{} = advice} = Monitoring.update_advice(advice, @update_attrs)
+      assert advice.description == "some updated description"
+    end
+
+    test "update_advice/2 with invalid data returns error changeset" do
+      advice = advice_fixture()
+      assert {:error, %Ecto.Changeset{}} = Monitoring.update_advice(advice, @invalid_attrs)
+      assert advice == Monitoring.get_advice!(advice.id)
+    end
+
+    test "delete_advice/1 deletes the advice" do
+      advice = advice_fixture()
+      assert {:ok, %Advice{}} = Monitoring.delete_advice(advice)
+      assert_raise Ecto.NoResultsError, fn -> Monitoring.get_advice!(advice.id) end
+    end
+
+    test "change_advice/1 returns a advice changeset" do
+      advice = advice_fixture()
+      assert %Ecto.Changeset{} = Monitoring.change_advice(advice)
+    end
+  end
 end

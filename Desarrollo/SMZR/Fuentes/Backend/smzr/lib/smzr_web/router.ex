@@ -83,6 +83,13 @@ defmodule SmzrWeb.Router do
     live "/profile_risks/:id", ProfileRiskLive.Show, :show
     live "/profile_risks/:id/show/edit", ProfileRiskLive.Show, :edit
 
+    #Advice
+    live "/advices", AdviceLive.Index, :index
+    live "/advices/new", AdviceLive.Index, :new
+    live "/advices/:id/edit", AdviceLive.Index, :edit
+
+    live "/advices/:id", AdviceLive.Show, :show
+    live "/advices/:id/show/edit", AdviceLive.Show, :edit
 
 
   end
@@ -99,6 +106,7 @@ defmodule SmzrWeb.Router do
     resources "/profile_ailments", ProfileAilmentController, except: [:new, :edit]
     resources "/risks", RiskController, except: [:new, :edit]
     resources "/profile_risks", ProfileRiskController, except: [:new, :edit]
+    resources "/advices", AdviceController, except: [:new, :edit]
 
 
   end
