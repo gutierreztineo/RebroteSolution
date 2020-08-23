@@ -5,7 +5,7 @@ defmodule Smzr.Repo.Migrations.CreateProfileAilments do
     create table(:profile_ailments) do
       add :profile_id, references(:profiles, on_delete: :nothing)
       add :ailment_levels_id, references(:ailment_levels, on_delete: :nothing)
-
+      add :status, :integer, default: 1
       timestamps()
     end
 
