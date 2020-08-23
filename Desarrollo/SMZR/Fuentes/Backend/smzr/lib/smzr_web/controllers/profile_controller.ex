@@ -3,6 +3,7 @@ defmodule SmzrWeb.ProfileController do
 
   alias Smzr.Accounts
   alias Smzr.Accounts.Profile
+  alias Smzr.Accounts.User
 
   action_fallback SmzrWeb.FallbackController
 
@@ -12,7 +13,10 @@ defmodule SmzrWeb.ProfileController do
   end
 
   def create(conn, %{"profile" => profile_params}) do
-    with {:ok, %Profile{} = profile} <- Accounts.create_profile(profile_params) do
+
+    %User{ :id => user_id } = Guardian.Plug.current_resource(conn)
+
+    with {:ok, %Profile{} = profile} <- Accounts.create_profile(Map.put(profile_params, "user_id", user_id )) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.profile_path(conn, :show, profile))

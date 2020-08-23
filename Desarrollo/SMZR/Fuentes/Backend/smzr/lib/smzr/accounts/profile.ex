@@ -17,7 +17,7 @@ defmodule Smzr.Accounts.Profile do
   @doc false
   def changeset(profile, attrs) do
     profile
-    |> cast(attrs, [:firstname, :lastnamep, :lastnamem, :dni, :birthdate, :email])
-    |> validate_required([:firstname, :lastnamep, :lastnamem, :dni, :birthdate, :email])
+    |> cast(attrs, [:firstname, :lastnamep, :lastnamem, :dni, :birthdate, :email, :user_id])
+    |> validate_required([:firstname, :lastnamep, :lastnamem, :dni, :birthdate, :email, :user_id])
   end
 end
