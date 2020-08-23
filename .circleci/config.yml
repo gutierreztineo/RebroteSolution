@@ -59,13 +59,14 @@ jobs:
             getcap _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/erts-11.0.2/bin/beam.smp;
             sudo setcap 'cap_net_bind_service=+eip' _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME};
             getcap _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME};
+            sudo fuser -k ${PORT}/tcp;
             "
       
       - run:
           name: Stop running instance
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
-            "_build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} stop; sudo fuser ${PORT}/tcp; echo \"Ignore if this command fails\""
+            "_build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} stop; echo \"Ignore if this command fails\""
       
       - run:
           name: Start a new instance
