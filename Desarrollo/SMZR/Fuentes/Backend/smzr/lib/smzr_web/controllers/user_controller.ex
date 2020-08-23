@@ -73,8 +73,8 @@ defmodule SmzrWeb.UserController do
     end
   end
 
-  def sign_in_jwt(conn, %{"email" => email, "password" => password}) do
-    with {:ok, token, _claims} <- Users.token_sign_in(email, password) do
+  def sign_in_jwt(conn, %{"username" => username, "password" => password}) do
+    with {:ok, token, _claims} <- Accounts.token_sign_in(username, password) do
       conn |> render("jwt.json", token: token)
     end
   end
