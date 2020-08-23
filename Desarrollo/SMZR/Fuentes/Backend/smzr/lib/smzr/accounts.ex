@@ -7,7 +7,7 @@ defmodule Smzr.Accounts do
   alias Smzr.Repo
 
   alias Smzr.Accounts.User
-
+  alias Smzr.Guardian
 
   def authenticate_user(username, password) do
     query = from(u in User, where: u.username == ^username)
@@ -28,6 +28,16 @@ defmodule Smzr.Accounts do
     end
   end
 
+  @doc """
+  Generates a JWT
+  """
+  def token_sign_in(username, password) do
+    if {:ok, user} = authenticate_user(username, password) do
+      Guardian.encode_and_sign(user)
+    else
+      {:error, :unauthorized}
+    end
+  end
 
 
   @doc """

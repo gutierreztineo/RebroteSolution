@@ -1,5 +1,6 @@
 defmodule SmzrWeb.Router do
   use SmzrWeb, :router
+  alias SmzrWeb.ApiAuthPipeline
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -114,9 +115,20 @@ defmodule SmzrWeb.Router do
   scope "/api", SmzrWeb do
     pipe_through :api
 
+    post "/sign_up", UserController, :create_jwt
+    post "/sign_in", UserController, :sign_in_jwt
+  end
+
+  pipeline :jwt_authenticated do
+    plug ApiAuthPipeline
+  end
+
+  scope "/api", SmzrWeb do
+    pipe_through [:api, :jwt_authenticated]
+
     resources "/locations", LocationController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit]
-    post "/users/sign_in", UserController, :sign_in
+    #post "/users/sign_in", UserController, :sign_in
     resources "/user_locations", UserLocationController, except: [:new, :edit]
     resources "/profiles", ProfileController, except: [:new, :edit]
     resources "/ailments", AilmentController, except: [:new, :edit]
@@ -128,6 +140,7 @@ defmodule SmzrWeb.Router do
     resources "/ailment_advices", AilmentAdviceController, except: [:new, :edit]
 
   end
+
 
   # Enables LiveDashboard only for development
   #

@@ -4,7 +4,7 @@ defmodule Smzr.MixProject do
   def project do
     [
       app: :smzr,
-      version: "0.1.4",
+      version: "0.1.5",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -48,7 +48,8 @@ defmodule Smzr.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:bcrypt_elixir, "~> 2.0"}
+      {:bcrypt_elixir, "~> 2.0"},
+      {:guardian, "~> 2.0"}
     ]
   end
 

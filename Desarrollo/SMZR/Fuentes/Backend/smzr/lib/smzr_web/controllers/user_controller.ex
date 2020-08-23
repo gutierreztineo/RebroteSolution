@@ -3,6 +3,7 @@ defmodule SmzrWeb.UserController do
 
   alias Smzr.Accounts
   alias Smzr.Accounts.User
+  alias Smzr.Guardian
 
   action_fallback SmzrWeb.FallbackController
 
@@ -59,5 +60,24 @@ defmodule SmzrWeb.UserController do
         |> render("401.json", message: message)
     end
   end
+
+  def show_jwt(conn, _params) do
+    user = Guardian.Plug.current_resource(conn)
+    render(conn, "show.json", user: user)
+  end
+
+  def create_jwt(conn, %{"user" => user_params}) do
+    with {:ok, %User{} = user} <- Accounts.create_user(user_params) do
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+      conn |> render("jwt.json", token: token)
+    end
+  end
+
+  def sign_in_jwt(conn, %{"email" => email, "password" => password}) do
+    with {:ok, token, _claims} <- Users.token_sign_in(email, password) do
+      conn |> render("jwt.json", token: token)
+    end
+  end
+
 
 end
