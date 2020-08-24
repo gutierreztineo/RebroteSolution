@@ -69,7 +69,7 @@
     <string name="question7_form_malestar">7. ¿Durante la última semana ha presentado alguna complicación para mantenerse despierto?</string>
     <string name="question8_form_malestar">8. ¿Durante la última semana ha notado que sus labios o rostro han tomado una tonalidad azulada?</string>
     <string name="question9_form_malestar">9. ¿Durante la última semana, ha sentido molestias o dolores en el cuerpo?</string>
-    <string name="text_resp_q9_opc1">No eh sentido dolores en el cuerpo</string>
+    <string name="text_resp_q9_opc1">No he sentido dolores en el cuerpo</string>
     <string name="text_resp_q9_opc2">Dolor localizado, solo por pequeñas áreas del cuerpo</string>
     <string name="text_resp_q9_opc3">Dolor general muscular e interno</string>
     <string name="question10_form_malestar">10. ¿Durante la última semana, ha sentido dolor de garganta?</string>
@@ -81,7 +81,7 @@
     <string name="text_resp_q13_opc3">Dolor de cabeza regularmente prolongado.</string>
     <string name="text_resp_q13_opc4">Dolor de cabeza constante y fuerte.</string>
     <string name="question14_form_malestar">14. ¿Durante la última semana, ha sentido pérdida de olfato o gusto?</string>
-    <string name="btn_text_completar_form">Completar Formulario</string>
+    <string name="btn_text_completar_form">Finalizar formulario</string>
     <string name="text_sin_historial_malestar">Aun no tiene datos de malestares, complete el formulario para generar un registro de sus malestares</string>
     <string name="apellidom">Apellido Materno</string>
     <string name="condicion">Condición:</string>
