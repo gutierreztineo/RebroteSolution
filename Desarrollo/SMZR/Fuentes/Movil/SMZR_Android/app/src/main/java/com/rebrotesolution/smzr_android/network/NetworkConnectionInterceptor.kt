@@ -4,20 +4,31 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import com.rebrotesolution.smzr_android.utils.ApiTimeOutException
 import com.rebrotesolution.smzr_android.utils.NoInternetException
 import okhttp3.Interceptor
+import okhttp3.Request
 import okhttp3.Response
+import java.net.SocketTimeoutException
+
 
 class NetworkConnectionInterceptor(
     context: Context
 ): Interceptor {
 
     private val applicationContext = context.applicationContext
+    private lateinit var response : Response
 
     override fun intercept(chain: Interceptor.Chain): Response {
         if(!isInternetAvailable())
             throw NoInternetException("Sin acceso a Internet. Verifique su connectividad e intentelo nuevamente")
-        return chain.proceed(chain.request())
+        try {
+            response = chain.proceed(chain.request())
+        } catch (exception: SocketTimeoutException) {
+            exception.printStackTrace()
+           throw ApiTimeOutException("Tiempo de espera excedido. Intentelo de nuevo más tarde.")
+        }
+        return response
     }
 
     private fun isInternetAvailable(): Boolean {

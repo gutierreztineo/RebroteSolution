@@ -11,7 +11,6 @@ class deleteSesionAsync(
 
     override fun doInBackground(vararg voids: Void?): Void? {
         mAsyncTaskDaoPersona?.deletePersona()
-        mAsyncTaskDao?.deleteSesion()
         return null
     }
 }

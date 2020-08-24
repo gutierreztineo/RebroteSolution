@@ -1,14 +1,19 @@
 package com.rebrotesolution.smzr_android.viewModels.register
 
+import android.content.SharedPreferences
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.rebrotesolution.smzr_android.interfaces.RegisterResultCallBacks
 import com.rebrotesolution.smzr_android.models.Usuario
+import com.rebrotesolution.smzr_android.network.repository.UsuarioRepository
+import com.rebrotesolution.smzr_android.utils.*
 
 class DatosCuentaViewModel(
-    private val listener: RegisterResultCallBacks
+    private val listener: RegisterResultCallBacks,
+    private val userRepo: UsuarioRepository,
+    private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
 
     private val usuario: Usuario
@@ -57,8 +62,27 @@ class DatosCuentaViewModel(
         if(usuario.isDataComplete){
             if(usuario.isDataValid){
                 if(passvalid){
-                    var data : Map<String,String> = mapOf("username" to usuario.username, "password" to usuario.password)
-                    listener.valid(data)
+                    listener.onStarted()
+                    Coroutines.main {
+                        try {
+                            val tokenResponse = userRepo.registrarUsuario(usuario.username,usuario.password)
+                            tokenResponse.token?.let {
+                                val save = sharedPreferences.edit()
+                                save.putString("TOKEN",it)
+                                save.apply()
+                                var data : Map<String,String> = mapOf("username" to usuario.username, "password" to usuario.password)
+                                listener.valid(data)
+                                return@main
+                            }
+                            listener?.onError(tokenResponse.message!!)
+                        } catch (e: UserAlreadyExistsException) {
+                            listener?.onError(e.message!!)
+                        } catch (e: NoInternetException) {
+                            listener?.onError(e.message!!)
+                        }catch( e: ApiTimeOutException){
+                            listener.onError(e.message!!)
+                        }
+                    }
                 }else{
                     listener.invalid("Las contraseñas no coinciden")
                 }

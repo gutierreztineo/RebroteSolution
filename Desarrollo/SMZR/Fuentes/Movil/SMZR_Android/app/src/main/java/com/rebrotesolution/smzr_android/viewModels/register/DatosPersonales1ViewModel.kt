@@ -14,8 +14,8 @@ class DatosPersonales1ViewModel(
 
     init {
         persona = Persona(
-            id_persona = 0, nombres = "", apellidos = "", genero = "",
-            dni = "", edad = 0, email = "",usuario = null
+            id_persona = 0, nombres = "", apellidop = "", apellidom = "" , genero = "",
+            dni = "", cumpleanios = "", email = "",usuario = null
         )
     }
 
@@ -30,10 +30,21 @@ class DatosPersonales1ViewModel(
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         }
 
-    val apellidoTextWatcher: TextWatcher
+    val apellidoPTextWatcher: TextWatcher
         get() = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                persona.apellidos = p0.toString()
+                persona.apellidop = p0.toString()
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        }
+
+    val apellidoMTextWatcher: TextWatcher
+        get() = object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                persona.apellidom = p0.toString()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -57,7 +68,8 @@ class DatosPersonales1ViewModel(
             if (persona.isDniValid) {
                 var data: Map<String, String> = mapOf(
                     "nombres" to persona.nombres,
-                    "apellidos" to persona.apellidos,
+                    "apellidop" to persona.apellidop,
+                    "apellidom" to persona.apellidom,
                     "dni" to persona.dni
                 )
                 listener.valid(data)
