@@ -84,4 +84,10 @@
     <string name="btn_text_completar_form">Completar Formulario</string>
     <string name="text_sin_historial_malestar">Aun no tiene datos de malestares, complete el formulario para generar un registro de sus malestares</string>
     <string name="apellidom">Apellido Materno</string>
+    <string name="condicion">Condición:</string>
+    <string name="edad">Edad:</string>
+    <string name="email">Email:</string>
+    <string name="genero">Género</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="sistema_de_monitoreo_de_zonas_de_riesgo">Sistema de Monitoreo de Zonas de riesgo</string>
 </resources>

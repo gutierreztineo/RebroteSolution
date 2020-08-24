@@ -1,4 +1,5 @@
 # Smzr
+[![<ORG_NAME>](https://circleci.com/gh/gutierreztineo/RebroteSolution.svg?style=shield)](<LINK>)
 
 To start your Phoenix server:
 
@@ -20,8 +21,13 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 
 
-##
-ln -s ~/RebroteSolution/Desarrollo/SMZR/Fuentes/Backend/smzr ~/smzr
+## Config
 
-sudo setcap 'cap_net_bind_service=+ep'  /usr/lib/erlang/erts-11.0.3/bin/beam.smp 
-sudo setcap 'cap_net_bind_service=+ep' _build/prod/rel/smzr/erts-11.0.2/bin/beam.smp
+Backend linked
+
+`ln -s ~/RebroteSolution/Desarrollo/SMZR/Fuentes/Backend/smzr ~/smzr`
+
+Grant BEAM
+
+`sudo setcap 'cap_net_bind_service=+ep'  /usr/lib/erlang/erts-11.0.3/bin/beam.smp`
+`sudo setcap 'cap_net_bind_service=+ep' _build/prod/rel/smzr/erts-11.0.2/bin/beam.smp`

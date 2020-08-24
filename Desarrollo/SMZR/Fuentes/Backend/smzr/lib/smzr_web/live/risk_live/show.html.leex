@@ -1,0 +1,27 @@
+<h1>Show Risk</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, SmzrWeb.RiskLive.FormComponent,
+    id: @risk.id,
+    title: @page_title,
+    action: @live_action,
+    risk: @risk,
+    return_to: Routes.risk_show_path(@socket, :show, @risk) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Descripcion:</strong>
+    <%= @risk.descripcion %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @risk.name %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.risk_show_path(@socket, :edit, @risk), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.risk_index_path(@socket, :index) %></span>
