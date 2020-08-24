@@ -14,9 +14,17 @@ defmodule SmzrWeb.ErrorView do
     Phoenix.Controller.status_message_from_template(template)
   end
 
+  def render("error.json", %{changeset: changeset}) do
+    # When encoded, the changeset returns its errors
+    # as a JSON object. So we just pass it forward.
+    %{ message: translate_errors(changeset)}
+  end
+  def render("500.json", _assigns) do
+    %{ message: "Internal Server Error" }
+  end
   def render("401.json", %{message: message}) do
     %{
-      errors: %{
+      message: %{
         detail: message
       }
     }
