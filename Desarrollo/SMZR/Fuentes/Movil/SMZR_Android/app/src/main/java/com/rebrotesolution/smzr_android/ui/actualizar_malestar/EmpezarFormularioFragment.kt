@@ -53,7 +53,6 @@ class EmpezarFormularioFragment : Fragment(), ButtonAcceptHandler {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        navController.navigate(R.id.go_malestarForm1)
     }
 
     override fun clickOnButton() {
