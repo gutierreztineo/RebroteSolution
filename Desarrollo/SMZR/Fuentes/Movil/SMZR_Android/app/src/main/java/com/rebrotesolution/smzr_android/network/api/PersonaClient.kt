@@ -5,10 +5,7 @@ import com.rebrotesolution.smzr_android.models.Usuario
 import com.rebrotesolution.smzr_android.models.models_api.ProfileSendRegister
 import com.rebrotesolution.smzr_android.models.models_api.UsuarioSendRegister
 import com.rebrotesolution.smzr_android.network.NetworkConnectionInterceptor
-import com.rebrotesolution.smzr_android.network.responses.ApiRestResponse
-import com.rebrotesolution.smzr_android.network.responses.DataBooleanResponse
-import com.rebrotesolution.smzr_android.network.responses.ProfileRegisterResponse
-import com.rebrotesolution.smzr_android.network.responses.TokenResponse
+import com.rebrotesolution.smzr_android.network.responses.*
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -20,6 +17,9 @@ interface PersonaClient {
 
     @POST("api/sign_up")
     suspend fun registraUsuario(@Body usuario: UsuarioSendRegister): Response<TokenResponse>
+
+    @POST("api/my/profile")
+    suspend fun getDatosPersona(@Header("Authorization") token: String) : Response<DataProfileResponse>
 
     @POST("api/profiles")
     suspend fun registrarPersona(@Header("Authorization") token: String, @Body profile:ProfileSendRegister): Response<ProfileRegisterResponse>

@@ -4,12 +4,14 @@ import com.rebrotesolution.smzr_android.models.Usuario
 import com.rebrotesolution.smzr_android.models.models_api.UsuarioSendRegister
 import com.rebrotesolution.smzr_android.network.NetworkConnectionInterceptor
 import com.rebrotesolution.smzr_android.network.responses.DataBooleanResponse
+import com.rebrotesolution.smzr_android.network.responses.DataProfileResponse
 import com.rebrotesolution.smzr_android.network.responses.TokenResponse
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.Header
 import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
