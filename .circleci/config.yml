@@ -62,11 +62,7 @@ jobs:
             sudo setcap 'cap_net_bind_service=+eip' _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME};
             getcap _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME};
             "
-      - run:
-          name: Stop 80 443 ports
-          command: |
-            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
-            "sudo fuser -k ${PORT}/tcp;sudo fuser -k ${PORT_SSL}/tcp;"
+      
       - run:
           name: Stop running instance
           command: |
