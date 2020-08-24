@@ -1,6 +1,9 @@
 defmodule SmzrWeb.ErrorView do
   use SmzrWeb, :view
-
+  
+  def translate_errors(changeset) do
+    Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
+  end
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
   # def render("500.html", _assigns) do
