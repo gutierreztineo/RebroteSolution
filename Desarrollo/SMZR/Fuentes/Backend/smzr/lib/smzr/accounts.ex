@@ -171,7 +171,7 @@ defmodule Smzr.Accounts do
   def get_profile!(id), do: Repo.get!(Profile, id)
 
   def get_profile_by_user!(user_id) do
-    query = from(p in Prodile, where: p.user_id == ^user_id)
+    query = from(p in Profile, where: p.user_id == ^user_id)
     query |> Repo.one()
   end
 
