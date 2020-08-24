@@ -17,6 +17,7 @@ defmodule SmzrWeb.ProfileView do
       lastnamem: profile.lastnamem,
       dni: profile.dni,
       birthdate: profile.birthdate,
-      email: profile.email}
+      email: profile.email,
+      gender: profile.gender}
   end
 end

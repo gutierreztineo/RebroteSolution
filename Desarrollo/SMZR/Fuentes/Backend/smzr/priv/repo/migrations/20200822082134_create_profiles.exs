@@ -9,6 +9,7 @@ defmodule Smzr.Repo.Migrations.CreateProfiles do
       add :dni, :string
       add :birthdate, :date
       add :email, :string
+      add :gender, :gender
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()
