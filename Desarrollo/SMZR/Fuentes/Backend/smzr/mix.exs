@@ -4,7 +4,7 @@ defmodule Smzr.MixProject do
   def project do
     [
       app: :smzr,
-      version: "0.2.0",
+      version: "0.2.1",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),

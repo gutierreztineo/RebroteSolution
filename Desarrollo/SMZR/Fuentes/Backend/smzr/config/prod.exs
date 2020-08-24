@@ -15,7 +15,7 @@ config :smzr, SmzrWeb.Endpoint,
        https: [
          port: 443,
          cipher_suite: :strong,
-         keyfile: "/etc/letsencrypt/live/smzr.makinap.comprivkey.pem",#System.get_env("SOME_APP_SSL_KEY_PATH"),
+         keyfile: "/etc/letsencrypt/live/smzr.makinap.com/privkey.pem",#System.get_env("SOME_APP_SSL_KEY_PATH"),
          certfile: "/etc/letsencrypt/live/smzr.makinap.com/cert.pem",#System.get_env("SOME_APP_SSL_CERT_PATH"),
          cacertfile: "/etc/letsencrypt/live/smzr.makinap.com/chain.pem",
          transport_options: [socket_opts: [:inet6]]
