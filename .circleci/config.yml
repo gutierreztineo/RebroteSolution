@@ -53,6 +53,12 @@ jobs:
             ${DEPLOYMENT_NAME}-${MIX_ENV}.tar \
             ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST}:/home/${DEPLOYMENT_USER}/${DEPLOYMENT_NAME}-${MIX_ENV}-${CIRCLE_BUILD_NUM}.tar
       - run:
+          name: Stop running instance
+          command: |
+            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
+            "_build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} stop; echo \"Ignore if this command fails\""
+
+      - run:
           name: Clean releases
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
@@ -74,16 +80,10 @@ jobs:
             "
       
       - run:
-          name: Stop running instance
-          command: |
-            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
-            "_build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} stop; echo \"Ignore if this command fails\""
-      
-      - run:
           name: Start a new instance
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
-            "bash --login -c \"HOSTNAME=${HOSTNAME} DATABASE_URL=${DATABASE_URL} SECRET_KEY_BASE=${SECRET_KEY_BASE} _build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} daemon\""
+            "bash --login -c \"_build/${MIX_ENV}/rel/${DEPLOYMENT_NAME}/bin/${DEPLOYMENT_NAME} daemon\""
       - run:
           name: Check the new instance is running
           command: |
