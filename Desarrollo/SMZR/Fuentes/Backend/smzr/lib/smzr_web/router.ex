@@ -109,6 +109,8 @@ defmodule SmzrWeb.Router do
     live "/ailment_advices/:id", AilmentAdviceLive.Show, :show
     live "/ailment_advices/:id/show/edit", AilmentAdviceLive.Show, :edit
 
+
+
   end
 
   # Other scopes may use custom stacks.
@@ -117,6 +119,7 @@ defmodule SmzrWeb.Router do
 
     post "/sign_up", UserController, :create_jwt
     post "/sign_in", UserController, :sign_in_jwt
+    get "/test_mail", UserController, :test_mail
   end
 
   pipeline :jwt_authenticated do
@@ -138,6 +141,8 @@ defmodule SmzrWeb.Router do
     resources "/profile_risks", ProfileRiskController, except: [:new, :edit]
     resources "/advices", AdviceController, except: [:new, :edit]
     resources "/ailment_advices", AilmentAdviceController, except: [:new, :edit]
+
+    resources "/my/profile", ProfileController, :my_profile
 
   end
 

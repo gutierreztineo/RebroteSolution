@@ -29,6 +29,12 @@ defmodule SmzrWeb.ProfileController do
     render(conn, "show.json", profile: profile)
   end
 
+  def my_profile(conn, _params) do
+    %User{ :id => user_id } = Guardian.Plug.current_resource(conn)
+    profile = Accounts.get_profile_by_user!(user_id)
+    render(conn, "show.json", profile: profile)
+  end
+
   def update(conn, %{"id" => id, "profile" => profile_params}) do
     profile = Accounts.get_profile!(id)
 

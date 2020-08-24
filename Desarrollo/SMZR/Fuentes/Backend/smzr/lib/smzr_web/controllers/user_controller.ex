@@ -89,5 +89,12 @@ defmodule SmzrWeb.UserController do
     end
   end
 
+  def test_mail(conn, _params) do
+    Smzr.Email.welcome_email("cesar.gutierrez15@unmsm.edu.pe") |> Smzr.Mailer.deliver_later()
+
+    {:stop,
+      conn
+      |> redirect(to: "/")}
+  end
 
 end

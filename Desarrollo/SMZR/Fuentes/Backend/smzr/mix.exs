@@ -21,7 +21,7 @@ defmodule Smzr.MixProject do
   def application do
     [
       mod: {Smzr.Application, []},
-      extra_applications: [:logger, :runtime_tools, :os_mon]
+      extra_applications: [:logger, :runtime_tools, :os_mon, :bamboo]
     ]
   end
 
@@ -49,7 +49,9 @@ defmodule Smzr.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:bcrypt_elixir, "~> 2.0"},
-      {:guardian, "~> 2.0"}
+      {:guardian, "~> 2.0"},
+      {:bamboo, "~> 1.5.0"},
+      {:bamboo_smtp, "~> 2.1.0"}
     ]
   end
 

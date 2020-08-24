@@ -30,6 +30,18 @@ config :smzr, Smzr.Guardian,
        issuer: "smzr",
        secret_key: "WhRWZyqF2W/ckZxIkYykIAqbFZlhL5JxvQhR+ODnY0S3Sok35qhp+cvNYywyzzz0"
 
+
+#config :fintuu, Smzr.Mailer,
+#       adapter: Bamboo.SendGridAdapter,
+#       api_key: "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"
+config :smzr, Smzr.Mailer,
+       adapter: Bamboo.SMTPAdapter,
+       server: "smtp.sendgrid.net",
+       port: 587, #25, 587, 465
+       username: "apikey",
+       password: "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",
+       tls: :always
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

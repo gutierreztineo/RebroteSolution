@@ -30,4 +30,8 @@ defmodule SmzrWeb.ErrorView do
     %{ message: message }
   end
 
+  def render("422.json", %{message: message}) do
+    %{ message: message }
+  end
+
 end
