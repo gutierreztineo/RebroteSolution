@@ -33,7 +33,6 @@ defmodule Smzr.Accounts do
   """
   def token_sign_in(username, password) do
 
-    IO.inspect(authenticate_user(username, password))
     case authenticate_user(username, password) do
       {:ok, user}  ->
         Guardian.encode_and_sign(user)
@@ -42,9 +41,6 @@ defmodule Smzr.Accounts do
       _ ->
         {:error, :unauthorized}
     end
-
-
-
 
   end
 
