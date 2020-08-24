@@ -44,6 +44,10 @@ defmodule Smzr.Accounts do
 
   end
 
+  def get_user_by_username(username) do
+    query = from(u in User, where: u.username == ^username)
+    query |> Repo.one()
+  end
 
   @doc """
   Returns the list of users.

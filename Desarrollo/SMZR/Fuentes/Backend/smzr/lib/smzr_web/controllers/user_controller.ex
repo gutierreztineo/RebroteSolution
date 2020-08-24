@@ -26,6 +26,20 @@ defmodule SmzrWeb.UserController do
     render(conn, "show.json", user: user)
   end
 
+  def exists_user(conn, %{"username" => username}) do
+    IO.inspect(Accounts.get_user_by_username(username))
+    if Accounts.get_user_by_username(username) do
+      conn
+      |> put_status(:ok)
+      |> json(%{data: true})
+      else
+      conn
+      |> put_status(:ok)
+      |> json(%{data: false})
+    end
+
+  end
+
   def update(conn, %{"id" => id, "user" => user_params}) do
     user = Accounts.get_user!(id)
 

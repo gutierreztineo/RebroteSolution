@@ -119,6 +119,7 @@ defmodule SmzrWeb.Router do
 
     post "/sign_up", UserController, :create_jwt
     post "/sign_in", UserController, :sign_in_jwt
+    post "/exists", UserController, :exists_user
     get "/test_mail", UserController, :test_mail
 
   end
