@@ -82,4 +82,10 @@
     <string name="text_resp_q13_opc4">Dolor de cabeza constante y fuerte.</string>
     <string name="question14_form_malestar">14. ¿Durante la última semana, ha sentido pérdida de olfato o gusto?</string>
     <string name="btn_text_completar_form">Completar Formulario</string>
+    <string name="condicion">Condición:</string>
+    <string name="edad">Edad:</string>
+    <string name="email">Email:</string>
+    <string name="genero">Género</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="sistema_de_monitoreo_de_zonas_de_riesgo">Sistema de Monitoreo de Zonas de riesgo</string>
 </resources>

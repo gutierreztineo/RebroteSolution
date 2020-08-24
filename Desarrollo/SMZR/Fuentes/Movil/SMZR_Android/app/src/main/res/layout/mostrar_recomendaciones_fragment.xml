@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:text="Cerrar"
+        android:text="@string/cerrar"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
