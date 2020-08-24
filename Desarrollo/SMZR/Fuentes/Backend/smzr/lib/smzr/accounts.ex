@@ -17,7 +17,7 @@ defmodule Smzr.Accounts do
   defp verify_password(nil, _) do
     # Perform a dummy check to make user enumeration more difficult
     Bcrypt.no_user_verify()
-    {:error, "Wrong username or password"}
+    {:error, "Wrong username or password 2"}
   end
 
   defp verify_password(user, password) do
@@ -32,11 +32,20 @@ defmodule Smzr.Accounts do
   Generates a JWT
   """
   def token_sign_in(username, password) do
-    if {:ok, user} = authenticate_user(username, password) do
-      Guardian.encode_and_sign(user)
-    else
-      {:error, :unauthorized}
+
+    IO.inspect(authenticate_user(username, password))
+    case authenticate_user(username, password) do
+      {:ok, user}  ->
+        Guardian.encode_and_sign(user)
+      {:error, "Wrong username or password"} ->
+        {:error, "Usuario o Password incorrecto"}
+      _ ->
+        {:error, :unauthorized}
     end
+
+
+
+
   end
 
 

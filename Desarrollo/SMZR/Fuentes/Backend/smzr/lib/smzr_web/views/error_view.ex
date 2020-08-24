@@ -1,6 +1,6 @@
 defmodule SmzrWeb.ErrorView do
   use SmzrWeb, :view
-  
+
   def translate_errors(changeset) do
     Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
   end
@@ -25,11 +25,9 @@ defmodule SmzrWeb.ErrorView do
   def render("500.json", _assigns) do
     %{ message: "Internal Server Error" }
   end
+
   def render("401.json", %{message: message}) do
-    %{
-      message: %{
-        detail: message
-      }
-    }
+    %{ message: message }
   end
+
 end
