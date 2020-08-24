@@ -52,12 +52,17 @@ jobs:
           name: Clean releases
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
-            "rm -rf _build; rm smzr-prod-*;"
+            "rm -rf _build;"
       - run:
           name: Untar release
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
             "tar xf ${DEPLOYMENT_NAME}-${MIX_ENV}-${CIRCLE_BUILD_NUM}.tar"
+      - run:
+          name: Clean tars
+          command: |
+            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
+            "rm smzr-prod-*"
       - run:
           name: Set cap_net_bind_service
           command: |
