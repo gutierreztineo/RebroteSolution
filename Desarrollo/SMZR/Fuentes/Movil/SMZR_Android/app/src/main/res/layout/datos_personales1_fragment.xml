@@ -43,7 +43,7 @@
                     app:addTextChangedListener="@{datosPersonales1ViewModel.nombreTextWatcher}"/>
 
                 <EditText
-                    android:id="@+id/lastname_text"
+                    android:id="@+id/lastnamep_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -51,11 +51,26 @@
                     android:drawableTint="@color/colorPrimaryDark"
                     android:drawableStart="@drawable/ic_user"
                     android:drawablePadding="10dp"
-                    android:hint="@string/apellidos"
+                    android:hint="@string/apellidop"
                     android:padding="15dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textColorHint="@color/colorPlaceholder"
-                    app:addTextChangedListener="@{datosPersonales1ViewModel.apellidoTextWatcher}"/>
+                    app:addTextChangedListener="@{datosPersonales1ViewModel.apellidoPTextWatcher}"/>
+
+                <EditText
+                    android:id="@+id/lastnamem_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/apellidom"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{datosPersonales1ViewModel.apellidoMTextWatcher}"/>
 
                 <EditText
                     android:id="@+id/dni_text"

@@ -13,7 +13,7 @@ import com.rebrotesolution.smzr_android.room.dao.UsuarioDao
 
 @Database(
     entities = [Usuario::class, Persona::class],
-    version = 2
+    version = 3
 )
 abstract class RoomDB : RoomDatabase() {
 
@@ -40,12 +40,5 @@ abstract class RoomDB : RoomDatabase() {
             RoomDB::class.java,
             "MyDataBase.db"
         ).fallbackToDestructiveMigration().build()
-    }
-
-    val MIGRATION_1_2 = object : Migration(1, 2) {
-        override fun migrate(database: SupportSQLiteDatabase) {
-            database.execSQL("CREATE TABLE `Persona` (`id` INTEGER, `name` TEXT, " +
-                    "PRIMARY KEY(`id`))")
-        }
     }
 }

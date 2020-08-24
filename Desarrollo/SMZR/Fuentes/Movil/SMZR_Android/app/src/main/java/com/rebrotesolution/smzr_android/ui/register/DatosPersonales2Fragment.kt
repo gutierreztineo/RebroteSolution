@@ -29,10 +29,9 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
     private lateinit var datepicker: DatePicker
 
     private lateinit var email: String
-    private lateinit var username: String
-    private lateinit var pass: String
     private lateinit var nombres: String
-    private lateinit var apellidos: String
+    private lateinit var apellidop: String
+    private lateinit var apellidom: String
     private lateinit var dni: String
 
     override fun onCreateView(
@@ -41,10 +40,9 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
     ): View? {
 
         email = arguments?.getString("email").toString()
-        username = arguments?.getString("username").toString()
-        pass = arguments?.getString("password").toString()
         nombres = arguments?.getString("nombres").toString()
-        apellidos = arguments?.getString("apellidos").toString()
+        apellidop = arguments?.getString("apellidop").toString()
+        apellidom = arguments?.getString("apellidom").toString()
         dni = arguments?.getString("dni").toString()
 
         val activityRegisterBinding = DataBindingUtil.inflate<DatosPersonales2FragmentBinding>(inflater,R.layout.datos_personales2_fragment,container,false)
@@ -68,12 +66,11 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
     override fun valid(data: Map<String, String>) {
         var bundle = bundleOf(
             "email" to email,
-            "username" to username,
-            "password" to pass,
             "nombres" to nombres,
-            "apellidos" to apellidos,
+            "apellidop" to apellidop,
+            "apellidom" to apellidom,
             "dni" to dni,
-            "edad" to data["edad"]
+            "cumple" to data["cumple"]
         )
         navController.navigate(R.id.go_datos_personales_3,bundle);
     }

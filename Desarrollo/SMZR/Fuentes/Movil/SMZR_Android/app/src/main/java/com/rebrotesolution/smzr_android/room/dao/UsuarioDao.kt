@@ -13,6 +13,4 @@ interface UsuarioDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveSesion(usuario: Usuario):Long
 
-    @Query("DELETE FROM usuario")
-    fun deleteSesion()
 }

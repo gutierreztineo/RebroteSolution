@@ -5,4 +5,5 @@ data class saveObjectApi(
     var id:Int?,
     var message: String
 ) {
+
 }

@@ -27,15 +27,10 @@ class DatosCorreoFragment : Fragment(), RegisterResultCallBacks {
     private lateinit var viewModel: DatosCorreoViewModel
     private lateinit var navController: NavController
 
-    private lateinit var username: String
-    private lateinit var pass: String
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        username = arguments?.getString("username").toString()
-        pass = arguments?.getString("password").toString()
         val activityRegisterBinding = DataBindingUtil.inflate<DatosCorreoFragmentBinding>(inflater,R.layout.datos_correo_fragment,container,false)
 
         viewModel = ViewModelProviders.of(this, DatosCorreoViewModelFactory(this)).get(DatosCorreoViewModel::class.java)
@@ -53,9 +48,7 @@ class DatosCorreoFragment : Fragment(), RegisterResultCallBacks {
     }
 
     override fun valid(data: Map<String,String>) {
-        var bundle = bundleOf("email" to data["email"],
-                                "username" to username,
-                                "password" to pass)
+        var bundle = bundleOf("email" to data["email"])
         navController.navigate(R.id.go_datos_personales_1,bundle);
     }
 

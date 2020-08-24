@@ -5,6 +5,7 @@ import android.app.job.JobScheduler
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
     private var doubleBackToExitPressedOnce: Boolean
     private lateinit var repository: UsuarioRepository
     private lateinit var viewModel: MainViewModel
+    private lateinit var sharedPreferences: SharedPreferences
 
     init {
         doubleBackToExitPressedOnce = false
@@ -60,6 +62,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         val api = LoginClient(networkConnectionInterceptor)
         val db = RoomDB(this)
         repository = UsuarioRepository(api, db)
+        sharedPreferences = getSharedPreferences("SP_INFO", Context.MODE_PRIVATE)
 
         viewModel =  ViewModelProviders.of(this, MainViewModelFactory(repository)).get( MainViewModel::class.java)
 
@@ -84,14 +87,15 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         this.habilitarItem()
         when(item.itemId) {
             R.id.nav_cerrar_sesion -> {
+                val editor = sharedPreferences.edit()
+                editor.remove("TOKEN")
+                editor.apply()
                 viewModel.logOut()
-                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                    drawerLayout.closeDrawer(GravityCompat.START)
-                }
-                finish()
                 WorkManager.getInstance(applicationContext).cancelAllWork()
-                val intent = Intent(this,LoginActivity::class.java)
-                startActivity(intent)
+                Intent(this,LoginActivity::class.java).also {
+                    it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(it)
+                }
             }
             R.id.nav_empezar_formulario -> {
                 item.isEnabled = false

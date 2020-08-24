@@ -24,16 +24,18 @@ import com.rebrotesolution.smzr_android.room.db.RoomDB
 import com.rebrotesolution.smzr_android.viewModels.cuenta.MiCuentaViewModel
 import com.rebrotesolution.smzr_android.viewModels.factory.MiCuentaViewModelFactory
 import es.dmoral.toasty.Toasty
+import java.text.SimpleDateFormat
+import java.util.*
 
-class MiCuenta : Fragment() , ApiResultCallBacks{
+class MiCuenta : Fragment(), ApiResultCallBacks {
 
     private lateinit var miCuentaViewModel: MiCuentaViewModel
     private lateinit var textNamePerson: TextView
-    private lateinit var textDniPerson : TextView
+    private lateinit var textDniPerson: TextView
     private lateinit var textEdadPerson: TextView
     private lateinit var textemail: TextView
     private lateinit var textgenero: TextView
-    private lateinit var buttonChangePassword : Button
+    private lateinit var buttonChangePassword: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,9 +46,16 @@ class MiCuenta : Fragment() , ApiResultCallBacks{
         val apipersona = PersonaClient(networkConnectionInterceptor)
         val db = RoomDB(requireContext())
         val repositoryUsuario = UsuarioRepository(apilogin, db)
-        val repositoryPersona = PersonaRepository(apipersona,db)
+        val repositoryPersona = PersonaRepository(apipersona, db)
 
-        miCuentaViewModel = ViewModelProviders.of(this,MiCuentaViewModelFactory(repositoryPersona = repositoryPersona, repositoryUser = repositoryUsuario, listener = this)).get(MiCuentaViewModel::class.java)
+        miCuentaViewModel = ViewModelProviders.of(
+            this,
+            MiCuentaViewModelFactory(
+                repositoryPersona = repositoryPersona,
+                repositoryUser = repositoryUsuario,
+                listener = this
+            )
+        ).get(MiCuentaViewModel::class.java)
         val root = inflater.inflate(R.layout.mi_cuenta_fragment, container, false)
         textNamePerson = root.findViewById(R.id.text_name_person)
         textDniPerson = root.findViewById(R.id.text_dni_person)
@@ -54,25 +63,26 @@ class MiCuenta : Fragment() , ApiResultCallBacks{
         textemail = root.findViewById(R.id.text_email_person)
         textgenero = root.findViewById(R.id.text_genero_person)
         buttonChangePassword = root.findViewById(R.id.btn_cambiar_password)
-        miCuentaViewModel.getDatosUusario().observe(viewLifecycleOwner, Observer { user ->
-            if(user!=null){
-                miCuentaViewModel.getDatosPersona().observe(viewLifecycleOwner, Observer { persona ->
-                    if(persona!=null){
-                        textNamePerson.text = persona.nombres + " " + persona.apellidos
-                        textDniPerson.text =  "DNI: " + persona.dni
-                        textEdadPerson.text = persona.edad.toString() + " años"
-                        textemail.text = persona.email
-                        textgenero.text = persona.genero
-                    }
-                })
+
+        miCuentaViewModel.getDatosPersona().observe(viewLifecycleOwner, Observer { persona ->
+            if (persona != null) {
+                var fecha: Date = SimpleDateFormat("yyyy-MM-dd").parse(persona.cumpleanios)
+
+                textNamePerson.text =
+                    persona.nombres + ", " + persona.apellidop + " " + persona.apellidom
+                textDniPerson.text = "DNI: " + persona.dni
+                textEdadPerson.text = "" + miCuentaViewModel.getEdad(fecha) + " años"
+                textemail.text = persona.email
+                textgenero.text = persona.genero
             }
         })
-        buttonChangePassword.setOnClickListener {view->
-            val intent = Intent(activity,CambiarContrasena::class.java)
+
+
+        buttonChangePassword.setOnClickListener { view ->
+            val intent = Intent(activity, CambiarContrasena::class.java)
             startActivity(intent)
 
         }
-
         return root
     }
 
