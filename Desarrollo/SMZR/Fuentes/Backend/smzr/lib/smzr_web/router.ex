@@ -120,6 +120,7 @@ defmodule SmzrWeb.Router do
     post "/sign_up", UserController, :create_jwt
     post "/sign_in", UserController, :sign_in_jwt
     get "/test_mail", UserController, :test_mail
+
   end
 
   pipeline :jwt_authenticated do
@@ -142,7 +143,7 @@ defmodule SmzrWeb.Router do
     resources "/advices", AdviceController, except: [:new, :edit]
     resources "/ailment_advices", AilmentAdviceController, except: [:new, :edit]
 
-    resources "/my/profile", ProfileController, :my_profile
+    post "/my/profile", ProfileController, :my_profile
 
   end
 
