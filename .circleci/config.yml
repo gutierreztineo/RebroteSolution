@@ -49,6 +49,11 @@ jobs:
             ${DEPLOYMENT_NAME}-${MIX_ENV}.tar \
             ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST}:/home/${DEPLOYMENT_USER}/${DEPLOYMENT_NAME}-${MIX_ENV}-${CIRCLE_BUILD_NUM}.tar
       - run:
+          name: Clean releases
+          command: |
+            ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
+            "rm -rf _build; rm smzr-prod-*;"
+      - run:
           name: Untar release
           command: |
             ssh -o "StrictHostKeyChecking no" ${DEPLOYMENT_USER}@${DEPLOYMENT_HOST} \
