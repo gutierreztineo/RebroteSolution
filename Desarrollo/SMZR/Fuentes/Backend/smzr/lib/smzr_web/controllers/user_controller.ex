@@ -134,22 +134,31 @@ defmodule SmzrWeb.UserController do
 
   end
 
-  def change_pass(conn, %{ "code"=> code, "username" => username, "password" => password }) do
-
+  def validate_code(conn, %{ "code"=> code, "username" => username }) do
 
     case code do
       "1234" ->
-        Accounts.get_user_by_username(username)
-        |> Accounts.update_user(%{"password" => password})
-
+        {:ok, token, _claims} = Guardian.encode_and_sign(Accounts.get_user_by_username(username))
         conn
         |> put_status(:ok)
-        |> json(%{"message": "Se cambio la contraseña correctamente"})
+        |> render("jwt.json", token: token)
+
       _ ->
         conn
         |> put_status(:ok)
         |> json(%{"message": "Codigo no valido"})
     end
+  end
+
+  def change_pass(conn, %{ "password" => password }) do
+
+        Guardian.Plug.current_resource(conn)
+        |> Accounts.update_user(%{"password" => password})
+
+        conn
+        |> put_status(:ok)
+        |> json(%{"message": "Se cambio la contraseña correctamente"})
+
   end
 
 end

@@ -121,7 +121,8 @@ defmodule SmzrWeb.Router do
     post "/sign_in", UserController, :sign_in_jwt
     post "/exists", UserController, :exists_user
     post "/send_code", UserController, :send_code
-    post "/change_pass", UserController, :change_pass
+    post "/validate_code", UserController, :validate_code
+
     get "/test_mail", UserController, :test_mail
 
   end
@@ -147,6 +148,8 @@ defmodule SmzrWeb.Router do
     resources "/ailment_advices", AilmentAdviceController, except: [:new, :edit]
 
     post "/my/profile", ProfileController, :my_profile
+    post "/change_pass", UserController, :change_pass
+
 
   end
 
