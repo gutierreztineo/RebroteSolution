@@ -111,4 +111,45 @@ defmodule SmzrWeb.UserController do
       |> redirect(to: "/")}
   end
 
+  def send_code(conn, %{"username" => username}) do
+
+    case user = Accounts.get_user_by_username(username) do
+      %User{} ->
+
+        email = Accounts.get_profile_by_user!(user.id).email
+
+        email
+        |> Smzr.Email.send_code()
+        |> Smzr.Mailer.deliver_later()
+
+        conn
+        |> put_status(:ok)
+        |> json(%{"message": "Se a enviado el correo a "<>email<>"."})
+
+      _ ->
+        conn
+        |> put_status(:ok)
+        |> json(%{"message": "Usuario no encontrado"})
+    end
+
+  end
+
+  def change_pass(conn, %{ "code"=> code, "username" => username, "password" => password }) do
+
+
+    case code do
+      "1234" ->
+        Accounts.get_user_by_username(username)
+        |> Accounts.update_user(%{"password" => password})
+
+        conn
+        |> put_status(:ok)
+        |> json(%{"message": "Se cambio la contraseña correctamente"})
+      _ ->
+        conn
+        |> put_status(:ok)
+        |> json(%{"message": "Codigo no valido"})
+    end
+  end
+
 end
