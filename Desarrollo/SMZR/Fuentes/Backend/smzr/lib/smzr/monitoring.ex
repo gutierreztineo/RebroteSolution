@@ -36,6 +36,7 @@ defmodule Smzr.Monitoring do
 
   """
   def get_ailment!(id), do: Repo.get!(Ailment, id)
+  def get_ailment(id), do: Repo.get(Ailment, id)
 
   @doc """
   Creates a ailment.
@@ -229,6 +230,7 @@ defmodule Smzr.Monitoring do
   """
   def get_ailment_level!(id), do: Repo.get!(AilmentLevel, id)
 
+  def get_ailment_level(id), do: Repo.get(AilmentLevel, id)
   @doc """
   Creates a ailment_level.
 

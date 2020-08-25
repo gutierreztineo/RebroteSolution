@@ -6,7 +6,11 @@ defmodule SmzrWeb.AilmentLevelLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :ailment_levels, list_ailment_levels())}
+
+    {:ok, socket
+          |> assign(:ailment_levels, list_ailment_levels() )
+          |> assign(:ailments, Monitoring.list_ailments() )
+    }
   end
 
   @impl true
@@ -21,9 +25,11 @@ defmodule SmzrWeb.AilmentLevelLive.Index do
   end
 
   defp apply_action(socket, :new, _params) do
+
     socket
-    |> assign(:page_title, "New Ailment level")
+    |> assign(:page_title, "New Ailment level 2")
     |> assign(:ailment_level, %AilmentLevel{})
+    |> IO.inspect()
   end
 
   defp apply_action(socket, :index, _params) do

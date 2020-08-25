@@ -6,12 +6,14 @@
     title: @page_title,
     action: @live_action,
     ailment_level: @ailment_level,
+    ailments: @ailments,
     return_to: Routes.ailment_level_index_path(@socket, :index) %>
 <% end %>
 
 <table>
   <thead>
     <tr>
+      <th>Malestar</th>
       <th>Description</th>
       <th>Level</th>
 
@@ -21,6 +23,9 @@
   <tbody id="ailment_levels">
     <%= for ailment_level <- @ailment_levels do %>
       <tr id="ailment_level-<%= ailment_level.id %>">
+
+        <td><%= List.first(Enum.filter(@ailments, fn a -> Map.from_struct(a).id == ailment_level.ailment_id end)).description %></td>
+
         <td><%= ailment_level.description %></td>
         <td><%= ailment_level.level %></td>
 

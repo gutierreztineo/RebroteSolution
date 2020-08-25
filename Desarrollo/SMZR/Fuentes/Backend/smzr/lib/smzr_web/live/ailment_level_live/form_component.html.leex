@@ -14,5 +14,9 @@
   <%= number_input f, :level %>
   <%= error_tag f, :level %>
 
+  <%= label f, :ailment_id %>
+  <%= select f, :ailment_id, Enum.map(@ailments, &{&1.description, &1.id}) %>
+  <%= error_tag f, :ailment_id %>
+
   <%= submit "Save", phx_disable_with: "Saving..." %>
 </form>

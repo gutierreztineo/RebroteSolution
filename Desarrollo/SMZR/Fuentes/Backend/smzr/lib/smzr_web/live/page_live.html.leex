@@ -1,7 +1,9 @@
+
+
+
 <section class="phx-hero">
   <h1><%= gettext "Bienvenido al API de %{name}!", name: "SMZR" %></h1> <h4>v<%= @version %></h4>
   <p>Desarrollado por <a target="_blank" href="https://twitter.com/itsudatte">@itsudatte</a>!</p>
-
   <form phx-change="suggest" phx-submit="search">
     <input type="text" name="q" value="<%= @query %>" placeholder="Buscar dependencias en Hex.pm" list="results" autocomplete="off"/>
     <datalist id="results">
@@ -12,3 +14,29 @@
     <button type="submit" phx-disable-with="Buscando...">Ir a Hexdocs</button>
   </form>
 </section>
+
+<div class="row">
+  <h3>Recursos</h3>
+</div>
+<div class="row">
+  <div class="column">
+    <ul class="list-group">
+      <li class="list-group-item"><%= link "ailment_level", to: Routes.ailment_level_index_path(@socket, :index) %></li>
+      <li class="list-group-item"><%= link "risk", to: Routes.risk_index_path(@socket, :index) %></li>
+      <li class="list-group-item"><%= link "profile_risk", to: Routes.profile_risk_index_path(@socket, :index) %></li>
+      <li class="list-group-item"><%= link "advice", to: Routes.advice_index_path(@socket, :index) %></li>
+      <li class="list-group-item"><%= link "ailment_advice", to: Routes.ailment_advice_index_path(@socket, :index) %></li>
+    </ul>
+  </div>
+  <div class="column">
+    <ul class="list-group">
+      <li class="list-group-item"><%= link "location", to: Routes.location_index_path(@socket, :index) %></li>
+      <li class="list-group-item"><%= link "user", to: Routes.user_index_path(@socket, :index) %></li>
+      <li class="list-group-item"><%= link "user_location", to: Routes.user_location_index_path(@socket, :index) %></li>
+      <li class="list-group-item"><%= link "profile", to: Routes.profile_index_path(@socket, :index) %></li>
+      <li class="list-group-item"><%= link "ailment", to: Routes.ailment_index_path(@socket, :index) %></li>
+      <li class="list-group-item"><%= link "profile_ailment", to: Routes.profile_ailment_index_path(@socket, :index) %></li>
+     </ul>
+  </div>
+
+</div>

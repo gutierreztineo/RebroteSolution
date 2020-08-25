@@ -12,11 +12,16 @@ defmodule SmzrWeb.AilmentLevelController do
   end
 
   def create(conn, %{"ailment_level" => ailment_level_params}) do
-    with {:ok, %AilmentLevel{} = ailment_level} <- Monitoring.create_ailment_level(ailment_level_params) do
-      conn
-      |> put_status(:created)
-      |> put_resp_header("location", Routes.ailment_level_path(conn, :show, ailment_level))
-      |> render("show.json", ailment_level: ailment_level)
+
+    case Monitoring.get_ailment(ailment_level_params["ailment_id"])  do
+      nil -> conn |> json(%{"message": "Malestar no existe"})
+      _ ->
+        with {:ok, %AilmentLevel{} = ailment_level} <- Monitoring.create_ailment_level(ailment_level_params) do
+          conn
+          |> put_status(:created)
+          |> put_resp_header("location", Routes.ailment_level_path(conn, :show, ailment_level))
+          |> render("show.json", ailment_level: ailment_level)
+        end
     end
   end
 
