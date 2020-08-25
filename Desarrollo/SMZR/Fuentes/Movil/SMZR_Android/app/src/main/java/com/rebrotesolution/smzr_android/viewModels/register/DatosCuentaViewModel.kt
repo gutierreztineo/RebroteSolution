@@ -65,16 +65,16 @@ class DatosCuentaViewModel(
                     listener.onStarted()
                     Coroutines.main {
                         try {
-                            val tokenResponse = userRepo.registrarUsuario(usuario.username,usuario.password)
-                            tokenResponse.token?.let {
-                                val save = sharedPreferences.edit()
-                                save.putString("TOKEN",it)
-                                save.apply()
-                                var data : Map<String,String> = mapOf("username" to usuario.username, "password" to usuario.password)
-                                listener.valid(data)
+                            val verifica = userRepo.verificarUsernameRepetido(usuario.username,usuario.password)
+                            verifica.data?.let {
+                                if(it){
+                                    throw UserAlreadyExistsException("El nombre de usuario ya existe, intente otro")
+                                }else{
+                                    var data : Map<String,String> = mapOf("username" to usuario.username, "password" to usuario.password)
+                                    listener.valid(data)
+                                }
                                 return@main
                             }
-                            listener?.onError(tokenResponse.message!!)
                         } catch (e: UserAlreadyExistsException) {
                             listener?.onError(e.message!!)
                         } catch (e: NoInternetException) {

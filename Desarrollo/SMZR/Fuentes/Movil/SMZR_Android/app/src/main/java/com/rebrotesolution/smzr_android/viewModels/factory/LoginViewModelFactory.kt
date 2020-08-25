@@ -11,10 +11,11 @@ import com.rebrotesolution.smzr_android.viewModels.login.LoginViewModel
 class LoginViewModelFactory(
     private val listener: LoginResultCallBacks,
     private val userRepo: UsuarioRepository,
+    private val personaRepo: PersonaRepository,
     private val sharedPreferences: SharedPreferences
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override  fun <T: ViewModel?> create( modelClass: Class<T>):T {
-        return LoginViewModel(listener,userRepo,sharedPreferences) as T
+        return LoginViewModel(listener,userRepo,personaRepo,sharedPreferences) as T
     }
 }
