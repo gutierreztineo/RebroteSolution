@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -36,6 +37,7 @@ class MiCuenta : Fragment(), ApiResultCallBacks {
     private lateinit var textemail: TextView
     private lateinit var textgenero: TextView
     private lateinit var buttonChangePassword: Button
+    private lateinit var avatar: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,6 +65,7 @@ class MiCuenta : Fragment(), ApiResultCallBacks {
         textemail = root.findViewById(R.id.text_email_person)
         textgenero = root.findViewById(R.id.text_genero_person)
         buttonChangePassword = root.findViewById(R.id.btn_cambiar_password)
+        avatar = root.findViewById(R.id.avatar_profile_cuenta)
 
         miCuentaViewModel.getDatosPersona().observe(viewLifecycleOwner, Observer { persona ->
             if (persona != null) {
@@ -74,14 +77,18 @@ class MiCuenta : Fragment(), ApiResultCallBacks {
                 textEdadPerson.text = "" + miCuentaViewModel.getEdad(fecha) + " años"
                 textemail.text = persona.email
                 textgenero.text = persona.genero
+                var idavatar = when(persona.genero){
+                    "Masculino" -> R.drawable.ic_avatar_male
+                    "Femenino" -> R.drawable.ic_avatar_female
+                    else -> null
+                }
+                avatar.setImageResource(idavatar!!)
             }
         })
-
 
         buttonChangePassword.setOnClickListener { view ->
             val intent = Intent(activity, CambiarContrasena::class.java)
             startActivity(intent)
-
         }
         return root
     }
