@@ -27,13 +27,25 @@ class DatosCorreoFragment : Fragment(), RegisterResultCallBacks {
     private lateinit var viewModel: DatosCorreoViewModel
     private lateinit var navController: NavController
 
+    private var username: String = ""
+    private var password: String = ""
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val activityRegisterBinding = DataBindingUtil.inflate<DatosCorreoFragmentBinding>(inflater,R.layout.datos_correo_fragment,container,false)
+        val activityRegisterBinding = DataBindingUtil.inflate<DatosCorreoFragmentBinding>(
+            inflater,
+            R.layout.datos_correo_fragment,
+            container,
+            false
+        )
 
-        viewModel = ViewModelProviders.of(this, DatosCorreoViewModelFactory(this)).get(DatosCorreoViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, DatosCorreoViewModelFactory(this))
+            .get(DatosCorreoViewModel::class.java)
+
+        username = arguments?.getString("username").toString()
+        password = arguments?.getString("password").toString()
 
         activityRegisterBinding.datosCorreoViewModel = viewModel
         activityRegisterBinding.lifecycleOwner = this
@@ -47,13 +59,17 @@ class DatosCorreoFragment : Fragment(), RegisterResultCallBacks {
         navController = Navigation.findNavController(view)
     }
 
-    override fun valid(data: Map<String,String>) {
-        var bundle = bundleOf("email" to data["email"])
-        navController.navigate(R.id.go_datos_personales_1,bundle);
+    override fun valid(data: Map<String, String>) {
+        var bundle = bundleOf(
+            "username" to username,
+            "password" to password,
+            "email" to data["email"]
+        )
+        navController.navigate(R.id.go_datos_personales_1, bundle);
     }
 
-    override fun invalid(message:String) {
-        Toasty.error( requireContext(),message, Toast.LENGTH_SHORT).show();
+    override fun invalid(message: String) {
+        Toasty.error(requireContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     override fun onSuccess(obj: Any) {
