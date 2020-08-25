@@ -1,5 +1,6 @@
 package com.rebrotesolution.smzr_android.ui.register
 
+import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -30,12 +31,11 @@ class DatosPersonales3Fragment : Fragment(), RegisterResultCallBacks {
     private lateinit var viewModel: DatosPersonales3ViewModel
 
     private lateinit var email: String
-    private lateinit var username: String
-    private lateinit var pass: String
     private lateinit var nombres: String
-    private lateinit var apellidos: String
+    private lateinit var apellidop: String
+    private lateinit var apellidom: String
     private lateinit var dni: String
-    private  var edad: Int = 0
+    private lateinit var cumple: String
     private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
@@ -43,22 +43,47 @@ class DatosPersonales3Fragment : Fragment(), RegisterResultCallBacks {
         savedInstanceState: Bundle?
     ): View? {
         email = arguments?.getString("email").toString()
-        username = arguments?.getString("username").toString()
-        pass = arguments?.getString("password").toString()
         nombres = arguments?.getString("nombres").toString()
-        apellidos = arguments?.getString("apellidos").toString()
+        apellidop = arguments?.getString("apellidop").toString()
+        apellidom = arguments?.getString("apellidom").toString()
         dni = arguments?.getString("dni").toString()
-        edad = arguments?.getString("edad")!!.toInt()
+        cumple = arguments?.getString("cumple").toString()
 
         val networkConnectionInterceptor = NetworkConnectionInterceptor(requireContext())
         val api = PersonaClient(networkConnectionInterceptor)
         val db = RoomDB(requireContext())
-        val repository = PersonaRepository(api,db)
-        var usu = Usuario(id_usuario = null,username = username,password = pass,token = null)
-        var persona = Persona(id_persona = null,usuario = usu,apellidos = apellidos,nombres = nombres,email = email,dni = dni, edad = edad,genero = "")
+        val repository = PersonaRepository(api, db)
+        val sharedPreferences =
+            requireActivity().getSharedPreferences("SP_INFO", Context.MODE_PRIVATE)
 
-        val activityRegisterBinding = DataBindingUtil.inflate<DatosPersonales3FragmentBinding>(inflater,R.layout.datos_personales3_fragment,container,false)
-        viewModel = ViewModelProviders.of(this, DatosPersonales3ViewModelFactory(this,repository = repository,persona = persona)).get(DatosPersonales3ViewModel::class.java)
+        var persona = Persona(
+            id_persona = null,
+            usuario = null,
+            apellidop = apellidop,
+            apellidom = apellidom,
+            nombres = nombres,
+            email = email,
+            dni = dni,
+            cumpleanios = cumple,
+            genero = ""
+        )
+
+        val activityRegisterBinding = DataBindingUtil.inflate<DatosPersonales3FragmentBinding>(
+            inflater,
+            R.layout.datos_personales3_fragment,
+            container,
+            false
+        )
+        viewModel = ViewModelProviders.of(
+            this,
+            DatosPersonales3ViewModelFactory(
+                this,
+                repository,
+                persona,
+                requireContext(),
+                sharedPreferences
+            )
+        ).get(DatosPersonales3ViewModel::class.java)
 
         activityRegisterBinding.datosPersonales3ViewModel = viewModel
         activityRegisterBinding.lifecycleOwner = this
@@ -81,7 +106,7 @@ class DatosPersonales3Fragment : Fragment(), RegisterResultCallBacks {
 
     override fun onError(message: String) {
         loadingDialog.dismiss()
-        Toasty.warning(requireContext(),message,Toast.LENGTH_SHORT).show()
+        Toasty.warning(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onStarted() {

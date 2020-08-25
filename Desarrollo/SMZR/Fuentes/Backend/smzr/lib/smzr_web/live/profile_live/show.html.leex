@@ -1,0 +1,47 @@
+<h1>Show Profile</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, SmzrWeb.ProfileLive.FormComponent,
+    id: @profile.id,
+    title: @page_title,
+    action: @live_action,
+    profile: @profile,
+    return_to: Routes.profile_show_path(@socket, :show, @profile) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Firstname:</strong>
+    <%= @profile.firstname %>
+  </li>
+
+  <li>
+    <strong>Lastnamep:</strong>
+    <%= @profile.lastnamep %>
+  </li>
+
+  <li>
+    <strong>Lastnamem:</strong>
+    <%= @profile.lastnamem %>
+  </li>
+
+  <li>
+    <strong>Dni:</strong>
+    <%= @profile.dni %>
+  </li>
+
+  <li>
+    <strong>Birthdate:</strong>
+    <%= @profile.birthdate %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @profile.email %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.profile_show_path(@socket, :edit, @profile), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.profile_index_path(@socket, :index) %></span>

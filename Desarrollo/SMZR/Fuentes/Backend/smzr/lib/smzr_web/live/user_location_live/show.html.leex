@@ -1,0 +1,17 @@
+<h1>Show User location</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, SmzrWeb.UserLocationLive.FormComponent,
+    id: @user_location.id,
+    title: @page_title,
+    action: @live_action,
+    user_location: @user_location,
+    return_to: Routes.user_location_show_path(@socket, :show, @user_location) %>
+<% end %>
+
+<ul>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.user_location_show_path(@socket, :edit, @user_location), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.user_location_index_path(@socket, :index) %></span>

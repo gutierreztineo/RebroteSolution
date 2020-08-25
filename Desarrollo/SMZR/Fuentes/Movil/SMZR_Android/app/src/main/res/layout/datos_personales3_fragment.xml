@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
-            android:layout_marginBottom="25dp">
+            android:layout_marginBottom="25dp"
+            android:onCheckedChanged="@{datosPersonales3ViewModel::onCustomCheckChanged}">
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/rb_masculino"
@@ -41,14 +42,13 @@
                 android:background="@drawable/rb_background_select"
                 android:button="@android:color/transparent"
                 android:gravity="center"
-                android:text="@string/masculino"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:paddingStart="15dp"
+                android:paddingTop="10dp"
                 android:paddingEnd="15dp"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                />
+                android:paddingBottom="10dp"
+                android:text="@string/masculino"
+                android:textColor="@color/colorTextInput"
+                android:textSize="20sp" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/rb_femenino"
@@ -73,13 +73,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/button_background"
+            android:background="@color/colorButtonBig"
+            android:onClick="@{datosPersonales3ViewModel::onRegisterCompleteClicked}"
             android:padding="15dp"
             android:text="@string/completar_registro"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
-            android:textSize="20sp"
-            android:onClick="@{datosPersonales3ViewModel::onRegisterCompleteClicked}"/>
+            android:textSize="20sp" />
 
     </LinearLayout>
 

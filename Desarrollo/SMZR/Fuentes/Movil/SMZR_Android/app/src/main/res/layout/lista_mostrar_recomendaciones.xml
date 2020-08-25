@@ -27,7 +27,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toEndOf="@id/imagen_recomendacion"
             android:layout_toRightOf="@id/imagen_recomendacion"
-            android:text="Fecha de registro"
+            android:text="@string/fecha_de_registro"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -39,7 +39,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_toEndOf="@id/imagen_recomendacion"
-            android:text="Malestar"
+            android:text="@string/malestar"
             android:textSize="18sp" />
     </RelativeLayout>
 

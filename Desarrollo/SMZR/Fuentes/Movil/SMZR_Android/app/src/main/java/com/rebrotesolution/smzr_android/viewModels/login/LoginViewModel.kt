@@ -1,5 +1,6 @@
 package com.rebrotesolution.smzr_android.viewModels.login
 
+import android.content.SharedPreferences
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -10,6 +11,7 @@ import com.rebrotesolution.smzr_android.models.Usuario
 import com.rebrotesolution.smzr_android.network.repository.PersonaRepository
 import com.rebrotesolution.smzr_android.network.repository.UsuarioRepository
 import com.rebrotesolution.smzr_android.utils.ApiException
+import com.rebrotesolution.smzr_android.utils.ApiTimeOutException
 import com.rebrotesolution.smzr_android.utils.Coroutines
 import com.rebrotesolution.smzr_android.utils.NoInternetException
 import es.dmoral.toasty.Toasty
@@ -18,7 +20,7 @@ import kotlin.math.log
 class LoginViewModel(
     private val listener: LoginResultCallBacks,
     private val userRepo: UsuarioRepository,
-    private val personaRepo: PersonaRepository
+    private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
 
     private val usuario: Usuario
@@ -56,17 +58,20 @@ class LoginViewModel(
         if(usuario.isDataComplete){
            Coroutines.main {
                try {
-                   val authResponse =  userRepo.userLogin(usuario.username, usuario.password)
-                   authResponse.persona?.let {
-                       listener.onSuccess(it.usuario!!)
-                       userRepo.saveSesion(it.usuario!!)
-                       personaRepo.savePersonaInLocal(it)
+                   val tokenResponse =  userRepo.userLogin(usuario.username, usuario.password)
+                   tokenResponse.token?.let {
+                       listener.onSuccess(usuario)
+                       val editor = sharedPreferences.edit()
+                       editor.putString("TOKEN",it)
+                       editor.apply()
                        return@main
                    }
-                   listener.onError(authResponse.message!!)
+                   listener.onError(tokenResponse.message!!)
                }catch (e:ApiException){
                    listener.onError(e.message!!)
                }catch (e: NoInternetException){
+                   listener.onError(e.message!!)
+               }catch( e: ApiTimeOutException){
                    listener.onError(e.message!!)
                }
            }

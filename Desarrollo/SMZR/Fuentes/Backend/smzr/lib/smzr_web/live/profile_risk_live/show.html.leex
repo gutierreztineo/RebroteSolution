@@ -1,0 +1,17 @@
+<h1>Show Profile risk</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, SmzrWeb.ProfileRiskLive.FormComponent,
+    id: @profile_risk.id,
+    title: @page_title,
+    action: @live_action,
+    profile_risk: @profile_risk,
+    return_to: Routes.profile_risk_show_path(@socket, :show, @profile_risk) %>
+<% end %>
+
+<ul>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.profile_risk_show_path(@socket, :edit, @profile_risk), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.profile_risk_index_path(@socket, :index) %></span>

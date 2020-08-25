@@ -38,15 +38,23 @@ class LoginActivity : AppCompatActivity() , LoginResultCallBacks {
 
         val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
         val apiuser = LoginClient(networkConnectionInterceptor)
-        val apipersona = PersonaClient(networkConnectionInterceptor)
         val db = RoomDB(this)
         val userRepo = UsuarioRepository(apiuser, db)
-        val personaRepo = PersonaRepository(apipersona,db)
+        val sharedPreferences = getSharedPreferences("SP_INFO", Context.MODE_PRIVATE)
 
-        val viewModel = ViewModelProviders.of(this,LoginViewModelFactory(this, userRepo,personaRepo)).get(LoginViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this,LoginViewModelFactory(this, userRepo,sharedPreferences)).get(LoginViewModel::class.java)
         val activityMainBinding = DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login)
         activityMainBinding.loginViewModel = viewModel
+
         loadingDialog = LoadingDialog(this)
+
+        var token = sharedPreferences.getString("TOKEN",null)
+        if(token!=null){
+            Intent(this,MainActivity::class.java).also {
+                it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(it)
+            }
+        }/*
         viewModel.getLoggedInUser().observe(this, Observer { user ->
             if(user!=null){
                 Intent(this,MainActivity::class.java).also {
@@ -54,7 +62,7 @@ class LoginActivity : AppCompatActivity() , LoginResultCallBacks {
                     startActivity(it)
                 }
             }
-        })
+        })*/
     }
 
     override fun onStarted() {

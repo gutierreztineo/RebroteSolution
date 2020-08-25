@@ -1,0 +1,27 @@
+<h1>Show Ailment level</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, SmzrWeb.AilmentLevelLive.FormComponent,
+    id: @ailment_level.id,
+    title: @page_title,
+    action: @live_action,
+    ailment_level: @ailment_level,
+    return_to: Routes.ailment_level_show_path(@socket, :show, @ailment_level) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @ailment_level.description %>
+  </li>
+
+  <li>
+    <strong>Level:</strong>
+    <%= @ailment_level.level %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.ailment_level_show_path(@socket, :edit, @ailment_level), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.ailment_level_index_path(@socket, :index) %></span>

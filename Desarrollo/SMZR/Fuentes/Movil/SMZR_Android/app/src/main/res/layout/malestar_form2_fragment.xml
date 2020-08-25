@@ -27,8 +27,8 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
-                android:text="3. ¿Durante la última semana, has sentido más cansancio de lo habitual?"
-                android:textSize="25sp"
+                android:text="@string/question3_form_malestar"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,47 +38,53 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
+                android:onCheckedChanged="@{form2ViewModel::onCustomCheckChanged3}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_qst_1"
-                android:onCheckedChanged="@{form2ViewModel::onCustomCheckChanged3}">
+                app:layout_constraintTop_toBottomOf="@+id/txt_qst_1">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
-                    android:textSize="20sp"
+                    android:text="@string/label_respuesta"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
+
                 <RadioButton
                     android:id="@+id/id_rdbtn_q3_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No presento cansancio"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q3_opc1"
+                    android:textSize="16sp" />
+
                 <RadioButton
                     android:id="@+id/id_rdbtn_q3_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cansancio moderado, puedo realizar mis actividades con normalidad"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q3_opc2"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q3_opc3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cansancio mayor habitual, siento un poco más de cansancio que el habitual"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q3_opc3"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q3_opc4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cansancio extremo, siento mucha dificultad para realizar mis actividades"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q3_opc4"
+                    android:textSize="16sp" />
             </RadioGroup>
 
             <TextView
@@ -86,10 +92,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
-                android:text="4. ¿Durante la última semana, ha tenido dificultad para respirar o falta de aire?"
-                android:textSize="25sp"
+                android:text="@string/question4_form_malestar"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id_rg_3" />
@@ -111,8 +117,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
-                    android:textSize="20sp"
+                    android:text="@string/label_respuesta"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <RadioButton
@@ -120,27 +126,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="No presento falta de aire o alguna dificultad" />
+                    android:text="@string/text_resp_q4_opc1"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q4_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Presento dificultad ligera para respirar" />
+                    android:text="@string/text_resp_q4_opc2"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q4_opc3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Por momentos siento que no puedo respirar bien" />
+                    android:text="@string/text_resp_q4_opc3"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q4_opc4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Presento dificultad constante para respirar" />
+                    android:text="@string/text_resp_q4_opc4"
+                    android:textSize="16sp" />
 
             </RadioGroup>
 
@@ -152,16 +162,16 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
-                android:text="Siguiente"
+                android:background="@drawable/button_background"
+                android:onClick="@{form2ViewModel::continuar}"
+                android:text="@string/siguiente"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextInput"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/id_rg_4"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                android:background="@drawable/button_background"
-                android:onClick="@{form2ViewModel::continuar}"/>
+                app:layout_constraintTop_toBottomOf="@+id/id_rg_4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

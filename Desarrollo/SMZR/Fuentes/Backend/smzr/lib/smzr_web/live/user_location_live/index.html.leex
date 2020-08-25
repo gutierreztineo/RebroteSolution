@@ -1,0 +1,33 @@
+<h1>Listing User locations</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, SmzrWeb.UserLocationLive.FormComponent,
+    id: @user_location.id || :new,
+    title: @page_title,
+    action: @live_action,
+    user_location: @user_location,
+    return_to: Routes.user_location_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="user_locations">
+    <%= for user_location <- @user_locations do %>
+      <tr id="user_location-<%= user_location.id %>">
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.user_location_show_path(@socket, :show, user_location) %></span>
+          <span><%= live_patch "Edit", to: Routes.user_location_index_path(@socket, :edit, user_location) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: user_location.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New User location", to: Routes.user_location_index_path(@socket, :new) %></span>

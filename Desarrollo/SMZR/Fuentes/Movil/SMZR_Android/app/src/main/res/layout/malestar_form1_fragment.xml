@@ -27,8 +27,8 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
-                android:text="1. ¿Durante la última semana ha presentado fiebre? (Temperatura mayor a 36C°) "
-                android:textSize="25sp"
+                android:text="@string/question1_form_malestar"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,19 +38,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
+                android:onCheckedChanged="@{form1ViewModel::onCustomCheckChanged1}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_qst_1"
-                android:onCheckedChanged="@{form1ViewModel::onCustomCheckChanged1}">
+                app:layout_constraintTop_toBottomOf="@+id/txt_qst_1">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
+                    android:text="@string/label_respuesta"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -58,15 +58,16 @@
                     android:id="@+id/id_rdbtn_q1_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No"
                     android:layout_marginBottom="10dp"
-                    />
+                    android:text="@string/text_resp_no"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q1_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí" />
+                    android:text="@string/text_resp_si"
+                    android:textSize="16sp" />
             </RadioGroup>
 
             <TextView
@@ -74,10 +75,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
-                android:text="2. ¿Durante la última semana ha presentado tos seca?"
-                android:textSize="25sp"
+                android:text="@string/question2_form_malestar"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id_rg_1" />
@@ -87,48 +88,52 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
+                android:onCheckedChanged="@{form1ViewModel::onCustomCheckChanged2}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_qst_2"
-                android:onCheckedChanged="@{form1ViewModel::onCustomCheckChanged2}">
+                app:layout_constraintTop_toBottomOf="@+id/txt_qst_2">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
-                    android:textSize="20sp"
+                    android:text="@string/label_respuesta"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q2_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No presento tos"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q2_opc1"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q2_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Toso muy poco"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q2_opc2"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q2_opc3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Toso regularmente"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q2_opc3"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q2_opc4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Toso con mucha frecuencia" />
+                    android:text="@string/text_resp_q2_opc4"
+                    android:textSize="16sp" />
 
             </RadioGroup>
 
@@ -140,16 +145,18 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
-                android:text="Siguiente"
+                android:background="@drawable/button_background"
+                android:onClick="@{form1ViewModel::continuar}"
+                android:text="@string/siguiente"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextInput"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id_rg_2"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                android:background="@drawable/button_background"
-                android:onClick="@{form1ViewModel::continuar}"/>
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

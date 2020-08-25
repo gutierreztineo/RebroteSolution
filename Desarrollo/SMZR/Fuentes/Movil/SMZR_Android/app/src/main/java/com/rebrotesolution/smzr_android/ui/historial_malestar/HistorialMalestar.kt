@@ -6,15 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-
 import com.rebrotesolution.smzr_android.R
-import com.rebrotesolution.smzr_android.adapters.SintomaHistorialAdapter
 import com.rebrotesolution.smzr_android.models.*
+import com.rebrotesolution.smzr_android.network.NetworkConnectionInterceptor
+import com.rebrotesolution.smzr_android.network.api.MalestarClient
+import com.rebrotesolution.smzr_android.network.repository.MalestarRepository
 import com.rebrotesolution.smzr_android.viewModels.factory.HistorialMalestarViewModelFactory
 import com.rebrotesolution.smzr_android.viewModels.historial_malestar.HistorialMalestarViewModel
-import java.util.*
 import kotlin.collections.ArrayList
 
 class HistorialMalestar : Fragment() {
@@ -26,10 +27,23 @@ class HistorialMalestar : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val networkConnectionInterceptor = NetworkConnectionInterceptor(requireContext())
+        val api = MalestarClient(networkConnectionInterceptor)
+        val repo = MalestarRepository(api)
         val root = inflater.inflate(R.layout.historial_fragment,container,false)
         recyclerView = root.findViewById(R.id.recicler_view_historial)
-        historialViewModel = ViewModelProviders.of(this,HistorialMalestarViewModelFactory(recyclerView,requireContext())).get(HistorialMalestarViewModel::class.java)
-        historialViewModel.cargarLista()
+        historialViewModel = ViewModelProviders.of(this,HistorialMalestarViewModelFactory(recyclerView,requireContext(),repo)).get(HistorialMalestarViewModel::class.java)
+        var list: ArrayList<PersonaMalestar> = historialViewModel.cargarLista()
+        if(list.isEmpty()){
+            var text: TextView = root.findViewById(R.id.label_sin_historial)
+            text.isVisible = true
+            recyclerView.isVisible = false
+        }else{
+            var text: TextView = root.findViewById(R.id.label_sin_historial)
+            text.isVisible = false
+            recyclerView.isVisible = true
+        }
         historialViewModel.mostrarData()
         return root
     }

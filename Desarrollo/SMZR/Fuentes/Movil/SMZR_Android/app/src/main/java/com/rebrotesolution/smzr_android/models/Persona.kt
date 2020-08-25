@@ -16,8 +16,11 @@ data class Persona(
     @ColumnInfo(name="nombres")
     var nombres: String,
 
-    @ColumnInfo(name="apellidos")
-    var apellidos: String,
+    @ColumnInfo(name="apellido_p")
+    var apellidop: String,
+
+    @ColumnInfo(name="apellido_m")
+    var apellidom: String,
 
     @ColumnInfo(name="genero")
     var genero: String,
@@ -25,8 +28,8 @@ data class Persona(
     @ColumnInfo(name="dni")
     var dni: String,
 
-    @ColumnInfo(name="edad")
-    var edad: Int,
+    @ColumnInfo(name="cumple")
+    var cumpleanios: String,
 
     @ColumnInfo(name="email")
     var email: String,
@@ -40,7 +43,7 @@ data class Persona(
             .matches()
 
     val isDatoPersonal1Valid: Boolean
-        get() = !TextUtils.isEmpty(nombres) && !TextUtils.isEmpty(apellidos) && !TextUtils.isEmpty(dni)
+        get() = !TextUtils.isEmpty(nombres) && !TextUtils.isEmpty(apellidop) && !TextUtils.isEmpty(apellidom)  && !TextUtils.isEmpty(dni)
 
     val isDniValid: Boolean
         get() = dni.length == 8

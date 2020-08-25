@@ -26,8 +26,7 @@ class DatosPersonales1Fragment : Fragment(), RegisterResultCallBacks {
     private lateinit var navController: NavController
 
     private lateinit var email: String
-    private lateinit var username: String
-    private lateinit var pass: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +34,6 @@ class DatosPersonales1Fragment : Fragment(), RegisterResultCallBacks {
     ): View? {
 
         email = arguments?.getString("email").toString()
-        username = arguments?.getString("username").toString()
-        pass = arguments?.getString("password").toString()
 
         val activityRegisterBinding = DataBindingUtil.inflate<DatosPersonales1FragmentBinding>(inflater,R.layout.datos_personales1_fragment,container,false)
 
@@ -56,10 +53,9 @@ class DatosPersonales1Fragment : Fragment(), RegisterResultCallBacks {
     override fun valid(data: Map<String, String>) {
         var bundle = bundleOf(
             "email" to email,
-            "username" to username,
-            "password" to pass,
             "nombres" to data["nombres"],
-            "apellidos" to data["apellidos"],
+            "apellidop" to data["apellidop"],
+            "apellidom" to data["apellidom"],
             "dni" to data["dni"]
         )
         navController.navigate(R.id.go_datos_personales_2,bundle);

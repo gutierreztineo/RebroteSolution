@@ -14,15 +14,15 @@ class DatosCorreoViewModel(
 
     init {
         persona = Persona(
-            id_persona = 0, nombres = "", apellidos = "", genero = "",
-            dni = "", edad = 0, email = "", usuario = null
+            id_persona = 0, nombres = "", apellidop = "", apellidom =  "", genero = "",
+            dni = "", cumpleanios =  "", email = "", usuario = null
         )
     }
 
     val emailTextWatcher: TextWatcher
         get() = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                persona. email = p0.toString()
+                persona.email = p0.toString()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}

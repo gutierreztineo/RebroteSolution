@@ -27,8 +27,8 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
-                android:text="5. ¿Durante la última semana ha sentido dolor o presión en el pecho?"
-                android:textSize="25sp"
+                android:text="@string/question5_form_malestar"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,49 +38,53 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
+                android:onCheckedChanged="@{form3ViewModel::onCustomCheckChanged5}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_qst_5"
-                android:onCheckedChanged="@{form3ViewModel::onCustomCheckChanged5}">
+                app:layout_constraintTop_toBottomOf="@+id/txt_qst_5">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
-                    android:textSize="20sp"
+                    android:text="@string/label_respuesta"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q5_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No presento dolor o presion en el pecho."
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q5_opc1"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q5_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Dolor casual, solo por un momento."
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q5_opc2"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q5_opc3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Dolor regularmente prolongado."
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q5_opc3"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q5_opc4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Dolor constante y fuerte."
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_q5_opc4"
+                    android:textSize="16sp" />
             </RadioGroup>
 
             <TextView
@@ -88,10 +92,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
-                android:text="6. ¿Durante la última semana ha sentido dificultades para hablar o movilizarse?"
-                android:textSize="25sp"
+                android:text="@string/question6_form_malestar"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id_rg_5" />
@@ -101,34 +105,36 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
+                android:onCheckedChanged="@{form3ViewModel::onCustomCheckChanged6}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_qst_6"
-                android:onCheckedChanged="@{form3ViewModel::onCustomCheckChanged6}">
+                app:layout_constraintTop_toBottomOf="@+id/txt_qst_6">
 
                 <TextView
                     android:id="@+id/lbl_rdgrp_q6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Respuesta"
-                    android:textSize="20sp"
+                    android:text="@string/label_respuesta"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q6_opc1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/text_resp_no"
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/id_rdbtn_q6_opc2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí" />
+                    android:text="@string/text_resp_si"
+                    android:textSize="16sp" />
 
             </RadioGroup>
 
@@ -140,16 +146,18 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
-                android:text="Siguiente"
+                android:background="@drawable/button_background"
+                android:onClick="@{form3ViewModel::continuar}"
+                android:text="@string/siguiente"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextInput"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id_rg_6"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                android:background="@drawable/button_background"
-                android:onClick="@{form3ViewModel::continuar}"/>
+                app:layout_constraintVertical_bias="1.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

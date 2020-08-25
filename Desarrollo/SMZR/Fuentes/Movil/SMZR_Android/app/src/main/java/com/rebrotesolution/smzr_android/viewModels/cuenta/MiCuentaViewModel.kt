@@ -11,6 +11,7 @@ import com.rebrotesolution.smzr_android.network.repository.UsuarioRepository
 import com.rebrotesolution.smzr_android.utils.ApiException
 import com.rebrotesolution.smzr_android.utils.Coroutines
 import com.rebrotesolution.smzr_android.utils.NoInternetException
+import java.util.*
 
 
 class MiCuentaViewModel(
@@ -18,8 +19,6 @@ class MiCuentaViewModel(
     private val userRepo: UsuarioRepository,
     private val listener: ApiResultCallBacks
 ) : ViewModel() {
-
-    var persona: Persona = Persona(id_persona = 0,edad = 0,dni = "",email = "",nombres = "",apellidos = "",usuario = null,genero = "")
 
 
     /*fun getDatosPersona(id_usuario: Int) {
@@ -47,5 +46,18 @@ class MiCuentaViewModel(
     fun getDatosUusario() = userRepo.getUsuario()
 
     fun getDatosPersona() = personaRepo.obtenerDatosPersona()
+
+    fun getEdad(fechaNac: Date): Int {
+        var fechaNacimiento: Calendar = GregorianCalendar()
+        fechaNacimiento.time = fechaNac
+        var fechaActual: Calendar = Calendar.getInstance()
+        var ano = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR)
+        var mes = fechaActual.get(Calendar.MONTH) - fechaNacimiento.get(Calendar.MONTH)
+        var dia = fechaActual.get(Calendar.DATE) - fechaNacimiento.get(Calendar.DATE)
+        if(mes < 0 || (mes==0 && dia<0)){
+            ano--
+        }
+        return  ano
+    }
 
 }
