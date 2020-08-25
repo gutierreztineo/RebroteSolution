@@ -178,7 +178,7 @@
                 android:text="@string/cambiar_contrasena"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorTextInput"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
