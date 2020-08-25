@@ -162,16 +162,16 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
+                android:background="@drawable/button_background"
+                android:onClick="@{form2ViewModel::continuar}"
                 android:text="@string/siguiente"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextInput"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/id_rg_4"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                android:background="@drawable/button_background"
-                android:onClick="@{form2ViewModel::continuar}"/>
+                app:layout_constraintTop_toBottomOf="@+id/id_rg_4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
