@@ -53,7 +53,7 @@
                 android:padding="10dp"
                 android:text="@string/siguiente"
                 android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorTextInput"
                 android:textSize="20sp" />
         </LinearLayout>
 
