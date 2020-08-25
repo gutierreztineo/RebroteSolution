@@ -135,18 +135,23 @@ defmodule SmzrWeb.UserController do
   end
 
   def validate_code(conn, %{ "code"=> code, "username" => username }) do
+    if user = Accounts.get_user_by_username(username) do
+      case code do
+        "1234" ->
+          {:ok, token, _claims} = Guardian.encode_and_sign(Accounts.get_user_by_username(username))
+          conn
+          |> put_status(:ok)
+          |> render("jwt.json", token: token)
 
-    case code do
-      "1234" ->
-        {:ok, token, _claims} = Guardian.encode_and_sign(Accounts.get_user_by_username(username))
-        conn
-        |> put_status(:ok)
-        |> render("jwt.json", token: token)
-
-      _ ->
-        conn
-        |> put_status(:ok)
-        |> json(%{"message": "Codigo no valido"})
+        _ ->
+          conn
+          |> put_status(:ok)
+          |> json(%{"message": "Codigo no valido"})
+      end
+    else
+      conn
+      |> put_status(:not_found)
+      |> json(%{"message": "Usuario no encontrado"})
     end
   end
 
