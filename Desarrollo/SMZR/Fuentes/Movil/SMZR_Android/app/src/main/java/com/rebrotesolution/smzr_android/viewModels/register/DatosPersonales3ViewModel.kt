@@ -33,15 +33,20 @@ class DatosPersonales3ViewModel(
         persona.genero = gen
         Coroutines.main {
             try {
-                var token = sharedPreferences.getString("TOKEN","")
-                val profileResponse= repository.registrarPersona(persona,token!!)
-                profileResponse.data?.let {
-                    var persona = Persona(it.id,it.firstname,it.lastnamep,it.lastnamem,it.gender,it.dni,it.birthdate,it.email,null)
-                    repository.savePersonaInLocal(persona)
-                    listener?.onSuccess(it)
+                val tokenResponse = repository.registrarUsuario(persona.usuario!!.username,persona!!.usuario!!.password)
+                tokenResponse.token?.let {
+                    val save = sharedPreferences.edit()
+                    save.putString("TOKEN",it)
+                    save.apply()
+                    val profileResponse= repository.registrarPersona(persona,it)
+                    profileResponse.data?.let { data ->
+                        var persona = Persona(data.id,data.firstname,data.lastnamep,data.lastnamem,data.gender,data.dni,data.birthdate,data.email,null)
+                        repository.savePersonaInLocal(persona)
+                        listener?.onSuccess(it)
+                        return@main
+                    }
                     return@main
                 }
-                listener?.onError(profileResponse.error!!)
             } catch (e: ApiException) {
                 listener?.onError(e.message!!)
             } catch (e: NoInternetException) {

@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/malestarForm1"
         android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm1"
-        android:label="Pagina 1"
+        android:label="Pagina 1/7"
         tools:layout="@layout/malestar_form1_fragment">
         <action
             android:id="@+id/go_malestarForm2"
@@ -54,7 +54,7 @@
     <fragment
         android:id="@+id/malestarForm2"
         android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm2"
-        android:label="Pagina 2"
+        android:label="Pagina 2/7"
         tools:layout="@layout/malestar_form2_fragment">
         <action
             android:id="@+id/go_malestarForm3"
@@ -67,7 +67,7 @@
     <fragment
         android:id="@+id/malestarForm3"
         android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm3"
-        android:label="Pagina 3"
+        android:label="Pagina 3/7"
         tools:layout="@layout/malestar_form3_fragment">
         <action
             android:id="@+id/go_malestarForm4"
@@ -80,7 +80,7 @@
     <fragment
         android:id="@+id/malestarForm4"
         android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm4"
-        android:label="Pagina 4"
+        android:label="Pagina 4/7"
         tools:layout="@layout/malestar_form4_fragment">
         <action
             android:id="@+id/go_malestarForm5"
@@ -93,7 +93,7 @@
     <fragment
         android:id="@+id/malestarForm5"
         android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm5"
-        android:label="Pagina 5"
+        android:label="Pagina 5/7"
         tools:layout="@layout/malestar_form5_fragment">
         <action
             android:id="@+id/go_malestarForm6"
@@ -106,7 +106,7 @@
     <fragment
         android:id="@+id/malestarForm6"
         android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm6"
-        android:label="Pagina 6"
+        android:label="Pagina 6/7"
         tools:layout="@layout/malestar_form6_fragment">
         <action
             android:id="@+id/go_malestarForm7"
@@ -119,7 +119,7 @@
     <fragment
         android:id="@+id/malestarForm7"
         android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm7"
-        android:label="Pagina Final"
+        android:label="Pagina 7/7"
         tools:layout="@layout/malestar_form7_fragment">
         <action
             android:id="@+id/go_mostrarRecomendaciones"
