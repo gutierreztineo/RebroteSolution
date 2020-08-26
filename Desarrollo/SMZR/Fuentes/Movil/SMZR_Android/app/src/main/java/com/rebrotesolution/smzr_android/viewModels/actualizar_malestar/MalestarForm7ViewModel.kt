@@ -6,6 +6,7 @@ import android.widget.RadioGroup
 import androidx.lifecycle.ViewModel
 import com.rebrotesolution.smzr_android.R
 import com.rebrotesolution.smzr_android.interfaces.FormularioMalestarResultCallBacks
+import com.rebrotesolution.smzr_android.interfaces.StartCallBacks
 
 
 class MalestarForm7ViewModel(
