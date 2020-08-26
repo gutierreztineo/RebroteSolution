@@ -10,6 +10,7 @@ defmodule Smzr.Guardian do
   # headerのBearerのJWTを検証時(sign_up/sign_in以外のAPI)に実行
   def resource_from_claims(claims) do
     id = claims["sub"]
+    #TODO: filter invalid sub - id
     resource = Smzr.Accounts.get_user!(id)
     {:ok, resource}
   end
