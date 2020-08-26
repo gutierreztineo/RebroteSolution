@@ -51,6 +51,7 @@ defmodule SmzrWeb.Router do
     resources "/ailment_advices", AilmentAdviceController, except: [:new, :edit]
 
     post "/my/profile", ProfileController, :my_profile
+    post "/my/ailments", ProfileAilmentController, :my_ailments
     post "/change_pass", UserController, :change_pass
 
 

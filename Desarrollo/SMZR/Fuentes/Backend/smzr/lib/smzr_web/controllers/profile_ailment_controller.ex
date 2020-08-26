@@ -18,7 +18,7 @@ defmodule SmzrWeb.ProfileAilmentController do
   def create(conn, %{"profile_ailment" => profile_ailment_params}) do
     %User{ :id => user_id } = Guardian.Plug.current_resource(conn)
     case Monitoring.get_ailment_level(profile_ailment_params["ailment_levels_id"])  do
-      nil -> conn |> json(%{"message": "Nivel no existe"})
+      nil -> conn |> json(%{message: "Nivel no existe"})
       _ ->  with %Profile{ :id => profile_id } <- Accounts.get_profile_by_user!(user_id) do
               with {:ok, %ProfileAilment{} = profile_ailment} <- Monitoring.create_profile_ailment(Map.put(profile_ailment_params, "profile_id", profile_id )) do
                 conn
@@ -49,5 +49,12 @@ defmodule SmzrWeb.ProfileAilmentController do
     with {:ok, %ProfileAilment{}} <- Monitoring.delete_profile_ailment(profile_ailment) do
       send_resp(conn, :no_content, "")
     end
+  end
+
+  def my_ailments(conn, _params) do
+    %User{ :id => user_id } = Guardian.Plug.current_resource(conn) |> IO.inspect
+
+    profile_ailments = Monitoring.list_profile_ailments_by_user(user_id)
+    render(conn, "index.json", profile_ailments: profile_ailments)
   end
 end

@@ -7,6 +7,7 @@ defmodule Smzr.Monitoring do
   alias Smzr.Repo
 
   alias Smzr.Monitoring.Ailment
+  alias Smzr.Accounts.Profile
 
   @doc """
   Returns the list of ailments.
@@ -116,6 +117,11 @@ defmodule Smzr.Monitoring do
   """
   def list_profile_ailments do
     Repo.all(ProfileAilment)
+  end
+
+  def list_profile_ailments_by_user(user_id) do
+    query = from(pa in ProfileAilment, join: p in Profile,where: p.user_id == ^user_id,select: pa)
+    query |> Repo.all()
   end
 
   @doc """
