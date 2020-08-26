@@ -59,6 +59,7 @@ class LoginViewModel(
            Coroutines.main {
                try {
                    val tokenResponse =  userRepo.userLogin(usuario.username, usuario.password)
+
                    tokenResponse.token?.let {
                        listener.onSuccess(usuario)
                        val editor = sharedPreferences.edit()
@@ -85,4 +86,8 @@ class LoginViewModel(
     }
 
     fun getLoggedInUser() = userRepo.getUsuario()
+
+    fun onRecoveryClicked(v: View){
+        listener.onRecovery()
+    }
 }

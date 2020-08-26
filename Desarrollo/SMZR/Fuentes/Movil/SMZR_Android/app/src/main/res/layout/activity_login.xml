@@ -76,7 +76,8 @@
                     android:padding="10dp"
                     android:text="@string/forgotPassword"
                     android:textColor="@color/colorIndicatorSelected"
-                    android:textColorHint="@color/colorPrimaryDark" />
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:onClick="@{loginViewModel::onRecoveryClicked}"/>
 
                 <Button
                     android:id="@+id/login_button"
