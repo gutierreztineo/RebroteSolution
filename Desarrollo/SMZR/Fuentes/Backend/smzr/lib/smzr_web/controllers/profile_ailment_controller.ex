@@ -52,7 +52,7 @@ defmodule SmzrWeb.ProfileAilmentController do
   end
 
   def my_ailments(conn, _params) do
-    %User{ :id => user_id } = Guardian.Plug.current_resource(conn) |> IO.inspect
+    %User{ :id => user_id } = Guardian.Plug.current_resource(conn)
 
     profile_ailments = Monitoring.list_profile_ailments_by_user(user_id)
     render(conn, "index.json", profile_ailments: profile_ailments)

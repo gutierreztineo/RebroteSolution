@@ -3,6 +3,8 @@ defmodule SmzrWeb.UserLocationController do
 
   alias Smzr.Tracking
   alias Smzr.Tracking.UserLocation
+  alias Smzr.Tracking.Location
+  alias Smzr.Accounts.User
 
   action_fallback SmzrWeb.FallbackController
 
@@ -38,6 +40,24 @@ defmodule SmzrWeb.UserLocationController do
 
     with {:ok, %UserLocation{}} <- Tracking.delete_user_location(user_location) do
       send_resp(conn, :no_content, "")
+    end
+  end
+
+  def my_location(conn, %{"location" => location_params}) do
+
+    %User{ :id => user_id } = Guardian.Plug.current_resource(conn)
+
+    location_id = case Tracking.get_location_by_lat_lng(location_params)  do
+                        %Location{ id: id }  -> id
+                        nil -> {:ok, location } = Tracking.create_location(location_params)
+                               location.id
+    end
+
+    with {:ok, %UserLocation{} = user_location} <- Tracking.create_user_location(%{location_id: location_id, user_id: user_id}) do
+      conn
+      |> put_status(:created)
+      |> put_resp_header("location", Routes.user_location_path(conn, :show, user_location))
+      |> render("show.json", user_location: user_location)
     end
   end
 end

@@ -52,6 +52,7 @@ defmodule SmzrWeb.Router do
 
     post "/my/profile", ProfileController, :my_profile
     post "/my/ailments", ProfileAilmentController, :my_ailments
+    post "/my/location", UserLocationController, :my_location
     post "/change_pass", UserController, :change_pass
 
 
