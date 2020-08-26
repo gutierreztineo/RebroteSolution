@@ -14,6 +14,7 @@ defmodule SmzrWeb.ProfileAilmentView do
     %{
       id: profile_ailment.id,
       profile_id: profile_ailment.profile_id,
+      inserted_at: profile_ailment.inserted_at,
       ailment_levels_id: profile_ailment.ailment_levels_id
     }
   end
