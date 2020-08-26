@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.actualizar_malestar.MostrarRecomendaciones"
-    android:paddingTop="25dp">
-
-    <Button
-        android:id="@+id/btn_cerrar_recomendaciones"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="recomendacionesViewModel"
+            type="com.rebrotesolution.smzr_android.viewModels.actualizar_malestar.MostrarRecomendacionesViewModel" />
+    </data>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/colorButtonBig"
-        android:text="@string/cerrar"
-        android:textAllCaps="false"
-        android:textColor="@color/colorTextInput"
-        android:textSize="20sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.actualizar_malestar.MostrarRecomendaciones"
+        android:paddingTop="25dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recicler_view_recomendaciones"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_cerrar_recomendaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/colorButtonBig"
+            android:text="@string/btn_text_guardar_cambios"
+            android:textAllCaps="false"
+            android:textColor="@color/colorTextInput"
+            android:textSize="20sp"
+            android:onClick="@{recomendacionesViewModel::onClickCerrar}"/>
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recicler_view_recomendaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>
