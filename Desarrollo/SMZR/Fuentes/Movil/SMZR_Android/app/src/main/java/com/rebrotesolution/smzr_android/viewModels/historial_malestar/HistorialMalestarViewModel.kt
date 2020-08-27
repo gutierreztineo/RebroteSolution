@@ -29,7 +29,6 @@ class HistorialMalestarViewModel(
 
 ) : ViewModel() {
 
-    lateinit var lista: ArrayList<HistorialAdapter>
     lateinit var listaPersonaMalestares: MutableLiveData<List<HistorialAdapter>>
     private lateinit var adapter: SintomaHistorialAdapter
 
