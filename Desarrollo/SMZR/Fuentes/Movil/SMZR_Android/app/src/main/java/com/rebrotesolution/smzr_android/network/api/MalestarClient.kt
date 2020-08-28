@@ -1,19 +1,28 @@
 package com.rebrotesolution.smzr_android.network.api
 
+import com.rebrotesolution.smzr_android.models.models_api.ProfileAilmentSendRegister
 import com.rebrotesolution.smzr_android.network.NetworkConnectionInterceptor
 import com.rebrotesolution.smzr_android.network.responses.ApiRestResponse
+import com.rebrotesolution.smzr_android.network.responses.DataProfileAilmentResponse
+import com.rebrotesolution.smzr_android.network.responses.ListDataAilmentLevelResponse
+import com.rebrotesolution.smzr_android.network.responses.ListDataProfileAilmentResponse
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 interface MalestarClient {
 
-    @POST("test/listarMalestar/{idpersona}")
-    suspend fun listarMalestares(@Path("idpersona") idpersona: Int): Response<ApiRestResponse>
+    @GET("api/ailment_levels")
+    suspend fun getNivelesMalestar(@Header("Authorization") token: String): Response<ListDataAilmentLevelResponse>
+
+    @GET("api/profile_ailments")
+    suspend fun getHistorialMalestar(@Header("Authorization") token: String): Response<ListDataProfileAilmentResponse>
+
+    @POST("api/profile_ailments")
+    suspend fun registrarMalestar(@Header("Authorization") token: String, @Body profileAilment: ProfileAilmentSendRegister) : Response<DataProfileAilmentResponse>
 
     companion object{
         operator  fun invoke(
@@ -28,7 +37,7 @@ interface MalestarClient {
 
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("https://rentame-back.herokuapp.com/")
+                .baseUrl("https://smzr.makinap.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(MalestarClient::class.java)
