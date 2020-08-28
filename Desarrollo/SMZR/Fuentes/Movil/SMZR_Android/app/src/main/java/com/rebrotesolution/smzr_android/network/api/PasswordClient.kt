@@ -13,6 +13,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.Header
 import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
@@ -25,7 +26,7 @@ interface PasswordClient {
     suspend fun validarCodigo(@Body validateCode: ValidateCode ): Response<TokenResponse>
 
     @POST("api/change_pass")
-    suspend fun cambiarContrasena(@Body changePassword: ChangePassword): Response<SendCodeResponse>
+    suspend fun cambiarContrasena(@Header("Authorization") token : String, @Body changePassword: ChangePassword): Response<SendCodeResponse>
 
     companion object{
         operator  fun invoke(

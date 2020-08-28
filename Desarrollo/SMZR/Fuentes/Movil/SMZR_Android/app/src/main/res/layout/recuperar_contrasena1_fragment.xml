@@ -52,6 +52,7 @@
         android:drawablePadding="10dp"
         android:drawableTint="@color/colorPrimaryDark"
         android:hint="@string/nombre_de_usuario"
+        android:maxLines="1"
         android:padding="15dp"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPlaceholder"

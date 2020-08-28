@@ -5,8 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.rebrotesolution.smzr_android.R
+import com.rebrotesolution.smzr_android.network.NetworkConnectionInterceptor
+import com.rebrotesolution.smzr_android.network.api.PasswordClient
+import com.rebrotesolution.smzr_android.network.repository.PasswordRepository
+import com.rebrotesolution.smzr_android.ui.extras.LoadingDialog
+import com.rebrotesolution.smzr_android.utils.ApiException
+import com.rebrotesolution.smzr_android.utils.ApiTimeOutException
+import com.rebrotesolution.smzr_android.utils.Coroutines
+import com.rebrotesolution.smzr_android.utils.NoInternetException
 import kotlinx.android.synthetic.main.recuperar_contrasena1_fragment.*
+import retrofit2.http.POST
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +36,8 @@ class RecuperarContrasena1Fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var loadingBar : LoadingDialog
+    lateinit var navController :  NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +53,49 @@ class RecuperarContrasena1Fragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val rootView :  View = inflater.inflate(R.layout.recuperar_contrasena1_fragment, container, false)
-     
+        val apiPassword = PasswordClient(NetworkConnectionInterceptor(requireContext()))
+        val passwordRepo = PasswordRepository(apiPassword)
+        val enviarButton = rootView.findViewById<Button>(R.id.btnEnviar)
+        val nombreUsuarioText = rootView.findViewById<EditText>(R.id.usuario_text)
+        loadingBar = LoadingDialog(requireActivity())
+        enviarButton.setOnClickListener {
+            val userName = nombreUsuarioText.text.toString()
+            if (userName.length >= 3){
+                loadingBar.start()
+                Coroutines.main {
+                    try {
+                        val sendCodeResponse =  passwordRepo.sendCode(userName)
+                        sendCodeResponse.message?.let {
+                            if (it.equals("Usuario no encontrado")){
+                                Toast.makeText(requireContext(),"Usuario no encontrado", Toast.LENGTH_SHORT).show()
+                                loadingBar.dismiss()
+                                return@main
+                            }
+                            else{
+                                loadingBar.dismiss()
+                                navController.navigate(R.id.go_recuperarContrasena2)
+                                return@main
+                            }
+                        }
+                        loadingBar.dismiss()
+                    }catch (e: ApiException){
+                        loadingBar.dismiss()
+                    }catch (e: NoInternetException){
+                        loadingBar.dismiss()
+                    }catch( e: ApiTimeOutException){
+                        loadingBar.dismiss()
+                    }
+                }
 
+            }
+        }
 
         return rootView
     }
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
