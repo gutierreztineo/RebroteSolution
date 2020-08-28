@@ -1,55 +1,68 @@
 package com.rebrotesolution.smzr_android.service_worker
 
-import android.R
-import android.app.NotificationChannel
-import android.app.NotificationManager
+import android.app.*
 import android.content.Context
+import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
-import android.util.Log
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
+import android.widget.RemoteViews
 import androidx.work.CoroutineWorker
-import androidx.work.Operation
-import androidx.work.Worker
+
 import androidx.work.WorkerParameters
+import com.rebrotesolution.smzr_android.LoginActivity
+import com.rebrotesolution.smzr_android.R
 
 
 class NotifyRiesgoWorker(
     var context: Context,
     var params: WorkerParameters
-): CoroutineWorker(context,params){
+) : CoroutineWorker(context, params) {
 
     override suspend fun doWork(): Result {
-        Log.i("TAG","LLAMADO AL WORK")
         generatePushNotification()
-        return  Result.success()
+        return Result.success()
     }
+    
+    private lateinit var notificationManager: NotificationManager
+    private lateinit var notificationChannel: NotificationChannel
+    private lateinit var  builder: Notification.Builder
+    private val channelId = "com.rebrotesolution.smzr_android.service_worker"
+    private val description = "Notificacion de alerta de zona de riesgo"
 
-    private fun generatePushNotification(){
-        val mBuilder: NotificationCompat.Builder = NotificationCompat.Builder(context, 1.toString())
-            .setSmallIcon(R.drawable.ic_dialog_alert)
-            .setColor(Color.RED)
-            .setContentTitle("!CUIDADO!")
-            .setStyle(
-                NotificationCompat.BigTextStyle()
-                    .bigText("Estas acercandote a la zona de riesgo, toma tus precauciones")
+    private fun generatePushNotification() {
 
-            )
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val intent = Intent(context,LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        val pendingIntent = PendingIntent.getActivity(context,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val contentView = RemoteViews(context.packageName, R.layout.notification_layout)
+        contentView.setTextViewText(R.id.notify_title,"SMZR")
+        contentView.setTextViewText(R.id.notify_content,"¡CUIDADO! Estás acercandote a una zona de riesgo, toma tus precauciones.")
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name: CharSequence = "Channel_name"
-            val description = "description"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel("1", name, importance)
-            channel.description = description
-            val notificationManager =
-                context.getSystemService(
-                    NotificationManager::class.java
-                )
-            notificationManager.createNotificationChannel(channel)
+            notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_DEFAULT)
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.RED
+            notificationChannel.enableVibration(true)
+            notificationManager.createNotificationChannel(notificationChannel)
+
+            builder = Notification.Builder(context,channelId)
+                .setContent(contentView)
+                .setSmallIcon(R.drawable.ic_launcher_round)
+                .setLargeIcon(BitmapFactory.decodeResource(context.resources,R.drawable.ic_launcher))
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
+        }else{
+            builder = Notification.Builder(context)
+                .setContent(contentView)
+                .setSmallIcon(R.drawable.ic_launcher_round)
+                .setLargeIcon(BitmapFactory.decodeResource(context.resources,R.drawable.ic_launcher))
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
         }
-        val notificationManager = NotificationManagerCompat.from(context)
-        notificationManager.notify(100, mBuilder.build())
+
+        notificationManager.notify(100,builder.build())
     }
 }
