@@ -18,6 +18,10 @@ class RecuperarContrasenaActivity : AppCompatActivity() {
         actionBar!!.setDisplayHomeAsUpEnabled(true)
 
     }
+    override fun onBackPressed() {
+       // super.onBackPressed()
+        finish()
+    }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true

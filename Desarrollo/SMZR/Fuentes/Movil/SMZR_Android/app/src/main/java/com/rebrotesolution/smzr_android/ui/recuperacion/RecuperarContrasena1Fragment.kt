@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.rebrotesolution.smzr_android.R
@@ -19,6 +20,7 @@ import com.rebrotesolution.smzr_android.utils.ApiException
 import com.rebrotesolution.smzr_android.utils.ApiTimeOutException
 import com.rebrotesolution.smzr_android.utils.Coroutines
 import com.rebrotesolution.smzr_android.utils.NoInternetException
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.recuperar_contrasena1_fragment.*
 import retrofit2.http.POST
 
@@ -37,7 +39,8 @@ class RecuperarContrasena1Fragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var loadingBar : LoadingDialog
-    lateinit var navController :  NavController
+    private lateinit var navController :  NavController
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,26 +70,35 @@ class RecuperarContrasena1Fragment : Fragment() {
                         val sendCodeResponse =  passwordRepo.sendCode(userName)
                         sendCodeResponse.message?.let {
                             if (it.equals("Usuario no encontrado")){
-                                Toast.makeText(requireContext(),"Usuario no encontrado", Toast.LENGTH_SHORT).show()
                                 loadingBar.dismiss()
+                                Toasty.error(requireContext(),"Usuario no encontrado", Toast.LENGTH_SHORT).show()
                                 return@main
                             }
                             else{
                                 loadingBar.dismiss()
-                                navController.navigate(R.id.go_recuperarContrasena2)
+                                navController.navigate(R.id.go_recuperarContrasena2, bundleOf("username" to userName))
                                 return@main
                             }
                         }
                         loadingBar.dismiss()
                     }catch (e: ApiException){
                         loadingBar.dismiss()
+                        Toasty.error(requireContext(), "Error desconocido", Toast.LENGTH_SHORT).show()
                     }catch (e: NoInternetException){
                         loadingBar.dismiss()
+                        Toasty.error(requireContext(), "No tiene conexión", Toast.LENGTH_SHORT).show()
                     }catch( e: ApiTimeOutException){
                         loadingBar.dismiss()
+                        Toasty.error(requireContext(), "Se superó el tiempo de carga", Toast.LENGTH_SHORT).show()
                     }
                 }
 
+            }
+            else if(userName.isEmpty()){
+                Toasty.warning(requireContext(),"Debe llenar el nombre de usuario", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                Toasty.error(requireContext(), "Ingrese un usuario válido", Toast.LENGTH_SHORT).show()
             }
         }
 
