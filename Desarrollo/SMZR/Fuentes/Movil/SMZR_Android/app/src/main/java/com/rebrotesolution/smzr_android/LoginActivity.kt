@@ -38,11 +38,13 @@ class LoginActivity : AppCompatActivity() , LoginResultCallBacks {
 
         val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
         val apiuser = LoginClient(networkConnectionInterceptor)
+        val apipersona = PersonaClient(networkConnectionInterceptor)
         val db = RoomDB(this)
         val userRepo = UsuarioRepository(apiuser, db)
+        val personRepo = PersonaRepository(apipersona,db)
         val sharedPreferences = getSharedPreferences("SP_INFO", Context.MODE_PRIVATE)
 
-        val viewModel = ViewModelProviders.of(this,LoginViewModelFactory(this, userRepo,sharedPreferences)).get(LoginViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this,LoginViewModelFactory(this, userRepo,personRepo,sharedPreferences)).get(LoginViewModel::class.java)
         val activityMainBinding = DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login)
         activityMainBinding.loginViewModel = viewModel
 

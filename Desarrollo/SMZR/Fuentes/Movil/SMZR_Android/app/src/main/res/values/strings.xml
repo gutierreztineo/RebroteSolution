@@ -22,7 +22,7 @@
     <string name="repita_la_nueva_contrasena">Repita la nueva contraseña</string>
     <string name="contrasena">Contraseña</string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
-    <string name="registrate">Registrate</string>
+    <string name="registrate">Regístrate</string>
     <string name="cargando">Cargando. . .</string>
     <string name="siguiente">Siguiente</string>
     <string name="repite_contrasena">Repite Contraseña</string>
@@ -84,7 +84,7 @@
     <string name="btn_text_completar_form">Finalizar formulario</string>
     <string name="text_sin_historial_malestar">Aun no tiene datos de malestares, complete el formulario para generar un registro de sus malestares</string>
     <string name="apellidom">Apellido Materno</string>
-    <string name="condicion">Condición:</string>
+    <string name="Estado">Estado:</string>
     <string name="edad">Edad:</string>
     <string name="email">Email:</string>
     <string name="genero">Género</string>

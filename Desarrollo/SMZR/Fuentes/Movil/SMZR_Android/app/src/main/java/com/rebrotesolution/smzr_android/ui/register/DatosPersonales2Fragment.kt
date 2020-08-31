@@ -28,6 +28,8 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
     private lateinit var navController: NavController
     private lateinit var datepicker: DatePicker
 
+    private var username: String = ""
+    private var password: String = ""
     private lateinit var email: String
     private lateinit var nombres: String
     private lateinit var apellidop: String
@@ -39,6 +41,8 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
         savedInstanceState: Bundle?
     ): View? {
 
+        username = arguments?.getString("username").toString()
+        password = arguments?.getString("password").toString()
         email = arguments?.getString("email").toString()
         nombres = arguments?.getString("nombres").toString()
         apellidop = arguments?.getString("apellidop").toString()
@@ -65,6 +69,8 @@ class DatosPersonales2Fragment : Fragment(), RegisterResultCallBacks {
 
     override fun valid(data: Map<String, String>) {
         var bundle = bundleOf(
+            "username" to username,
+            "password" to password,
             "email" to email,
             "nombres" to nombres,
             "apellidop" to apellidop,

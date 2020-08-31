@@ -81,28 +81,28 @@
 
                 <Button
                     android:id="@+id/login_button"
-                    android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_background"
-                    android:textColor="@color/colorWhite"
-                    android:textAllCaps="false"
-                    android:text="@string/iniciar_sesion"
-                    android:textSize="20sp"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorButton"
+                    android:onClick="@{loginViewModel::onLoginClicked}"
                     android:padding="10dp"
-                    android:onClick="@{loginViewModel::onLoginClicked}"/>
+                    android:text="@string/iniciar_sesion"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorTextInput"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/register_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:background="@color/colorButton"
+                    android:background="@color/colorButtonBig"
                     android:onClick="@{loginViewModel::onRegisterClicked}"
                     android:padding="10dp"
                     android:text="@string/registrate"
                     android:textAllCaps="false"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/colorTextInput"
                     android:textSize="20sp" />
             </LinearLayout>
         </ScrollView>

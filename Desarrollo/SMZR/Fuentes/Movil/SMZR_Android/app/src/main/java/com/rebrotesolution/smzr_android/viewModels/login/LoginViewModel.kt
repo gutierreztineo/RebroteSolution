@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.rebrotesolution.smzr_android.interfaces.LoginResultCallBacks
+import com.rebrotesolution.smzr_android.models.Persona
 import com.rebrotesolution.smzr_android.models.Usuario
 import com.rebrotesolution.smzr_android.network.repository.PersonaRepository
 import com.rebrotesolution.smzr_android.network.repository.UsuarioRepository
@@ -20,6 +21,7 @@ import kotlin.math.log
 class LoginViewModel(
     private val listener: LoginResultCallBacks,
     private val userRepo: UsuarioRepository,
+    private val personaRepo: PersonaRepository,
     private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
 
@@ -61,10 +63,16 @@ class LoginViewModel(
                    val tokenResponse =  userRepo.userLogin(usuario.username, usuario.password)
 
                    tokenResponse.token?.let {
-                       listener.onSuccess(usuario)
                        val editor = sharedPreferences.edit()
                        editor.putString("TOKEN",it)
                        editor.apply()
+
+                       val personaResponse = personaRepo.consultaDatosPersonaAPI(it)
+                       personaResponse.data?.let {
+                           personaRepo.savePersonaInLocal(Persona(it.id,it.firstname,it.lastnamep,it.lastnamem,it.gender,it.dni,it.birthdate,it.email,null))
+                           listener.onSuccess(usuario)
+                           return@main
+                       }
                        return@main
                    }
                    listener.onError(tokenResponse.message!!)

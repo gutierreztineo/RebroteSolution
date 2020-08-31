@@ -30,6 +30,8 @@ class DatosPersonales3Fragment : Fragment(), RegisterResultCallBacks {
 
     private lateinit var viewModel: DatosPersonales3ViewModel
 
+    private var username: String = ""
+    private var password: String = ""
     private lateinit var email: String
     private lateinit var nombres: String
     private lateinit var apellidop: String
@@ -42,6 +44,8 @@ class DatosPersonales3Fragment : Fragment(), RegisterResultCallBacks {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        username = arguments?.getString("username").toString()
+        password = arguments?.getString("password").toString()
         email = arguments?.getString("email").toString()
         nombres = arguments?.getString("nombres").toString()
         apellidop = arguments?.getString("apellidop").toString()
@@ -58,7 +62,7 @@ class DatosPersonales3Fragment : Fragment(), RegisterResultCallBacks {
 
         var persona = Persona(
             id_persona = null,
-            usuario = null,
+            usuario = Usuario(null, username,password,null),
             apellidop = apellidop,
             apellidom = apellidom,
             nombres = nombres,
