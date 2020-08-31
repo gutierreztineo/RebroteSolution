@@ -1,15 +1,10 @@
 package com.rebrotesolution.smzr_android
 
-import android.app.job.JobInfo
-import android.app.job.JobScheduler
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -25,7 +20,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.work.OneTimeWorkRequest
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.google.android.material.navigation.NavigationView
@@ -119,6 +113,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
+
         return true
     }
 
@@ -158,7 +153,4 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         WorkManager.getInstance(applicationContext).enqueue(periodicWorkRequest)
     }
 
-    private fun evaluarSiRegistroMalestares(){
-        
-    }
 }

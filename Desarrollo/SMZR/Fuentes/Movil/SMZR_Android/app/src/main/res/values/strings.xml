@@ -88,6 +88,6 @@
     <string name="edad">Edad:</string>
     <string name="email">Email:</string>
     <string name="genero">Género</string>
-    <string name="cerrar">Cerrar</string>
+    <string name="btn_text_guardar_cambios">Guardar Resultados</string>
     <string name="sistema_de_monitoreo_de_zonas_de_riesgo">Sistema de Monitoreo de Zonas de riesgo</string>
 </resources>

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rebrotesolution.smzr_android.R
+import com.rebrotesolution.smzr_android.models.HistorialAdapter
 import com.rebrotesolution.smzr_android.models.PersonaMalestar
 import kotlinx.android.synthetic.main.lista_sintomas_historial.view.*
 import java.text.SimpleDateFormat
@@ -14,10 +15,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class SintomaHistorialAdapter (
-    private var lspersona_malestar: ArrayList<PersonaMalestar>
+    private var lspersona_malestar: List<HistorialAdapter>
 ): RecyclerView.Adapter<SintomaHistorialAdapter.ViewHolder>() {
 
-    var items:ArrayList<PersonaMalestar>?=null
+    var items:List<HistorialAdapter>?=null
     lateinit var viewHolder:ViewHolder
 
     init {
@@ -49,9 +50,9 @@ class SintomaHistorialAdapter (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imagen.setImageResource(R.drawable.baseline_coronavirus_24)
-        holder.fecha_registro.text = formatearFecha(lspersona_malestar.get(position).fecha_registro)
-        holder.malestar_nombre.text = lspersona_malestar.get(position).malestar.descripcion
+        holder.imagen.setImageResource(lspersona_malestar.get(position).imagen)
+        holder.fecha_registro.text = formatearFecha(lspersona_malestar.get(position).fecha)
+        holder.malestar_nombre.text = lspersona_malestar.get(position).descripcion
 
     }
 
