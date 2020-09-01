@@ -90,4 +90,10 @@
     <string name="genero">Género</string>
     <string name="btn_text_guardar_cambios">Guardar Resultados</string>
     <string name="sistema_de_monitoreo_de_zonas_de_riesgo">Sistema de Monitoreo de Zonas de riesgo</string>
+    <string name="recuperar_contrasena">¿Olvidaste tu contraseña?</string>
+    <string name="recuperar_text">Para recuperar tu contraseña, ingresa el nombre de usuario registrado en tu cuenta. Te enviaremos un código de recuperación a tu correo electrónico.</string>
+    <string name="enviar">Enviar</string>
+    <string name="ingresa_codigo">Ingresa el código</string>
+    <string name="codigo_recuperacion">Revisa tu correo electrónico, te enviamos un código de recuperación. Ingresalo aquí:</string>
+    <string name="codigo">Codigo de recuperación</string>
 </resources>

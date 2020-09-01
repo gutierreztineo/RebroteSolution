@@ -29,10 +29,10 @@ class PrevencionCovid : Fragment() {
 
         val pagesInformation : ArrayList<PreventionInformation> = ArrayList()
 
-        pagesInformation.add(PreventionInformation("Lávate las manos hasta el antebrazo con agua y jabón por un mínimo de 20 segundos.",R.drawable.manos_covid))
-        pagesInformation.add(PreventionInformation("Mantenga al menos 1 metro (3 pies) de distancia entre usted y las demás personas, particularmente aquellas que tosan, estornuden y tengan fiebre.",R.drawable.distancia2_covid))
-        pagesInformation.add(PreventionInformation("Cúbrete la boca y la nariz con la mascarilla. Asegúrate de que no queden espacios entre esta y tu rostro.", R.drawable.mask_covid))
-        pagesInformation.add(PreventionInformation("Recuerda seguir estos consejos para evitar contagiarte.",R.drawable.final_covid))
+        pagesInformation.add(PreventionInformation("Lávate las manos","Lávate las manos hasta el antebrazo con agua y jabón por un mínimo de 20 segundos.",R.drawable.manos_covid))
+        pagesInformation.add(PreventionInformation("Mantén tu distancia", "Mantenga al menos 1 metro (3 pies) de distancia entre usted y las demás personas, particularmente aquellas que tosan, estornuden y tengan fiebre.",R.drawable.distancia2_covid))
+        pagesInformation.add(PreventionInformation("Usa mascarilla","Cúbrete la boca y la nariz con la mascarilla. Asegúrate de que no queden espacios entre esta y tu rostro.", R.drawable.mask_covid))
+        pagesInformation.add(PreventionInformation("Prevención COVID-19","Recuerda seguir estos consejos para evitar contagiarte.",R.drawable.final_covid))
 
         viewPager.adapter = PrevencionPagerAdapter(pagesInformation)
 
