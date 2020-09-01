@@ -9,4 +9,5 @@ interface LoginResultCallBacks {
     fun onSuccess(usuario: Usuario)
     fun onError( message: String)
     fun onRegister()
+    fun onRecovery()
 }

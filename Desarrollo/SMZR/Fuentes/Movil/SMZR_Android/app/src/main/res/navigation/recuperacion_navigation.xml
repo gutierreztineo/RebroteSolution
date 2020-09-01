@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recuperacion_navigation"
+    app:startDestination="@id/recuperarContrasena1">
+
+    <fragment
+        android:id="@+id/recuperarContrasena1"
+        android:name="com.rebrotesolution.smzr_android.ui.recuperacion.RecuperarContrasena1Fragment"
+        android:label="recuperar_contrasena_fragment1"
+        tools:layout="@layout/recuperar_contrasena1_fragment">
+        <action
+            android:id="@+id/go_recuperarContrasena2"
+            app:destination="@id/recuperarContrasena2"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/recuperarContrasena2"
+        android:name="com.rebrotesolution.smzr_android.ui.recuperacion.RecuperarContrasena2Fragment"
+        android:label="recuperar_contrasena_fragment2"
+        tools:layout="@layout/recuperar_contrasena2_fragment">
+        <action
+            android:id="@+id/go_recuperarContrasena3"
+            app:destination="@id/recuperarContrasena3"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/recuperarContrasena3"
+        android:name="com.rebrotesolution.smzr_android.ui.recuperacion.RecuperarContrasena3Fragment"
+        android:label="recuperar_contrasena_fragment3"
+        tools:layout="@layout/recuperar_contrasena3_fragment">
+
+    </fragment>
+</navigation>
