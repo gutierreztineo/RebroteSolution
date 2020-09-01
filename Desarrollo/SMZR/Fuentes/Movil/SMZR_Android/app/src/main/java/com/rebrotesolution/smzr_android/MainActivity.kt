@@ -79,12 +79,12 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         this.habilitarItem()
         when(item.itemId) {
             R.id.nav_cerrar_sesion -> {
+                viewModel.logOut(sharedPreferences)
                 val editor = sharedPreferences.edit()
                 editor.remove("TOKEN")
                 editor.remove("ID")
                 editor.clear()
                 editor.apply()
-                viewModel.logOut()
                 Intent(this,LoginActivity::class.java).also {
                     it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(it)

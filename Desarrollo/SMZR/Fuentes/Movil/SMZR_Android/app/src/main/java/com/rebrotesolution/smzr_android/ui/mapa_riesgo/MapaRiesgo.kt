@@ -55,6 +55,7 @@ import es.dmoral.toasty.Toasty
 
 class MapaRiesgo : Fragment(), ApiResultCallBacks, IOnLoadLocationListener, GeoQueryEventListener {
 
+    private var localizar: Boolean = false;
     private lateinit var mapaViewModel: MapaRiesgoViewModel
     private var mapReady = false
 
@@ -123,16 +124,20 @@ class MapaRiesgo : Fragment(), ApiResultCallBacks, IOnLoadLocationListener, GeoQ
             ViewModelProviders.of(this, MapaRiesgoViewModelFactory(this, requireContext()))
                 .get(MapaRiesgoViewModel::class.java)
         val root = inflater.inflate(R.layout.mapa_riesgo_fragment, container, false)
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.mapa_principal) as SupportMapFragment
 
+        mapFragment?.getMapAsync { googleMap ->
+            mMap = googleMap
+            mapReady = true
+            setUpMap()
+        }
         return root
     }
 
 
    private fun setUpMap() {
-       if (mMap != null) {
-           mMap!!.clear()
-           addCircleArea()
-       }
+
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -151,7 +156,10 @@ class MapaRiesgo : Fragment(), ApiResultCallBacks, IOnLoadLocationListener, GeoQ
         fusedLocationClient.lastLocation.addOnSuccessListener(requireActivity()) { location ->
             lastLocation = location
             val currentLatLong = LatLng(location.latitude, location.longitude)
-            mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 13f))
+            if(!localizar){
+                localizar = true
+                mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 13f))
+            }
         }
     }
 
@@ -231,7 +239,6 @@ class MapaRiesgo : Fragment(), ApiResultCallBacks, IOnLoadLocationListener, GeoQ
                     .radius(500.0)
                     .strokeWidth(0.001f)
             )
-
             geoQuery = geoFire!!.queryAtLocation(
                 GeoLocation(latLng.latitude, latLng.longitude),
                 0.15
@@ -285,17 +292,14 @@ class MapaRiesgo : Fragment(), ApiResultCallBacks, IOnLoadLocationListener, GeoQ
     override fun onLocationLoadSuccess(latLngs: List<MyLatLng>) {
         zonaRiesgo = ArrayList()
         for (myLatLng in latLngs) {
+            println("COORDS: " + myLatLng.latitude + "," + myLatLng.longitude)
             val convert = LatLng(myLatLng.latitude, myLatLng.longitude)
             zonaRiesgo!!.add(convert)
         }
 
-        val mapFragment =
-            childFragmentManager.findFragmentById(R.id.mapa_principal) as SupportMapFragment
-
-        mapFragment?.getMapAsync { googleMap ->
-            mMap = googleMap
-            mapReady = true
-            setUpMap()
+        if (mMap != null) {
+            mMap!!.clear()
+            addCircleArea()
         }
     }
 
@@ -308,6 +312,7 @@ class MapaRiesgo : Fragment(), ApiResultCallBacks, IOnLoadLocationListener, GeoQ
     }
 
     override fun onKeyEntered(key: String?, location: GeoLocation?) {
+        println("KEY: "+ key + "ENTRO: " + location!!.latitude + ","+ location!!.longitude )
         Toasty.warning(requireContext(), "Estas en la zona de riesgo, ¡CUIDADO!", Toast.LENGTH_LONG)
             .show()
         generatePushNotification("¡CUIDADO! Estás acercandote a una zona de riesgo, toma tus precauciones.",Color.RED)
