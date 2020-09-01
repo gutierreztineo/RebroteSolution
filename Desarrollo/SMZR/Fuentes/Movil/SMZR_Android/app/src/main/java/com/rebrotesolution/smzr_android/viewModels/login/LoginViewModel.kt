@@ -57,6 +57,7 @@ class LoginViewModel(
 
     fun onLoginClicked(v: View) {
         listener.onStarted()
+
         val editor = sharedPreferences.edit()
         if (usuario.isDataComplete) {
             Coroutines.main {
@@ -107,4 +108,8 @@ class LoginViewModel(
     }
 
     fun getLoggedInUser() = userRepo.getUsuario()
+
+    fun onRecoveryClicked(v: View){
+        listener.onRecovery()
+    }
 }

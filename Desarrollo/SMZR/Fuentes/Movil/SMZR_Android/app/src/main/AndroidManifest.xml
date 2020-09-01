@@ -15,9 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".CambiarContrasena"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" ></activity>
+        <activity
+            android:name=".RecuperarContrasenaActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            />
+        <activity
+            android:name=".CambiarContrasena"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

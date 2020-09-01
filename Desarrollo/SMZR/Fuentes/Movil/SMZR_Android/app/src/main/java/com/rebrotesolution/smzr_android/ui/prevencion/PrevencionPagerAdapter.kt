@@ -22,6 +22,7 @@ class PrevencionPagerAdapter(private val preventInfo : List<PreventionInformatio
     override fun onBindViewHolder(holder: PrevencionPagerAdapter.ViewHolder, position: Int) {
         val currentPageInfo = preventInfo[position]
 
+        holder.title.text = currentPageInfo.titulo
         holder.description.text = currentPageInfo.description
         holder.image.setImageResource(currentPageInfo.image)
     }
@@ -29,10 +30,12 @@ class PrevencionPagerAdapter(private val preventInfo : List<PreventionInformatio
     inner class ViewHolder : RecyclerView.ViewHolder {
         lateinit var image : ImageView
         lateinit var description : TextView
+        lateinit var title : TextView
 
         constructor(itemView : View) : super(itemView){
             image = itemView.findViewById(R.id.info_image)
             description = itemView.findViewById(R.id.description_text)
+            title = itemView.findViewById(R.id.title_text)
         }
     }
 }
