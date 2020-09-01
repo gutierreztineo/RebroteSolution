@@ -32,9 +32,9 @@ class LoginViewModel(
     }
 
     val usernameTextWatcher: TextWatcher
-    get() = object:TextWatcher {
+        get() = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-              usuario.username = p0.toString()
+                usuario.username = p0.toString()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -44,51 +44,65 @@ class LoginViewModel(
         }
 
     val passwordTextWatcher: TextWatcher
-    get() = object:TextWatcher {
-        override fun afterTextChanged(p0: Editable?) {
-            usuario.password = p0.toString()
+        get() = object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                usuario.password = p0.toString()
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
         }
 
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-    }
-
-    fun onLoginClicked(v: View){
+    fun onLoginClicked(v: View) {
         listener.onStarted()
-        if(usuario.isDataComplete){
-           Coroutines.main {
-               try {
-                   val tokenResponse =  userRepo.userLogin(usuario.username, usuario.password)
-                   tokenResponse.token?.let {
-                       val editor = sharedPreferences.edit()
-                       editor.putString("TOKEN",it)
-                       editor.apply()
+        val editor = sharedPreferences.edit()
+        if (usuario.isDataComplete) {
+            Coroutines.main {
+                try {
+                    val tokenResponse = userRepo.userLogin(usuario.username, usuario.password)
+                    tokenResponse.token?.let {
+                        editor.putString("TOKEN", it)
+                        editor.apply()
 
-                       val personaResponse = personaRepo.consultaDatosPersonaAPI(it)
-                       personaResponse.data?.let {
-                           personaRepo.savePersonaInLocal(Persona(it.id,it.firstname,it.lastnamep,it.lastnamem,it.gender,it.dni,it.birthdate,it.email,null))
-                           listener.onSuccess(usuario)
-                           return@main
-                       }
-                       return@main
-                   }
-                   listener.onError(tokenResponse.message!!)
-               }catch (e:ApiException){
-                   listener.onError(e.message!!)
-               }catch (e: NoInternetException){
-                   listener.onError(e.message!!)
-               }catch( e: ApiTimeOutException){
-                   listener.onError(e.message!!)
-               }
-           }
-        }else{
-            listener.onError("Complete los datos para continuar" )
+                        val personaResponse = personaRepo.consultaDatosPersonaAPI(it)
+                        personaResponse.data?.let { persona ->
+                            editor.putInt("ID", persona.id!!)
+                            editor.apply()
+                            personaRepo.savePersonaInLocal(
+                                Persona(
+                                    persona.id,
+                                    persona.firstname,
+                                    persona.lastnamep,
+                                    persona.lastnamem,
+                                    persona.gender,
+                                    persona.dni,
+                                    persona.birthdate,
+                                    persona.email,
+                                    null
+                                )
+                            )
+                            listener.onSuccess(usuario)
+                            return@main
+                        }
+                        return@main
+                    }
+                    listener.onError(tokenResponse.message!!)
+                } catch (e: ApiException) {
+                    listener.onError(e.message!!)
+                } catch (e: NoInternetException) {
+                    listener.onError(e.message!!)
+                } catch (e: ApiTimeOutException) {
+                    listener.onError(e.message!!)
+                }
+            }
+        } else {
+            listener.onError("Complete los datos para continuar")
         }
     }
 
-    fun onRegisterClicked(v:View){
+    fun onRegisterClicked(v: View) {
         listener.onRegister()
     }
 
