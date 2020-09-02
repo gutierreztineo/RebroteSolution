@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background">
+    android:background="@drawable/login_background"
+    android:visibility="visible">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -30,8 +31,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:drawableStart="@drawable/password"
+        android:layout_marginTop="32dp"
         android:drawablePadding="10dp"
         android:paddingStart="15dp"
         android:paddingLeft="5dp"
@@ -44,8 +44,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/text_contrasena_actual"
@@ -60,6 +61,7 @@
         android:hint="@string/contrasena_actual"
         android:inputType="textPassword"
         android:padding="15dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,12 +74,12 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
+        android:background="@drawable/login_edit_background"
         android:drawableStart="@drawable/ic_password"
         android:drawablePadding="5dp"
-        android:padding="15dp"
         android:hint="@string/ingrese_nueva_contrasena"
-        android:background="@drawable/login_edit_background"
         android:inputType="textPassword"
+        android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,13 +103,13 @@
         app:layout_constraintTop_toBottomOf="@+id/text_nueva_contrasena" />
 
     <Button
-        android:id="@+id/btnCancelar"
+        android:id="@+id/btnConfirmar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="70dp"
-        android:background="@color/colorButton"
+        android:background="@color/colorButtonF"
         android:text="@string/confirmar"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
@@ -118,5 +120,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_repetir_contrasena"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="64dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:srcCompat="@drawable/changepassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

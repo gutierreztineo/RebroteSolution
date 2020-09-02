@@ -63,7 +63,7 @@ class RecuperarContrasena3Fragment : Fragment() {
         loadingBar = LoadingDialog(requireActivity())
         guardarCambiosButton.setOnClickListener {
             if((passwordText.text.toString() == repeatPassText.text.toString()) &&
-                passwordText.text.toString().length>3 && repeatPassText.text.toString().length>3){
+                passwordText.text.toString().length>4 && repeatPassText.text.toString().length>4){
                var password = passwordText.text.toString()
                 loadingBar.start()
                 Coroutines.main {
@@ -101,12 +101,18 @@ class RecuperarContrasena3Fragment : Fragment() {
                     }
                 }
 
-            }else if(passwordText.text.toString().isEmpty()||repeatPassText.text.toString().isEmpty()){
-                Toasty.warning(requireContext(),"Debe llenar los campos", Toast.LENGTH_SHORT).show()
-            }
-            else{
-                Toasty.error(requireContext(), "Las contraseñas deben coincidir", Toast.LENGTH_SHORT).show()
-            }
+            }else
+                if(passwordText.text.toString().isEmpty()||repeatPassText.text.toString().isEmpty()){
+                    Toasty.warning(requireContext(),"Debe llenar todos los campos", Toast.LENGTH_SHORT).show()
+                }
+                else
+                    if(passwordText.text.toString().length <5 || repeatPassText.text.toString().length<5){
+                        Toasty.warning(requireContext(), "La contraseña debe tener mínimo 5 caracteres", Toast.LENGTH_SHORT).show()
+                    }
+                    else
+                        if(passwordText.text.toString() != repeatPassText.text.toString()){
+                            Toasty.error(requireContext(), "Las contraseñas deben coincidir", Toast.LENGTH_SHORT).show()
+                        }
         }
 
         return rootView
