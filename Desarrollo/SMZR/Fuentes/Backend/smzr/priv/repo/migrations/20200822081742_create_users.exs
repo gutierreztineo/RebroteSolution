@@ -10,5 +10,7 @@ defmodule Smzr.Repo.Migrations.CreateUsers do
       timestamps()
     end
 
+    create index(:users, :username, unique: true)
+
   end
 end

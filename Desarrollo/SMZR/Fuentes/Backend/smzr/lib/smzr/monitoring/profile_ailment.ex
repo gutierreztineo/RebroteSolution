@@ -12,7 +12,7 @@ defmodule Smzr.Monitoring.ProfileAilment do
   @doc false
   def changeset(profile_ailment, attrs) do
     profile_ailment
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:profile_id, :ailment_levels_id])
+    |> validate_required([:profile_id, :ailment_levels_id])
   end
 end

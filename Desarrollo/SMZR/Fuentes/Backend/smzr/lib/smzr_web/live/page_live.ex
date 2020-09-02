@@ -1,9 +1,11 @@
 defmodule SmzrWeb.PageLive do
   use SmzrWeb, :live_view
 
+  @version Mix.Project.config()[:version]
+
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{})}
+    {:ok, assign(socket, query: "", results: %{}, version: @version )}
   end
 
   @impl true

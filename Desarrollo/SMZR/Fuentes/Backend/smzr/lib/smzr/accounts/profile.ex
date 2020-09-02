@@ -9,6 +9,7 @@ defmodule Smzr.Accounts.Profile do
     field :firstname, :string
     field :lastnamem, :string
     field :lastnamep, :string
+    field :gender, :string
     field :user_id, :id
 
     timestamps()
@@ -17,7 +18,7 @@ defmodule Smzr.Accounts.Profile do
   @doc false
   def changeset(profile, attrs) do
     profile
-    |> cast(attrs, [:firstname, :lastnamep, :lastnamem, :dni, :birthdate, :email])
-    |> validate_required([:firstname, :lastnamep, :lastnamem, :dni, :birthdate, :email])
+    |> cast(attrs, [:firstname, :lastnamep, :lastnamem, :dni, :birthdate, :email, :gender, :user_id])
+    |> validate_required([:firstname, :lastnamep, :lastnamem, :dni, :birthdate, :email, :gender, :user_id])
   end
 end

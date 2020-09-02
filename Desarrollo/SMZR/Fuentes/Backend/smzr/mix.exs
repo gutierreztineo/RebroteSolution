@@ -4,7 +4,7 @@ defmodule Smzr.MixProject do
   def project do
     [
       app: :smzr,
-      version: "0.1.3",
+      version: "0.3.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -21,7 +21,7 @@ defmodule Smzr.MixProject do
   def application do
     [
       mod: {Smzr.Application, []},
-      extra_applications: [:logger, :runtime_tools, :os_mon]
+      extra_applications: [:logger, :runtime_tools, :os_mon, :bamboo]
     ]
   end
 
@@ -48,7 +48,10 @@ defmodule Smzr.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:bcrypt_elixir, "~> 2.0"}
+      {:bcrypt_elixir, "~> 2.0"},
+      {:guardian, "~> 2.0"},
+      {:bamboo, "~> 1.5.0"},
+      {:bamboo_smtp, "~> 2.1.0"}
     ]
   end
 

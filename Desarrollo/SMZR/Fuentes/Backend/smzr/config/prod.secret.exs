@@ -28,7 +28,15 @@ config :smzr, SmzrWeb.Endpoint,
   server: true,
   check_origin: true,
   http: [
-    port: String.to_integer(System.get_env("PORT") || "80"),
+    port: 80,
+    transport_options: [socket_opts: [:inet6]]
+  ],
+  https: [
+    port: 443,
+    cipher_suite: :strong,
+    keyfile: "/etc/letsencrypt/live/smzr.makinap.com/privkey.pem",#System.get_env("SOME_APP_SSL_KEY_PATH"),
+    certfile: "/etc/letsencrypt/live/smzr.makinap.com/cert.pem",#System.get_env("SOME_APP_SSL_CERT_PATH"),
+    cacertfile: "/etc/letsencrypt/live/smzr.makinap.com/chain.pem",
     transport_options: [socket_opts: [:inet6]]
   ],
   secret_key_base: secret_key_base

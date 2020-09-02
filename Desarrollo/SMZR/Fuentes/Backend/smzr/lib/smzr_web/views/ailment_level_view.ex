@@ -13,6 +13,8 @@ defmodule SmzrWeb.AilmentLevelView do
   def render("ailment_level.json", %{ailment_level: ailment_level}) do
     %{id: ailment_level.id,
       description: ailment_level.description,
-      level: ailment_level.level}
+      level: ailment_level.level,
+      ailment_id: ailment_level.ailment_id
+    }
   end
 end

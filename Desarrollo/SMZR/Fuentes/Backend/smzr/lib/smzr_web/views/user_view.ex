@@ -26,4 +26,9 @@ defmodule SmzrWeb.UserView do
       }
     }
   end
+
+  #jwt
+  def render("jwt.json", %{token: token}) do
+    %{token: token}
+  end
 end

@@ -37,6 +37,10 @@ defmodule Smzr.Tracking do
   """
   def get_location!(id), do: Repo.get!(Location, id)
 
+  def get_location_by_lat_lng(location_params) do
+    query = from(l in Location, where: l.latitude == ^location_params["latitude"] and l.longitude ==^location_params["longitude"])
+    query |> Repo.one()
+  end
   @doc """
   Creates a location.
 

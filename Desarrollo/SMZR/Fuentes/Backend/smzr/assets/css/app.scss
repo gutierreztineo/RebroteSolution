@@ -95,3 +95,19 @@ body{
 .alert:empty {
   display: none;
 }
+
+ul {
+  list-style: none;
+}
+ul li::before {
+  content: "✅";
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+ul ul li::before {
+  content: "📌";
+}
+ul ul ul li::before {
+  content: "🤷‍♀️";
+}

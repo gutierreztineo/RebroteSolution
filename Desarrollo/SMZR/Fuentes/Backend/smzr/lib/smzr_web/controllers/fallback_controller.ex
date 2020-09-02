@@ -29,4 +29,18 @@ defmodule SmzrWeb.FallbackController do
     |> render(:"422")
   end
 
+  #jwt
+  def call(conn, {:error, :unauthorized}) do
+    conn
+    |> put_status(:unauthorized)
+    |> json(%{error: "Login error"})
+  end
+
+  def call(conn, {:error, _param}) do
+    conn
+    |> put_status(:internal_server_error)
+    |> put_view(SmzrWeb.ErrorView)
+    |> render(:"500")
+  end
+
 end

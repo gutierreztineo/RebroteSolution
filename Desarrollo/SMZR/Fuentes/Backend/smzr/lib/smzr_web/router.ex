@@ -1,5 +1,6 @@
 defmodule SmzrWeb.Router do
   use SmzrWeb, :router
+  alias SmzrWeb.ApiAuthPipeline
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,6 +14,48 @@ defmodule SmzrWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
     plug :fetch_session
+  end
+
+  # Other scopes may use custom stacks.
+  scope "/api", SmzrWeb do
+    pipe_through :api
+
+    post "/sign_up", UserController, :create_jwt
+    post "/sign_in", UserController, :sign_in_jwt
+    post "/exists", UserController, :exists_user
+    post "/send_code", UserController, :send_code
+    post "/validate_code", UserController, :validate_code
+
+    get "/test_mail", UserController, :test_mail
+
+  end
+
+  pipeline :jwt_authenticated do
+    plug ApiAuthPipeline
+  end
+
+  scope "/api", SmzrWeb do
+    pipe_through [:api, :jwt_authenticated]
+
+    resources "/locations", LocationController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit]
+    #post "/users/sign_in", UserController, :sign_in
+    resources "/user_locations", UserLocationController, except: [:new, :edit]
+    resources "/profiles", ProfileController, except: [:new, :edit]
+    resources "/ailments", AilmentController, except: [:new, :edit]
+    resources "/ailment_levels", AilmentLevelController, except: [:new, :edit]
+    resources "/profile_ailments", ProfileAilmentController, except: [:new, :edit]
+    resources "/risks", RiskController, except: [:new, :edit]
+    resources "/profile_risks", ProfileRiskController, except: [:new, :edit]
+    resources "/advices", AdviceController, except: [:new, :edit]
+    resources "/ailment_advices", AilmentAdviceController, except: [:new, :edit]
+
+    post "/my/profile", ProfileController, :my_profile
+    post "/my/ailments", ProfileAilmentController, :my_ailments
+    post "/my/location", UserLocationController, :my_location
+    post "/change_pass", UserController, :change_pass
+
+
   end
 
   scope "/", SmzrWeb do
@@ -108,26 +151,12 @@ defmodule SmzrWeb.Router do
     live "/ailment_advices/:id", AilmentAdviceLive.Show, :show
     live "/ailment_advices/:id/show/edit", AilmentAdviceLive.Show, :edit
 
-  end
 
-  # Other scopes may use custom stacks.
-  scope "/api", SmzrWeb do
-    pipe_through :api
-
-    resources "/locations", LocationController, except: [:new, :edit]
-    resources "/users", UserController, except: [:new, :edit]
-    post "/users/sign_in", UserController, :sign_in
-    resources "/user_locations", UserLocationController, except: [:new, :edit]
-    resources "/profiles", ProfileController, except: [:new, :edit]
-    resources "/ailments", AilmentController, except: [:new, :edit]
-    resources "/ailment_levels", AilmentLevelController, except: [:new, :edit]
-    resources "/profile_ailments", ProfileAilmentController, except: [:new, :edit]
-    resources "/risks", RiskController, except: [:new, :edit]
-    resources "/profile_risks", ProfileRiskController, except: [:new, :edit]
-    resources "/advices", AdviceController, except: [:new, :edit]
-    resources "/ailment_advices", AilmentAdviceController, except: [:new, :edit]
 
   end
+
+
+
 
   # Enables LiveDashboard only for development
   #

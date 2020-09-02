@@ -13,7 +13,7 @@ defmodule Smzr.Monitoring.AilmentLevel do
   @doc false
   def changeset(ailment_level, attrs) do
     ailment_level
-    |> cast(attrs, [:description, :level])
-    |> validate_required([:description, :level])
+    |> cast(attrs, [:description, :level, :ailment_id])
+    |> validate_required([:description, :level, :ailment_id])
   end
 end

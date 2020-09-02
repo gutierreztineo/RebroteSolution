@@ -6,10 +6,16 @@
     title: @page_title,
     action: @live_action,
     ailment_level: @ailment_level,
+    ailments: @ailments,
     return_to: Routes.ailment_level_show_path(@socket, :show, @ailment_level) %>
 <% end %>
 
 <ul>
+
+  <li>
+    <strong>Aligment:</strong>
+    <%= List.first(Enum.filter(@ailments, fn a -> Map.from_struct(a).id == @ailment_level.ailment_id end)).description %>
+  </li>
 
   <li>
     <strong>Description:</strong>

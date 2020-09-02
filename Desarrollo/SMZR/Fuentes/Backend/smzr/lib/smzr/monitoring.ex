@@ -7,6 +7,7 @@ defmodule Smzr.Monitoring do
   alias Smzr.Repo
 
   alias Smzr.Monitoring.Ailment
+  alias Smzr.Accounts.Profile
 
   @doc """
   Returns the list of ailments.
@@ -36,6 +37,7 @@ defmodule Smzr.Monitoring do
 
   """
   def get_ailment!(id), do: Repo.get!(Ailment, id)
+  def get_ailment(id), do: Repo.get(Ailment, id)
 
   @doc """
   Creates a ailment.
@@ -115,6 +117,11 @@ defmodule Smzr.Monitoring do
   """
   def list_profile_ailments do
     Repo.all(ProfileAilment)
+  end
+
+  def list_profile_ailments_by_user(user_id) do
+    query = from(pa in ProfileAilment, join: p in Profile, where: p.user_id == ^user_id, order_by: [desc: pa.inserted_at], select: pa)
+    query |> Repo.all()
   end
 
   @doc """
@@ -229,6 +236,7 @@ defmodule Smzr.Monitoring do
   """
   def get_ailment_level!(id), do: Repo.get!(AilmentLevel, id)
 
+  def get_ailment_level(id), do: Repo.get(AilmentLevel, id)
   @doc """
   Creates a ailment_level.
 

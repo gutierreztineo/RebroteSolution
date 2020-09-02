@@ -1,6 +1,5 @@
 defmodule SmzrWeb.AilmentLevelLive.FormComponent do
   use SmzrWeb, :live_component
-
   alias Smzr.Monitoring
 
   @impl true

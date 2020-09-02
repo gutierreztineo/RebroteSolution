@@ -10,8 +10,18 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :smzr, SmzrWeb.Endpoint,
-  url: [host:  "smzr.makinap.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+       url: [host:  "smzr.makinap.com", port: 80],
+       url: [host: "smzr.makinap.com", port: 443],
+       https: [
+         port: 443,
+         cipher_suite: :strong,
+         keyfile: "/etc/letsencrypt/live/smzr.makinap.com/privkey.pem",#System.get_env("SOME_APP_SSL_KEY_PATH"),
+         certfile: "/etc/letsencrypt/live/smzr.makinap.com/cert.pem",#System.get_env("SOME_APP_SSL_CERT_PATH"),
+         cacertfile: "/etc/letsencrypt/live/smzr.makinap.com/chain.pem",
+         transport_options: [socket_opts: [:inet6]]
+       ],
+       force_ssl: [hsts: true],
+       cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
 config :logger, level: :info

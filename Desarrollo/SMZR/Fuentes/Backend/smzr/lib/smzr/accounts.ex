@@ -7,7 +7,7 @@ defmodule Smzr.Accounts do
   alias Smzr.Repo
 
   alias Smzr.Accounts.User
-
+  alias Smzr.Guardian
 
   def authenticate_user(username, password) do
     query = from(u in User, where: u.username == ^username)
@@ -17,7 +17,7 @@ defmodule Smzr.Accounts do
   defp verify_password(nil, _) do
     # Perform a dummy check to make user enumeration more difficult
     Bcrypt.no_user_verify()
-    {:error, "Wrong username or password"}
+    {:error, "Wrong username or password 2"}
   end
 
   defp verify_password(user, password) do
@@ -28,7 +28,26 @@ defmodule Smzr.Accounts do
     end
   end
 
+  @doc """
+  Generates a JWT
+  """
+  def token_sign_in(username, password) do
 
+    case authenticate_user(username, password) do
+      {:ok, user}  ->
+        Guardian.encode_and_sign(user)
+      {:error, "Wrong username or password"} ->
+        {:error, "Usuario o Password incorrecto"}
+      _ ->
+        {:error, :unauthorized}
+    end
+
+  end
+
+  def get_user_by_username(username) do
+    query = from(u in User, where: u.username == ^username)
+    query |> Repo.one()
+  end
 
   @doc """
   Returns the list of users.
@@ -154,6 +173,11 @@ defmodule Smzr.Accounts do
 
   """
   def get_profile!(id), do: Repo.get!(Profile, id)
+
+  def get_profile_by_user!(user_id) do
+    query = from(p in Profile, where: p.user_id == ^user_id)
+    query |> Repo.one()
+  end
 
   @doc """
   Creates a profile.

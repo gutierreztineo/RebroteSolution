@@ -11,6 +11,10 @@ defmodule SmzrWeb.UserLocationView do
   end
 
   def render("user_location.json", %{user_location: user_location}) do
-    %{id: user_location.id}
+    %{
+      id: user_location.id,
+      location_id: user_location.location_id,
+      user_id: user_location.user_id
+    }
   end
 end
