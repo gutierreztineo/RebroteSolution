@@ -1,15 +1,10 @@
 package com.rebrotesolution.smzr_android
 
-import android.app.job.JobInfo
-import android.app.job.JobScheduler
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -25,7 +20,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.work.OneTimeWorkRequest
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.google.android.material.navigation.NavigationView
@@ -33,7 +27,6 @@ import com.rebrotesolution.smzr_android.network.NetworkConnectionInterceptor
 import com.rebrotesolution.smzr_android.network.api.LoginClient
 import com.rebrotesolution.smzr_android.network.repository.UsuarioRepository
 import com.rebrotesolution.smzr_android.room.db.RoomDB
-import com.rebrotesolution.smzr_android.service_worker.NotifyRiesgoWorker
 import com.rebrotesolution.smzr_android.viewModels.factory.MainViewModelFactory
 import com.rebrotesolution.smzr_android.viewModels.main.MainViewModel
 import java.util.concurrent.TimeUnit
@@ -79,7 +72,6 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         navView.menu.getItem(0).isEnabled = false
         navView.setNavigationItemSelectedListener(this)
         navView.itemIconTintList = null
-        setPeriodicRequest()
     }
 
 
@@ -87,11 +79,12 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         this.habilitarItem()
         when(item.itemId) {
             R.id.nav_cerrar_sesion -> {
+                viewModel.logOut(sharedPreferences)
                 val editor = sharedPreferences.edit()
                 editor.remove("TOKEN")
+                editor.remove("ID")
+                editor.clear()
                 editor.apply()
-                viewModel.logOut()
-                WorkManager.getInstance(applicationContext).cancelAllWork()
                 Intent(this,LoginActivity::class.java).also {
                     it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(it)
@@ -119,6 +112,7 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
+
         return true
     }
 
@@ -149,16 +143,5 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
 
     private fun habilitarItem(){
         navView.menu.forEach { item -> item.isEnabled = true }
-    }
-
-    fun setPeriodicRequest(){
-         val periodicWorkRequest = PeriodicWorkRequest.Builder(NotifyRiesgoWorker::class.java,15,
-             TimeUnit.MINUTES)
-             .build()
-        WorkManager.getInstance(applicationContext).enqueue(periodicWorkRequest)
-    }
-
-    private fun evaluarSiRegistroMalestares(){
-        
     }
 }

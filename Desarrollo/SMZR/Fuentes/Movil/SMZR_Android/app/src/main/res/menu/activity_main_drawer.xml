@@ -5,13 +5,13 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_empezar_formulario"
+            android:icon="@drawable/malestar"
+            android:title="Registrar Malestar" />
+        <item
             android:id="@+id/nav_mapa_riesgo"
             android:icon="@drawable/location"
             android:title="Mapa de Riesgo" />
-        <item
-            android:id="@+id/nav_empezar_formulario"
-            android:icon="@drawable/malestar"
-            android:title="Formulario Malestar" />
         <item
             android:id="@+id/nav_historial_malestar"
             android:icon="@drawable/historial2"
@@ -19,7 +19,7 @@
         <item
             android:id="@+id/nav_prevencion_covid"
             android:icon="@drawable/prevencion2"
-            android:title="Prevencion COVID-19" />
+            android:title="Prevención COVID-19" />
         <item
             android:id="@+id/nav_mi_cuenta"
             android:icon="@drawable/medico"

@@ -12,4 +12,6 @@
     <color name="colorIndicatorSelected">#092780</color>
     <color name="colorIndicatorUnselected">#2196F3</color>
     <color name="profileAccent">#0099ff</color>
+    <color name="warningAccent">#F41919</color>
+    <color name="asalvogAccent">#F561DF2A</color>
 </resources>

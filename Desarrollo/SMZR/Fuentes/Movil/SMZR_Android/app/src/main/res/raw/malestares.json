@@ -5,7 +5,7 @@
     "recomendaciones": [
       {
         "id_recomendacion": 1,
-        "descripcion": "Evitar exceso de abrigo."
+        "descripcion": "Evitar abrigarse excesivamente."
       },
       {
         "id_recomendacion": 2,
@@ -13,7 +13,7 @@
       },
       {
         "id_recomendacion": 3,
-        "descripcion": "Mantenerse a una temperatura ambiente  de 22° como máximo."
+        "descripcion": "Mantenerse a una temperatura ambiente  de 22°C como máximo."
       }
     ]
   },
@@ -23,11 +23,11 @@
     "recomendaciones": [
       {
         "id_recomendacion": 4,
-        "descripcion": "Consumir bastante líquidos como agua o leche."
+        "descripcion": "Consumir mínimo 1,5 litros de agua al día."
       },
       {
         "id_recomendacion": 5,
-        "descripcion": "Dormir con la almohada elevada."
+        "descripcion": "Evitar el exceso de polvo en casa, pelo de animales y el humo de cigarrillos."
       }
     ]
   },
@@ -47,11 +47,11 @@
     "recomendaciones": [
       {
         "id_recomendacion": 7,
-        "descripcion": "Reposar y permanecer en casa."
+        "descripcion": "Mantenga su cabeza levantada, por ejemplo, con el uso de almohadas para que esté una posición casi sentado."
       },
       {
         "id_recomendacion": 8,
-        "descripcion": "No fumar y evitar exponerse al humo."
+        "descripcion": "Practicar técnicas que desvíen su atención del problema, como relajación y meditación."
       }
     ]
   },
@@ -61,7 +61,7 @@
     "recomendaciones": [
       {
         "id_recomendacion": 9,
-        "descripcion": "Realizar tratamiento con relajantes musculares y antiinflamatorios, como el Ibuprofeno. NOTA: La dosis no debe exceder de 400 mg cada 6 horas."
+        "descripcion": "Realizar tratamiento con relajantes musculares y antiinflamatorios, como el Ibuprofeno.\nNOTA: La dosis de ibuprofeno no debe exceder de 400 mg cada 6 horas."
       }
     ]
   },
@@ -114,11 +114,11 @@
     "recomendaciones": [
       {
         "id_recomendacion": 14,
-        "descripcion": "Tomar de 8 a 10 vasos de líquidos claros por día."
+        "descripcion": "Bebe mucho líquidos ligeros, incluido agua, caldos y jugo de frutas. Evite el jugo de manzana ya que puede empeorar la diarrea."
       },
       {
         "id_recomendacion": 15,
-        "descripcion": "Consumir comidas pequeñas a lo largo del día, en lugar de 3 comidas grandes."
+        "descripcion": "Evite ciertos alimentos como productos lácteos, alimentos grasos, alimentos de alto contenido de fibra o alimentos muy condimentados durante unos pocos días."
       }
     ]
   },
@@ -136,7 +136,7 @@
       },
       {
         "id_recomendacion": 18,
-        "descripcion": "Evitar compartir maquillaje, lentes de contacto y sus estuches, y anteojos."
+        "descripcion": "Evitar compartir maquillaje, anteojos,lentes de contacto y su estuche."
       }
     ]
   },
@@ -150,11 +150,11 @@
       },
       {
         "id_recomendacion": 20,
-        "descripcion": "Alejarse de los ruidos."
+        "descripcion": "Evite estar en zonas donde se produce mucho ruido. Puede aplicarse compresas frías en la zona donde se presenta el dolor para aliviarlo."
       },
       {
         "id_recomendacion": 21,
-        "descripcion": "Dormir una siesta y evitar ver tras pantallas como las del celular o televisor."
+        "descripcion": "Dormir una siesta y evitar ver pantallas como las del celular o televisor."
       }
     ]
   },
