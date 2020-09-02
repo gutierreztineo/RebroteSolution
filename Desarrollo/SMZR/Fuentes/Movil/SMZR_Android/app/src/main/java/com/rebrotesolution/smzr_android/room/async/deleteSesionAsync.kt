@@ -5,7 +5,6 @@ import com.rebrotesolution.smzr_android.room.dao.PersonaDao
 import com.rebrotesolution.smzr_android.room.dao.UsuarioDao
 
 class deleteSesionAsync(
-    private var mAsyncTaskDao: UsuarioDao,
     private var mAsyncTaskDaoPersona : PersonaDao
 ): AsyncTask<Void, Void, Void>() {
 

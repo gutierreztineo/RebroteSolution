@@ -26,7 +26,7 @@ class UsuarioRepository (
 
     fun getUsuario() = db.getUserDao().getUser()
 
-    fun deleteSesion() = deleteSesionAsync(db.getUserDao(),db.getPersonaDao()).execute()
+    fun deleteSesion() = deleteSesionAsync(db.getPersonaDao()).execute()
 
 }
 
