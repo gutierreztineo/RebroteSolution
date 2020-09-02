@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/nav_empezar_formulario"
         android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.EmpezarFormularioFragment"
-        android:label="Formulario de Malestares"
+        android:label="Registro de Malestares"
         tools:layout="@layout/empezar_formulario_fragment" >
         <action
             android:id="@+id/go_malestarForm1"
