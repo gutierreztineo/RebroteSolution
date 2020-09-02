@@ -120,7 +120,7 @@ defmodule Smzr.Monitoring do
   end
 
   def list_profile_ailments_by_user(user_id) do
-    query = from(pa in ProfileAilment, join: p in Profile,where: p.user_id == ^user_id,select: pa)
+    query = from(pa in ProfileAilment, join: p in Profile, where: p.user_id == ^user_id, order_by: [desc: pa.inserted_at], select: pa)
     query |> Repo.all()
   end
 
