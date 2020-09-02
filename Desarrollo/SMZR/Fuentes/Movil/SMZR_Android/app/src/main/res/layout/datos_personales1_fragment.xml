@@ -1,78 +1,112 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#00ffffff"
-    tools:context=".ui.register.DatosPersonales1Fragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <data>
+        <variable
+            name="datosPersonales1ViewModel"
+            type="com.rebrotesolution.smzr_android.viewModels.register.DatosPersonales1ViewModel"/>
+
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
+        android:layout_height="match_parent"
+        android:background="#00ffffff"
+        tools:context=".ui.register.DatosPersonales1Fragment">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="vertical">
+            android:layout_centerVertical="true">
 
-            <EditText
-                android:id="@+id/name_text"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/login_edit_background"
-                android:drawableStart="@drawable/ic_user"
-                android:drawablePadding="10dp"
-                android:hint="Nombres"
-                android:padding="15dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/colorPlaceholder" />
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/lastname_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/login_edit_background"
-                android:drawableStart="@drawable/ic_user"
-                android:drawablePadding="10dp"
-                android:hint="Apellidos"
-                android:padding="15dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/colorPlaceholder" />
+                <EditText
+                    android:id="@+id/name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/nombres"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{datosPersonales1ViewModel.nombreTextWatcher}"/>
 
-            <EditText
-                android:id="@+id/dni_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/login_edit_background"
-                android:drawableStart="@drawable/ic_user"
-                android:drawablePadding="10dp"
-                android:hint="N° Documento Identidad"
-                android:padding="15dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/colorPlaceholder" />
+                <EditText
+                    android:id="@+id/lastnamep_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/apellidop"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{datosPersonales1ViewModel.apellidoPTextWatcher}"/>
+
+                <EditText
+                    android:id="@+id/lastnamem_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/apellidom"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    app:addTextChangedListener="@{datosPersonales1ViewModel.apellidoMTextWatcher}"/>
+
+                <EditText
+                    android:id="@+id/dni_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/login_edit_background"
+                    android:drawableStart="@drawable/baseline_topic_24"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:hint="@string/n_documento_identidad"
+                    android:padding="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPlaceholder"
+                    android:inputType="number"
+                    app:addTextChangedListener="@{datosPersonales1ViewModel.dniTextWatcher}"/>
 
 
-            <Button
-                android:id="@+id/button_action_datosp2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/button_background"
-                android:onClick="@{loginViewModel::onLoginClicked}"
-                android:padding="15dp"
-                android:text="Siguiente"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
+                <Button
+                    android:id="@+id/button_action_datosp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/button_background"
+                    android:onClick="@{datosPersonales1ViewModel::onNextClicked}"
+                    android:padding="15dp"
+                    android:text="@string/siguiente"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorTextInput"
 
-                android:textSize="20sp" />
-        </LinearLayout>
+                    android:textSize="20sp" />
+            </LinearLayout>
 
-    </ScrollView>
+        </ScrollView>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</layout>
 

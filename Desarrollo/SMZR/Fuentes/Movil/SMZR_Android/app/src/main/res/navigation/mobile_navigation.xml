@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_mapa_riesgo">
+    app:startDestination="@+id/nav_empezar_formulario">
 
     <fragment
         android:id="@+id/nav_mi_cuenta"
@@ -26,9 +26,113 @@
         android:label="Mapa de Riesgo"
         tools:layout="@layout/mapa_riesgo_fragment" />
     <fragment
-        android:id="@+id/nav_actualizar_malestar"
-        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.ActualizarMalestar"
-        android:label="Actualizar Malestares"
-        tools:layout="@layout/actualizar_malestar_fragment" />
+        android:id="@+id/nav_empezar_formulario"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.EmpezarFormularioFragment"
+        android:label="Registro de Malestares"
+        tools:layout="@layout/empezar_formulario_fragment" >
+        <action
+            android:id="@+id/go_malestarForm1"
+            app:destination="@id/malestarForm1"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/malestarForm1"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm1"
+        android:label="Pagina 1/7"
+        tools:layout="@layout/malestar_form1_fragment">
+        <action
+            android:id="@+id/go_malestarForm2"
+            app:destination="@id/malestarForm2"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/malestarForm2"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm2"
+        android:label="Pagina 2/7"
+        tools:layout="@layout/malestar_form2_fragment">
+        <action
+            android:id="@+id/go_malestarForm3"
+            app:destination="@id/malestarForm3"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/malestarForm3"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm3"
+        android:label="Pagina 3/7"
+        tools:layout="@layout/malestar_form3_fragment">
+        <action
+            android:id="@+id/go_malestarForm4"
+            app:destination="@id/malestarForm4"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/malestarForm4"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm4"
+        android:label="Pagina 4/7"
+        tools:layout="@layout/malestar_form4_fragment">
+        <action
+            android:id="@+id/go_malestarForm5"
+            app:destination="@id/malestarForm5"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/malestarForm5"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm5"
+        android:label="Pagina 5/7"
+        tools:layout="@layout/malestar_form5_fragment">
+        <action
+            android:id="@+id/go_malestarForm6"
+            app:destination="@id/malestarForm6"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/malestarForm6"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm6"
+        android:label="Pagina 6/7"
+        tools:layout="@layout/malestar_form6_fragment">
+        <action
+            android:id="@+id/go_malestarForm7"
+            app:destination="@id/malestarForm7"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/malestarForm7"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MalestarForm7"
+        android:label="Pagina 7/7"
+        tools:layout="@layout/malestar_form7_fragment">
+        <action
+            android:id="@+id/go_mostrarRecomendaciones"
+            app:destination="@id/mostrarRecomendaciones"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarRecomendaciones"
+        android:name="com.rebrotesolution.smzr_android.ui.actualizar_malestar.MostrarRecomendaciones"
+        android:label="Recomendaciones"
+        tools:layout="@layout/mostrar_recomendaciones_fragment" />
 
 </navigation>

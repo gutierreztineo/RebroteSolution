@@ -1,0 +1,59 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="datosCorreoViewModel"
+            type="com.rebrotesolution.smzr_android.viewModels.register.DatosCorreoViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00ffffff"
+        android:gravity="center_vertical"
+        tools:context=".ui.register.DatosCorreoFragment">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/usuario_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_edit_background"
+                android:drawableStart="@drawable/baseline_email_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/colorPrimaryDark"
+                android:hint="@string/correo_electronico"
+                android:padding="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPlaceholder"
+                app:addTextChangedListener="@{datosCorreoViewModel.emailTextWatcher}" />
+
+            <Button
+                android:id="@+id/button_action_datosp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_background"
+                android:onClick="@{datosCorreoViewModel::onNextClicked}"
+                android:padding="15dp"
+                android:text="@string/siguiente"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextInput"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</layout>

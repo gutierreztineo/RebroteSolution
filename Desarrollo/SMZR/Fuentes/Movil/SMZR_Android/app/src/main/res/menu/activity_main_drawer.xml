@@ -5,28 +5,28 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_empezar_formulario"
+            android:icon="@drawable/malestar"
+            android:title="Registrar Malestar" />
+        <item
             android:id="@+id/nav_mapa_riesgo"
-            android:icon="@drawable/baseline_map_24"
+            android:icon="@drawable/location"
             android:title="Mapa de Riesgo" />
         <item
-            android:id="@+id/nav_actualizar_malestar"
-            android:icon="@drawable/baseline_coronavirus_24"
-            android:title="Actualizar Malestares" />
-        <item
             android:id="@+id/nav_historial_malestar"
-            android:icon="@drawable/baseline_ballot_24"
+            android:icon="@drawable/historial2"
             android:title="Historial de Malestares" />
         <item
             android:id="@+id/nav_prevencion_covid"
-            android:icon="@drawable/baseline_clean_hands_24"
-            android:title="Prevencion COVID-19" />
+            android:icon="@drawable/prevencion2"
+            android:title="Prevención COVID-19" />
         <item
             android:id="@+id/nav_mi_cuenta"
-            android:icon="@drawable/baseline_account_circle_24"
+            android:icon="@drawable/medico"
             android:title="Mi Cuenta" />
         <item
             android:id="@+id/nav_cerrar_sesion"
-            android:icon="@drawable/baseline_power_settings_new_24"
+            android:icon="@drawable/log_out"
             android:title="Cerrar Sesión" />
     </group>
 </menu>

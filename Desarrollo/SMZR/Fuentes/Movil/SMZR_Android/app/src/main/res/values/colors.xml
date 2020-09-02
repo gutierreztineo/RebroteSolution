@@ -8,4 +8,10 @@
     <color name="colorButton">#2B689B</color>
     <color name="colorTextInput">#FAFAFA</color>
     <color name="colorButtonBig">#EF856E</color>
+    <color name="colorButtonF">#F89C88</color>
+    <color name="colorIndicatorSelected">#092780</color>
+    <color name="colorIndicatorUnselected">#2196F3</color>
+    <color name="profileAccent">#0099ff</color>
+    <color name="warningAccent">#F41919</color>
+    <color name="asalvogAccent">#F561DF2A</color>
 </resources>
